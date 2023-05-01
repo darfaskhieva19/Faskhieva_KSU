@@ -25,7 +25,7 @@
     <Property Name="IdReceipts" Type="int" Nullable="false" />
     <Property Name="Count" Type="int" />
   </EntityType>
-  <EntityType Name="DisposalsOne">
+  <EntityType Name="Disposals">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -35,28 +35,14 @@
     <Property Name="TotalNumber" Type="int" Nullable="false" />
     <Property Name="Cost" Type="float" Nullable="false" />
     <Property Name="IdPlace" Type="int" Nullable="false" />
+    <Property Name="IdEnclosures" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="DisposalsThree">
+  <EntityType Name="Enclosures">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="ActNumber" Type="int" Nullable="false" />
-    <Property Name="TotalNumber" Type="int" Nullable="false" />
-    <Property Name="Cost" Type="float" Nullable="false" />
-    <Property Name="IdPlace" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="DisposalsTwo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="ActNumber" Type="int" Nullable="false" />
-    <Property Name="TotalNumber" Type="int" Nullable="false" />
-    <Property Name="Cost" Type="float" Nullable="false" />
-    <Property Name="IdPlace" Type="int" Nullable="false" />
+    <Property Name="Kind" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Place">
     <Key>
@@ -81,7 +67,7 @@
     <Property Name="IdDisposals" Type="int" Nullable="false" />
     <Property Name="Count" Type="int" />
   </EntityType>
-  <EntityType Name="ReceiptsOne">
+  <EntityType Name="Receipts">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -96,38 +82,7 @@
     <Property Name="Count" Type="int" />
     <Property Name="Cost" Type="float" Nullable="false" />
     <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
-  </EntityType>
-  <EntityType Name="ReceiptsThree">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="NumberInOrder" Type="int" Nullable="false" />
-    <Property Name="IdSourceOfReceipt" Type="int" Nullable="false" />
-    <Property Name="IdSourceOfAcquisition" Type="int" Nullable="false" />
-    <Property Name="NumberDocument" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DocumentDate" Type="date" Nullable="false" />
-    <Property Name="TotalInstances" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
-    <Property Name="Cost" Type="float" Nullable="false" />
-    <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
-  </EntityType>
-  <EntityType Name="ReceiptsTwo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="NumberInOrder" Type="int" Nullable="false" />
-    <Property Name="IdSourceOfReceipt" Type="int" Nullable="false" />
-    <Property Name="IdSourceOfAcquisition" Type="int" Nullable="false" />
-    <Property Name="NumberDocument" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DocumentDate" Type="date" Nullable="false" />
-    <Property Name="TotalInstances" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
-    <Property Name="Cost" Type="float" Nullable="false" />
-    <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
+    <Property Name="IdEnclosures" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SourceOfAcquisition">
     <Key>
@@ -142,16 +97,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Kind" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Views">
     <Key>
@@ -191,10 +136,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ContentsDisposals_DisposalsOne">
-    <End Role="DisposalsOne" Type="Self.DisposalsOne" Multiplicity="1" />
+    <End Role="Disposals" Type="Self.Disposals" Multiplicity="1" />
     <End Role="ContentsDisposals" Type="Self.ContentsDisposals" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DisposalsOne">
+      <Principal Role="Disposals">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ContentsDisposals">
@@ -215,10 +160,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ContentsReceipts_ReceiptsOne">
-    <End Role="ReceiptsOne" Type="Self.ReceiptsOne" Multiplicity="1" />
+    <End Role="Receipts" Type="Self.Receipts" Multiplicity="1" />
     <End Role="ContentsReceipts" Type="Self.ContentsReceipts" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReceiptsOne">
+      <Principal Role="Receipts">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ContentsReceipts">
@@ -226,95 +171,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ContentsReceipts_ReceiptsThree">
-    <End Role="ReceiptsThree" Type="Self.ReceiptsThree" Multiplicity="1" />
-    <End Role="ContentsReceipts" Type="Self.ContentsReceipts" Multiplicity="*" />
+  <Association Name="FK_Disposals_Enclosures">
+    <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
+    <End Role="Disposals" Type="Self.Disposals" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReceiptsThree">
+      <Principal Role="Enclosures">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ContentsReceipts">
-        <PropertyRef Name="IdReceipts" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ContentsReceipts_ReceiptsTwo">
-    <End Role="ReceiptsTwo" Type="Self.ReceiptsTwo" Multiplicity="1" />
-    <End Role="ContentsReceipts" Type="Self.ContentsReceipts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReceiptsTwo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ContentsReceipts">
-        <PropertyRef Name="IdReceipts" />
+      <Dependent Role="Disposals">
+        <PropertyRef Name="IdEnclosures" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DisposalsOne_Place">
     <End Role="Place" Type="Self.Place" Multiplicity="1" />
-    <End Role="DisposalsOne" Type="Self.DisposalsOne" Multiplicity="*" />
+    <End Role="Disposals" Type="Self.Disposals" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Place">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="DisposalsOne">
-        <PropertyRef Name="IdPlace" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DisposalsThree_Place">
-    <End Role="Place" Type="Self.Place" Multiplicity="1" />
-    <End Role="DisposalsThree" Type="Self.DisposalsThree" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Place">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DisposalsThree">
-        <PropertyRef Name="IdPlace" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DisposalsTwo_Place">
-    <End Role="Place" Type="Self.Place" Multiplicity="1" />
-    <End Role="DisposalsTwo" Type="Self.DisposalsTwo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Place">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="DisposalsTwo">
+      <Dependent Role="Disposals">
         <PropertyRef Name="IdPlace" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ReasonDisposals_DisposalsOne">
-    <End Role="DisposalsOne" Type="Self.DisposalsOne" Multiplicity="1" />
+    <End Role="Disposals" Type="Self.Disposals" Multiplicity="1" />
     <End Role="ReasonDisposals" Type="Self.ReasonDisposals" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DisposalsOne">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ReasonDisposals">
-        <PropertyRef Name="IdDisposals" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReasonDisposals_DisposalsThree">
-    <End Role="DisposalsThree" Type="Self.DisposalsThree" Multiplicity="1" />
-    <End Role="ReasonDisposals" Type="Self.ReasonDisposals" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DisposalsThree">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ReasonDisposals">
-        <PropertyRef Name="IdDisposals" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReasonDisposals_DisposalsTwo">
-    <End Role="DisposalsTwo" Type="Self.DisposalsTwo" Multiplicity="1" />
-    <End Role="ReasonDisposals" Type="Self.ReasonDisposals" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DisposalsTwo">
+      <Principal Role="Disposals">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ReasonDisposals">
@@ -334,107 +219,47 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Receipts_Enclosures">
+    <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
+    <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enclosures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Receipts">
+        <PropertyRef Name="IdEnclosures" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ReceiptsOne_SourceOfAcquisition">
     <End Role="SourceOfAcquisition" Type="Self.SourceOfAcquisition" Multiplicity="1" />
-    <End Role="ReceiptsOne" Type="Self.ReceiptsOne" Multiplicity="*" />
+    <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SourceOfAcquisition">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ReceiptsOne">
+      <Dependent Role="Receipts">
         <PropertyRef Name="IdSourceOfAcquisition" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ReceiptsOne_SourceOfReceipt">
     <End Role="SourceOfReceipt" Type="Self.SourceOfReceipt" Multiplicity="1" />
-    <End Role="ReceiptsOne" Type="Self.ReceiptsOne" Multiplicity="*" />
+    <End Role="Receipts" Type="Self.Receipts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SourceOfReceipt">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ReceiptsOne">
-        <PropertyRef Name="IdSourceOfReceipt" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReceiptsThree_SourceOfAcquisition">
-    <End Role="SourceOfAcquisition" Type="Self.SourceOfAcquisition" Multiplicity="1" />
-    <End Role="ReceiptsThree" Type="Self.ReceiptsThree" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SourceOfAcquisition">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ReceiptsThree">
-        <PropertyRef Name="IdSourceOfAcquisition" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReceiptsThree_SourceOfReceipt">
-    <End Role="SourceOfReceipt" Type="Self.SourceOfReceipt" Multiplicity="1" />
-    <End Role="ReceiptsThree" Type="Self.ReceiptsThree" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SourceOfReceipt">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ReceiptsThree">
-        <PropertyRef Name="IdSourceOfReceipt" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReceiptsTwo_SourceOfAcquisition">
-    <End Role="SourceOfAcquisition" Type="Self.SourceOfAcquisition" Multiplicity="1" />
-    <End Role="ReceiptsTwo" Type="Self.ReceiptsTwo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SourceOfAcquisition">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ReceiptsTwo">
-        <PropertyRef Name="IdSourceOfAcquisition" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ReceiptsTwo_SourceOfReceipt">
-    <End Role="SourceOfReceipt" Type="Self.SourceOfReceipt" Multiplicity="1" />
-    <End Role="ReceiptsTwo" Type="Self.ReceiptsTwo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SourceOfReceipt">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ReceiptsTwo">
+      <Dependent Role="Receipts">
         <PropertyRef Name="IdSourceOfReceipt" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ViewsDisposals_DisposalsOne">
-    <End Role="DisposalsOne" Type="Self.DisposalsOne" Multiplicity="1" />
+    <End Role="Disposals" Type="Self.Disposals" Multiplicity="1" />
     <End Role="ViewsDisposals" Type="Self.ViewsDisposals" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DisposalsOne">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ViewsDisposals">
-        <PropertyRef Name="IdDisposals" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ViewsDisposals_DisposalsThree">
-    <End Role="DisposalsThree" Type="Self.DisposalsThree" Multiplicity="1" />
-    <End Role="ViewsDisposals" Type="Self.ViewsDisposals" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DisposalsThree">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ViewsDisposals">
-        <PropertyRef Name="IdDisposals" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ViewsDisposals_DisposalsTwo">
-    <End Role="DisposalsTwo" Type="Self.DisposalsTwo" Multiplicity="1" />
-    <End Role="ViewsDisposals" Type="Self.ViewsDisposals" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DisposalsTwo">
+      <Principal Role="Disposals">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ViewsDisposals">
@@ -455,34 +280,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ViewsReceipts_ReceiptsOne">
-    <End Role="ReceiptsOne" Type="Self.ReceiptsOne" Multiplicity="1" />
+    <End Role="Receipts" Type="Self.Receipts" Multiplicity="1" />
     <End Role="ViewsReceipts" Type="Self.ViewsReceipts" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReceiptsOne">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ViewsReceipts">
-        <PropertyRef Name="IdReceipts" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ViewsReceipts_ReceiptsThree">
-    <End Role="ReceiptsThree" Type="Self.ReceiptsThree" Multiplicity="1" />
-    <End Role="ViewsReceipts" Type="Self.ViewsReceipts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReceiptsThree">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ViewsReceipts">
-        <PropertyRef Name="IdReceipts" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ViewsReceipts_ReceiptsTwo">
-    <End Role="ReceiptsTwo" Type="Self.ReceiptsTwo" Multiplicity="1" />
-    <End Role="ViewsReceipts" Type="Self.ViewsReceipts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ReceiptsTwo">
+      <Principal Role="Receipts">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ViewsReceipts">
@@ -506,18 +307,14 @@
     <EntitySet Name="Contents" EntityType="Self.Contents" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContentsDisposals" EntityType="Self.ContentsDisposals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContentsReceipts" EntityType="Self.ContentsReceipts" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DisposalsOne" EntityType="Self.DisposalsOne" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DisposalsThree" EntityType="Self.DisposalsThree" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DisposalsTwo" EntityType="Self.DisposalsTwo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Disposals" EntityType="Self.Disposals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Enclosures" EntityType="Self.Enclosures" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reason" EntityType="Self.Reason" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReasonDisposals" EntityType="Self.ReasonDisposals" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ReceiptsOne" EntityType="Self.ReceiptsOne" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ReceiptsThree" EntityType="Self.ReceiptsThree" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ReceiptsTwo" EntityType="Self.ReceiptsTwo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Receipts" EntityType="Self.Receipts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SourceOfAcquisition" EntityType="Self.SourceOfAcquisition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SourceOfReceipt" EntityType="Self.SourceOfReceipt" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ViewsDisposals" EntityType="Self.ViewsDisposals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ViewsReceipts" EntityType="Self.ViewsReceipts" Schema="dbo" store:Type="Tables" />
@@ -526,7 +323,7 @@
       <End Role="ContentsDisposals" EntitySet="ContentsDisposals" />
     </AssociationSet>
     <AssociationSet Name="FK_ContentsDisposals_DisposalsOne" Association="Self.FK_ContentsDisposals_DisposalsOne">
-      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
+      <End Role="Disposals" EntitySet="Disposals" />
       <End Role="ContentsDisposals" EntitySet="ContentsDisposals" />
     </AssociationSet>
     <AssociationSet Name="FK_ContentsReceipts_Contents" Association="Self.FK_ContentsReceipts_Contents">
@@ -534,79 +331,39 @@
       <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
     </AssociationSet>
     <AssociationSet Name="FK_ContentsReceipts_ReceiptsOne" Association="Self.FK_ContentsReceipts_ReceiptsOne">
-      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
+      <End Role="Receipts" EntitySet="Receipts" />
       <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
     </AssociationSet>
-    <AssociationSet Name="FK_ContentsReceipts_ReceiptsThree" Association="Self.FK_ContentsReceipts_ReceiptsThree">
-      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
-      <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ContentsReceipts_ReceiptsTwo" Association="Self.FK_ContentsReceipts_ReceiptsTwo">
-      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
-      <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
+    <AssociationSet Name="FK_Disposals_Enclosures" Association="Self.FK_Disposals_Enclosures">
+      <End Role="Enclosures" EntitySet="Enclosures" />
+      <End Role="Disposals" EntitySet="Disposals" />
     </AssociationSet>
     <AssociationSet Name="FK_DisposalsOne_Place" Association="Self.FK_DisposalsOne_Place">
       <End Role="Place" EntitySet="Place" />
-      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DisposalsThree_Place" Association="Self.FK_DisposalsThree_Place">
-      <End Role="Place" EntitySet="Place" />
-      <End Role="DisposalsThree" EntitySet="DisposalsThree" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DisposalsTwo_Place" Association="Self.FK_DisposalsTwo_Place">
-      <End Role="Place" EntitySet="Place" />
-      <End Role="DisposalsTwo" EntitySet="DisposalsTwo" />
+      <End Role="Disposals" EntitySet="Disposals" />
     </AssociationSet>
     <AssociationSet Name="FK_ReasonDisposals_DisposalsOne" Association="Self.FK_ReasonDisposals_DisposalsOne">
-      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
-      <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReasonDisposals_DisposalsThree" Association="Self.FK_ReasonDisposals_DisposalsThree">
-      <End Role="DisposalsThree" EntitySet="DisposalsThree" />
-      <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReasonDisposals_DisposalsTwo" Association="Self.FK_ReasonDisposals_DisposalsTwo">
-      <End Role="DisposalsTwo" EntitySet="DisposalsTwo" />
+      <End Role="Disposals" EntitySet="Disposals" />
       <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
     </AssociationSet>
     <AssociationSet Name="FK_ReasonDisposals_Reason" Association="Self.FK_ReasonDisposals_Reason">
       <End Role="Reason" EntitySet="Reason" />
       <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
     </AssociationSet>
+    <AssociationSet Name="FK_Receipts_Enclosures" Association="Self.FK_Receipts_Enclosures">
+      <End Role="Enclosures" EntitySet="Enclosures" />
+      <End Role="Receipts" EntitySet="Receipts" />
+    </AssociationSet>
     <AssociationSet Name="FK_ReceiptsOne_SourceOfAcquisition" Association="Self.FK_ReceiptsOne_SourceOfAcquisition">
       <End Role="SourceOfAcquisition" EntitySet="SourceOfAcquisition" />
-      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
+      <End Role="Receipts" EntitySet="Receipts" />
     </AssociationSet>
     <AssociationSet Name="FK_ReceiptsOne_SourceOfReceipt" Association="Self.FK_ReceiptsOne_SourceOfReceipt">
       <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
-      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReceiptsThree_SourceOfAcquisition" Association="Self.FK_ReceiptsThree_SourceOfAcquisition">
-      <End Role="SourceOfAcquisition" EntitySet="SourceOfAcquisition" />
-      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReceiptsThree_SourceOfReceipt" Association="Self.FK_ReceiptsThree_SourceOfReceipt">
-      <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
-      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReceiptsTwo_SourceOfAcquisition" Association="Self.FK_ReceiptsTwo_SourceOfAcquisition">
-      <End Role="SourceOfAcquisition" EntitySet="SourceOfAcquisition" />
-      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ReceiptsTwo_SourceOfReceipt" Association="Self.FK_ReceiptsTwo_SourceOfReceipt">
-      <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
-      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
+      <End Role="Receipts" EntitySet="Receipts" />
     </AssociationSet>
     <AssociationSet Name="FK_ViewsDisposals_DisposalsOne" Association="Self.FK_ViewsDisposals_DisposalsOne">
-      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
-      <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ViewsDisposals_DisposalsThree" Association="Self.FK_ViewsDisposals_DisposalsThree">
-      <End Role="DisposalsThree" EntitySet="DisposalsThree" />
-      <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ViewsDisposals_DisposalsTwo" Association="Self.FK_ViewsDisposals_DisposalsTwo">
-      <End Role="DisposalsTwo" EntitySet="DisposalsTwo" />
+      <End Role="Disposals" EntitySet="Disposals" />
       <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
     </AssociationSet>
     <AssociationSet Name="FK_ViewsDisposals_Views" Association="Self.FK_ViewsDisposals_Views">
@@ -614,15 +371,7 @@
       <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
     </AssociationSet>
     <AssociationSet Name="FK_ViewsReceipts_ReceiptsOne" Association="Self.FK_ViewsReceipts_ReceiptsOne">
-      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
-      <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ViewsReceipts_ReceiptsThree" Association="Self.FK_ViewsReceipts_ReceiptsThree">
-      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
-      <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ViewsReceipts_ReceiptsTwo" Association="Self.FK_ViewsReceipts_ReceiptsTwo">
-      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
+      <End Role="Receipts" EntitySet="Receipts" />
       <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
     </AssociationSet>
     <AssociationSet Name="FK_ViewsReceipts_Views" Association="Self.FK_ViewsReceipts_Views">

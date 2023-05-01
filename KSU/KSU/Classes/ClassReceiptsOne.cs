@@ -8,7 +8,7 @@ using System.Windows.Documents;
 
 namespace KSU
 {
-    public partial class ReceiptsOne
+    public partial class Receipts
     {
 
         public string dateReceipts

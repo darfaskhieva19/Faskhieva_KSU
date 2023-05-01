@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KSU
 {
-    public partial class DisposalsOne
+    public partial class Disposals
     {
         public string dateDisp // Дата записи
         {

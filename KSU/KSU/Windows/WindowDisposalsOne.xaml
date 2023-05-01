@@ -16,7 +16,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Добавление записи" Style="{StaticResource Header}"/>
+            <TextBlock Name="tbHeader" Text="Добавление записи" Style="{StaticResource Header}"/>
 
             <StackPanel Grid.Row="1">
                 <WrapPanel>
@@ -78,6 +78,10 @@
                 <WrapPanel Margin="5 15 5 0">
                     <TextBlock Text="Место выбытия" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0"/>
                     <ComboBox Name="cbPlace" IsEditable="True"/>
+                </WrapPanel>
+                <WrapPanel Margin="5 15 5 0">
+                    <TextBlock Text="Выберите корпус" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                    <ComboBox Name="cbEnclousures" IsEditable="True"/>
                 </WrapPanel>
             </StackPanel>
             <Grid Grid.Row="2" Margin="5 10 0 0">

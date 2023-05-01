@@ -64,8 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\ClassContent.cs" />
     <Compile Include="Classes\ClassDisposalsOne.cs" />
     <Compile Include="Classes\ClassReceiptsOne.cs" />
+    <Compile Include="Classes\ClassReason.cs" />
+    <Compile Include="Classes\ClassViews.cs" />
     <Compile Include="Contents.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -116,10 +119,13 @@
     <Compile Include="ViewsReceipts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="WindowDisposalsOne.xaml.cs">
+    <Compile Include="WindowAddSourceOfReceipts.xaml.cs">
+      <DependentUpon>WindowAddSourceOfReceipts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowDisposalsOne.xaml.cs">
       <DependentUpon>WindowDisposalsOne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowReceiptsOne.xaml.cs">
+    <Compile Include="Windows\WindowReceiptsOne.xaml.cs">
       <DependentUpon>WindowReceiptsOne.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -140,11 +146,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowDisposalsOne.xaml">
+    <Page Include="WindowAddSourceOfReceipts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowReceiptsOne.xaml">
+    <Page Include="Windows\WindowDisposalsOne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowReceiptsOne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,9 +206,7 @@
   <ItemGroup>
     <Resource Include="Resources\spring-green.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -210,6 +218,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Update.png" />
+    <Resource Include="Resources\Delete.png" />
     <Resource Include="Resources\NKG_Logo.png" />
     <Resource Include="Resources\NGK.png" />
   </ItemGroup>

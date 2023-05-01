@@ -40,7 +40,7 @@
                         </Grid>
 
                         <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                            <DataGrid Name="dgDisposals" IsReadOnly="True" ColumnWidth="*" RowHeight="10" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" >
+                            <DataGrid Name="dgDisposals" MouseDoubleClick="dgDisposals_MouseDoubleClick" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" >
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="90"/>
                                     <DataGridTextColumn Header="№ акта" Binding="{Binding ActNumber}" Width="60"/>
@@ -60,6 +60,15 @@
                                     <DataGridTextColumn Header="Дефектность" Binding="{Binding defectiveness}" Width="88"/>
                                     <DataGridTextColumn Header="Утрата" Binding="{Binding loss}" Width="75"/>
                                     <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="115"/>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Name="btnDelete" Click="btnDelete_Click" Uid="{Binding Id}">
+                                                    <Image Source="\Resources\Delete.png" Width="15"/>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>                                    
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
@@ -74,7 +83,7 @@
                         </Grid>
 
                         <StackPanel Grid.Row="1">
-                            <DataGrid Name="dgReceipt" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <DataGrid Name="dgReceipt" MouseDoubleClick="dgReceipt_MouseDoubleClick" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="100"/>
                                     <DataGridTextColumn Header="№" Binding="{Binding NumberInOrder}" Width="50"/>
@@ -94,6 +103,15 @@
                                     <DataGridTextColumn Header="Печатные" Binding="{Binding printedR}" Width="75"/>
                                     <DataGridTextColumn Header="Электронные" Binding="{Binding electr}" Width="*"/>
                                     <DataGridTextColumn Header="Периодические издания" Binding="{Binding periodich}" Width="*"/>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Name="btnDeleteR" Click="btnDeleteR_Click" Uid="{Binding Id}">
+                                                    <Image Source="\Resources\Delete.png" Width="15"/>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
