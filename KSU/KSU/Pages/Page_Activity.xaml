@@ -1,0 +1,309 @@
+﻿<Page x:Class="KSU.Page_Activity"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KSU"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Основная страница"
+      FontFamily="Times New Roman">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="I корпус" FontSize="18px" VerticalAlignment="Center">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Выбытие" FontSize="18" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <Button Name="btnAdd" Grid.Column="1" Content="Добавить запись" Click="btnAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <DataGrid Name="dgDisposals" IsReadOnly="True" ColumnWidth="*" RowHeight="10" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="90"/>
+                                    <DataGridTextColumn Header="№ акта" Binding="{Binding ActNumber}" Width="60"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalNumber}" Width="98"/>
+                                    <DataGridTextColumn Header="На сумму" Binding="{Binding Price}" Width="80"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocial}" Width="*"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding Social}" Width="*"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding Humanitarian}" Width="*"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding Metodical}" Width="*"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceLiterature}" Width="*"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding Art}" Width="*"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding printed}" Width="75"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding Electronic}" Width="*"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding Period}" Width="*"/>
+                                    <DataGridTextColumn Header="Ветхость" Binding="{Binding causes}" Width="75"/>
+                                    <DataGridTextColumn Header="Устарелость" Binding="{Binding obsolescence}" Width="85"/>
+                                    <DataGridTextColumn Header="Дефектность" Binding="{Binding defectiveness}" Width="88"/>
+                                    <DataGridTextColumn Header="Утрата" Binding="{Binding loss}" Width="75"/>
+                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="115"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Поступление" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <Button Name="btnNewAdd" Grid.Column="1" Content="Добавить запись" Click="btnNewAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="1">
+                            <DataGrid Name="dgReceipt" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="100"/>
+                                    <DataGridTextColumn Header="№" Binding="{Binding NumberInOrder}" Width="50"/>
+                                    <DataGridTextColumn Header="Источник поступления" Binding="{Binding Istochik}" />
+                                    <DataGridTextColumn Header="Источник комплектования" Binding="{Binding IstochikK}"/>
+                                    <DataGridTextColumn Header="Сопроводительный документ" Binding="{Binding Ins}"/>
+                                    <DataGridTextColumn Header="Всего поступило экз." Binding="{Binding Total}"/>
+                                    <DataGridTextColumn Header="Экз." Binding="{Binding Inst}" Width="35"/>
+                                    <DataGridTextColumn Header="На сумму" Binding="{Binding InstCost}"/>
+                                    <DataGridTextColumn Header="Документы, не принятые на баланс" Binding="{Binding NotBalance}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalS}" Width="*"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialS}" Width="*"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianS}" Width="*"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalS}" Width="*"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceLiteratureS}" Width="*"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtS}" Width="*"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding printedR}" Width="75"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding electr}" Width="*"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding periodich}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Button}" Click="btnResult_Click"/>
+
+                        <StackPanel Grid.Row="5" Name="spRes" Visibility="Collapsed">
+                            <DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Движение фонда"/>
+                                    <DataGridTextColumn Header="Общее кол-во"/>
+                                    <DataGridTextColumn Header="Общая стоимость"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)"/>
+                                    <DataGridTextColumn Header="Печатные"/>
+                                    <DataGridTextColumn Header="Электронные"/>
+                                    <DataGridTextColumn Header="Периодические издания"/>
+                                    <DataGridTextColumn Header="Примечания"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            
+            
+            <TabItem Header="II корпус" FontSize="18px" VerticalAlignment="Center">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Поступление" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <Button Name="btnNAdd" Grid.Column="1" Content="Добавить запись" Click="btnNewAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="1">
+                            <DataGrid Name="dgReceiptTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="100"/>
+                                    <DataGridTextColumn Header="№" Binding="{Binding NumberInOrder}" Width="50"/>
+                                    <DataGridTextColumn Header="Источник поступления" Binding="{Binding Istochik}" />
+                                    <DataGridTextColumn Header="Источник комплектования" Binding="{Binding IstochikK}"/>
+                                    <DataGridTextColumn Header="Сопроводительный документ" Binding="{Binding Ins}"/>
+                                    <DataGridTextColumn Header="Всего поступило экз." Binding="{Binding Total}"/>
+                                    <DataGridTextColumn Header="Экз." Binding="{Binding Inst}" Width="35"/>
+                                    <DataGridTextColumn Header="На сумму" Binding="{Binding InstCost}"/>
+                                    <DataGridTextColumn Header="Документы, не принятые на баланс" Binding="{Binding NotBalance}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalS}" Width="*"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialS}" Width="*"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianS}" Width="*"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalS}" Width="*"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceLiteratureS}" Width="*"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtS}" Width="*"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding printedR}" Width="75"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding electr}" Width="*"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding periodich}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Выбытие" FontSize="18" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <Button  Grid.Column="1" Content="Добавить запись" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <DataGrid Name="dgDisposalsTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="10" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="90"/>
+                                    <DataGridTextColumn Header="№ акта" Binding="{Binding ActNumber}" Width="60"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalNumber}" Width="98"/>
+                                    <DataGridTextColumn Header="На сумму" Binding="{Binding Price}" Width="80"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocial}" Width="*"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding Social}" Width="*"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding Humanitarian}" Width="*"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding Metodical}" Width="*"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceLiterature}" Width="*"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding Art}" Width="*"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding printed}" Width="75"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding Electronic}" Width="*"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding Period}" Width="*"/>
+                                    <DataGridTextColumn Header="Ветхость" Binding="{Binding causes}" Width="75"/>
+                                    <DataGridTextColumn Header="Устарелость" Binding="{Binding obsolescence}" Width="85"/>
+                                    <DataGridTextColumn Header="Дефектность" Binding="{Binding defectiveness}" Width="88"/>
+                                    <DataGridTextColumn Header="Утрата" Binding="{Binding loss}" Width="75"/>
+                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="115"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                        
+                        
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            
+            
+            <TabItem Header="III корпус" FontSize="18px" VerticalAlignment="Center">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Поступление" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <Button Grid.Column="1" Content="Добавить запись" Click="btnNewAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="1">
+                            <DataGrid Name="dgReceiptThree" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="100"/>
+                                    <DataGridTextColumn Header="№" Binding="{Binding NumberInOrder}" Width="50"/>
+                                    <DataGridTextColumn Header="Источник поступления" Binding="{Binding Istochik}" />
+                                    <DataGridTextColumn Header="Источник комплектования" Binding="{Binding IstochikK}"/>
+                                    <DataGridTextColumn Header="Сопроводительный документ" Binding="{Binding Ins}"/>
+                                    <DataGridTextColumn Header="Всего поступило экз." Binding="{Binding Total}"/>
+                                    <DataGridTextColumn Header="Экз." Binding="{Binding Inst}" Width="35"/>
+                                    <DataGridTextColumn Header="На сумму" Binding="{Binding InstCost}"/>
+                                    <DataGridTextColumn Header="Документы, не принятые на баланс" Binding="{Binding NotBalance}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalS}" Width="*"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialS}" Width="*"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianS}" Width="*"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalS}" Width="*"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceLiteratureS}" Width="*"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtS}" Width="*"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding printedR}" Width="75"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding electr}" Width="*"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding periodich}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Выбытие" FontSize="18" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                            <Button  Grid.Column="1" Content="Добавить запись"  Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                        </Grid>
+
+                        <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <DataGrid Name="dgDisposalsThree" IsReadOnly="True" ColumnWidth="*" RowHeight="10" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="90"/>
+                                    <DataGridTextColumn Header="№ акта" Binding="{Binding ActNumber}" Width="60"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalNumber}" Width="98"/>
+                                    <DataGridTextColumn Header="На сумму" Binding="{Binding Price}" Width="80"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocial}" Width="*"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding Social}" Width="*"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding Humanitarian}" Width="*"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding Metodical}" Width="*"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceLiterature}" Width="*"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding Art}" Width="*"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding printed}" Width="75"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding Electronic}" Width="*"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding Period}" Width="*"/>
+                                    <DataGridTextColumn Header="Ветхость" Binding="{Binding causes}" Width="75"/>
+                                    <DataGridTextColumn Header="Устарелость" Binding="{Binding obsolescence}" Width="85"/>
+                                    <DataGridTextColumn Header="Дефектность" Binding="{Binding defectiveness}" Width="88"/>
+                                    <DataGridTextColumn Header="Утрата" Binding="{Binding loss}" Width="75"/>
+                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="115"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            
+            
+            <TabItem Header="Итоги" FontSize="18px" VerticalAlignment="Center">
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

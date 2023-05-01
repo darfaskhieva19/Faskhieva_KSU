@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="П_Фасхиева_ДипломModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contents" EntityType="П_Фасхиева_ДипломModel.Contents" />
+    <EntitySet Name="ContentsDisposals" EntityType="П_Фасхиева_ДипломModel.ContentsDisposals" />
+    <EntitySet Name="ContentsReceipts" EntityType="П_Фасхиева_ДипломModel.ContentsReceipts" />
+    <EntitySet Name="DisposalsOne" EntityType="П_Фасхиева_ДипломModel.DisposalsOne" />
+    <EntitySet Name="DisposalsThree" EntityType="П_Фасхиева_ДипломModel.DisposalsThree" />
+    <EntitySet Name="DisposalsTwo" EntityType="П_Фасхиева_ДипломModel.DisposalsTwo" />
+    <EntitySet Name="Place" EntityType="П_Фасхиева_ДипломModel.Place" />
+    <EntitySet Name="Reason" EntityType="П_Фасхиева_ДипломModel.Reason" />
+    <EntitySet Name="ReasonDisposals" EntityType="П_Фасхиева_ДипломModel.ReasonDisposals" />
+    <EntitySet Name="ReceiptsOne" EntityType="П_Фасхиева_ДипломModel.ReceiptsOne" />
+    <EntitySet Name="ReceiptsThree" EntityType="П_Фасхиева_ДипломModel.ReceiptsThree" />
+    <EntitySet Name="ReceiptsTwo" EntityType="П_Фасхиева_ДипломModel.ReceiptsTwo" />
+    <EntitySet Name="SourceOfAcquisition" EntityType="П_Фасхиева_ДипломModel.SourceOfAcquisition" />
+    <EntitySet Name="SourceOfReceipt" EntityType="П_Фасхиева_ДипломModel.SourceOfReceipt" />
+    <EntitySet Name="sysdiagrams" EntityType="П_Фасхиева_ДипломModel.sysdiagrams" />
+    <EntitySet Name="Views" EntityType="П_Фасхиева_ДипломModel.Views" />
+    <EntitySet Name="ViewsDisposals" EntityType="П_Фасхиева_ДипломModel.ViewsDisposals" />
+    <EntitySet Name="ViewsReceipts" EntityType="П_Фасхиева_ДипломModel.ViewsReceipts" />
+    <AssociationSet Name="FK_ContentsDisposals_Contents1" Association="П_Фасхиева_ДипломModel.FK_ContentsDisposals_Contents1">
+      <End Role="Contents" EntitySet="Contents" />
+      <End Role="ContentsDisposals" EntitySet="ContentsDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentsReceipts_Contents" Association="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents">
+      <End Role="Contents" EntitySet="Contents" />
+      <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentsDisposals_DisposalsOne" Association="П_Фасхиева_ДипломModel.FK_ContentsDisposals_DisposalsOne">
+      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
+      <End Role="ContentsDisposals" EntitySet="ContentsDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentsReceipts_ReceiptsOne" Association="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsOne">
+      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
+      <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentsReceipts_ReceiptsThree" Association="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsThree">
+      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
+      <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContentsReceipts_ReceiptsTwo" Association="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsTwo">
+      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
+      <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DisposalsOne_Place" Association="П_Фасхиева_ДипломModel.FK_DisposalsOne_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReasonDisposals_DisposalsOne" Association="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsOne">
+      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
+      <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsDisposals_DisposalsOne" Association="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsOne">
+      <End Role="DisposalsOne" EntitySet="DisposalsOne" />
+      <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DisposalsThree_Place" Association="П_Фасхиева_ДипломModel.FK_DisposalsThree_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="DisposalsThree" EntitySet="DisposalsThree" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReasonDisposals_DisposalsThree" Association="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsThree">
+      <End Role="DisposalsThree" EntitySet="DisposalsThree" />
+      <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsDisposals_DisposalsThree" Association="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsThree">
+      <End Role="DisposalsThree" EntitySet="DisposalsThree" />
+      <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DisposalsTwo_Place" Association="П_Фасхиева_ДипломModel.FK_DisposalsTwo_Place">
+      <End Role="Place" EntitySet="Place" />
+      <End Role="DisposalsTwo" EntitySet="DisposalsTwo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReasonDisposals_DisposalsTwo" Association="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsTwo">
+      <End Role="DisposalsTwo" EntitySet="DisposalsTwo" />
+      <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsDisposals_DisposalsTwo" Association="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsTwo">
+      <End Role="DisposalsTwo" EntitySet="DisposalsTwo" />
+      <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReasonDisposals_Reason" Association="П_Фасхиева_ДипломModel.FK_ReasonDisposals_Reason">
+      <End Role="Reason" EntitySet="Reason" />
+      <End Role="ReasonDisposals" EntitySet="ReasonDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptsOne_SourceOfAcquisition" Association="П_Фасхиева_ДипломModel.FK_ReceiptsOne_SourceOfAcquisition">
+      <End Role="SourceOfAcquisition" EntitySet="SourceOfAcquisition" />
+      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptsOne_SourceOfReceipt" Association="П_Фасхиева_ДипломModel.FK_ReceiptsOne_SourceOfReceipt">
+      <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
+      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsReceipts_ReceiptsOne" Association="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsOne">
+      <End Role="ReceiptsOne" EntitySet="ReceiptsOne" />
+      <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptsThree_SourceOfAcquisition" Association="П_Фасхиева_ДипломModel.FK_ReceiptsThree_SourceOfAcquisition">
+      <End Role="SourceOfAcquisition" EntitySet="SourceOfAcquisition" />
+      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptsThree_SourceOfReceipt" Association="П_Фасхиева_ДипломModel.FK_ReceiptsThree_SourceOfReceipt">
+      <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
+      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsReceipts_ReceiptsThree" Association="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsThree">
+      <End Role="ReceiptsThree" EntitySet="ReceiptsThree" />
+      <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptsTwo_SourceOfAcquisition" Association="П_Фасхиева_ДипломModel.FK_ReceiptsTwo_SourceOfAcquisition">
+      <End Role="SourceOfAcquisition" EntitySet="SourceOfAcquisition" />
+      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptsTwo_SourceOfReceipt" Association="П_Фасхиева_ДипломModel.FK_ReceiptsTwo_SourceOfReceipt">
+      <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
+      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsReceipts_ReceiptsTwo" Association="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsTwo">
+      <End Role="ReceiptsTwo" EntitySet="ReceiptsTwo" />
+      <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsDisposals_Views" Association="П_Фасхиева_ДипломModel.FK_ViewsDisposals_Views">
+      <End Role="Views" EntitySet="Views" />
+      <End Role="ViewsDisposals" EntitySet="ViewsDisposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewsReceipts_Views" Association="П_Фасхиева_ДипломModel.FK_ViewsReceipts_Views">
+      <End Role="Views" EntitySet="Views" />
+      <End Role="ViewsReceipts" EntitySet="ViewsReceipts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kind" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ContentsDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_Contents1" FromRole="Contents" ToRole="ContentsDisposals" />
+    <NavigationProperty Name="ContentsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents" FromRole="Contents" ToRole="ContentsReceipts" />
+  </EntityType>
+  <EntityType Name="ContentsDisposals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdContents" Type="Int32" Nullable="false" />
+    <Property Name="IdDisposals" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_Contents1" FromRole="ContentsDisposals" ToRole="Contents" />
+    <NavigationProperty Name="DisposalsOne" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_DisposalsOne" FromRole="ContentsDisposals" ToRole="DisposalsOne" />
+  </EntityType>
+  <EntityType Name="ContentsReceipts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdContents" Type="Int32" Nullable="false" />
+    <Property Name="IdReceipts" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents" FromRole="ContentsReceipts" ToRole="Contents" />
+    <NavigationProperty Name="ReceiptsOne" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsOne" FromRole="ContentsReceipts" ToRole="ReceiptsOne" />
+    <NavigationProperty Name="ReceiptsThree" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsThree" FromRole="ContentsReceipts" ToRole="ReceiptsThree" />
+    <NavigationProperty Name="ReceiptsTwo" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsTwo" FromRole="ContentsReceipts" ToRole="ReceiptsTwo" />
+  </EntityType>
+  <EntityType Name="DisposalsOne">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ActNumber" Type="Int32" Nullable="false" />
+    <Property Name="TotalNumber" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="IdPlace" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ContentsDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_DisposalsOne" FromRole="DisposalsOne" ToRole="ContentsDisposals" />
+    <NavigationProperty Name="Place" Relationship="П_Фасхиева_ДипломModel.FK_DisposalsOne_Place" FromRole="DisposalsOne" ToRole="Place" />
+    <NavigationProperty Name="ReasonDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsOne" FromRole="DisposalsOne" ToRole="ReasonDisposals" />
+    <NavigationProperty Name="ViewsDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsOne" FromRole="DisposalsOne" ToRole="ViewsDisposals" />
+  </EntityType>
+  <EntityType Name="DisposalsThree">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ActNumber" Type="Int32" Nullable="false" />
+    <Property Name="TotalNumber" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="IdPlace" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Place" Relationship="П_Фасхиева_ДипломModel.FK_DisposalsThree_Place" FromRole="DisposalsThree" ToRole="Place" />
+    <NavigationProperty Name="ReasonDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsThree" FromRole="DisposalsThree" ToRole="ReasonDisposals" />
+    <NavigationProperty Name="ViewsDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsThree" FromRole="DisposalsThree" ToRole="ViewsDisposals" />
+  </EntityType>
+  <EntityType Name="DisposalsTwo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ActNumber" Type="Int32" Nullable="false" />
+    <Property Name="TotalNumber" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="IdPlace" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Place" Relationship="П_Фасхиева_ДипломModel.FK_DisposalsTwo_Place" FromRole="DisposalsTwo" ToRole="Place" />
+    <NavigationProperty Name="ReasonDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsTwo" FromRole="DisposalsTwo" ToRole="ReasonDisposals" />
+    <NavigationProperty Name="ViewsDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsTwo" FromRole="DisposalsTwo" ToRole="ViewsDisposals" />
+  </EntityType>
+  <EntityType Name="Place">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kind" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DisposalsOne" Relationship="П_Фасхиева_ДипломModel.FK_DisposalsOne_Place" FromRole="Place" ToRole="DisposalsOne" />
+    <NavigationProperty Name="DisposalsThree" Relationship="П_Фасхиева_ДипломModel.FK_DisposalsThree_Place" FromRole="Place" ToRole="DisposalsThree" />
+    <NavigationProperty Name="DisposalsTwo" Relationship="П_Фасхиева_ДипломModel.FK_DisposalsTwo_Place" FromRole="Place" ToRole="DisposalsTwo" />
+  </EntityType>
+  <EntityType Name="Reason">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kind" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ReasonDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_Reason" FromRole="Reason" ToRole="ReasonDisposals" />
+  </EntityType>
+  <EntityType Name="ReasonDisposals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdReason" Type="Int32" Nullable="false" />
+    <Property Name="IdDisposals" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="DisposalsOne" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsOne" FromRole="ReasonDisposals" ToRole="DisposalsOne" />
+    <NavigationProperty Name="DisposalsThree" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsThree" FromRole="ReasonDisposals" ToRole="DisposalsThree" />
+    <NavigationProperty Name="DisposalsTwo" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsTwo" FromRole="ReasonDisposals" ToRole="DisposalsTwo" />
+    <NavigationProperty Name="Reason" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_Reason" FromRole="ReasonDisposals" ToRole="Reason" />
+  </EntityType>
+  <EntityType Name="ReceiptsOne">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NumberInOrder" Type="Int32" Nullable="false" />
+    <Property Name="IdSourceOfReceipt" Type="Int32" Nullable="false" />
+    <Property Name="IdSourceOfAcquisition" Type="Int32" Nullable="false" />
+    <Property Name="NumberDocument" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalInstances" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="DocumentsNotAcceptedForBalance" Type="Int32" />
+    <NavigationProperty Name="ContentsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsOne" FromRole="ReceiptsOne" ToRole="ContentsReceipts" />
+    <NavigationProperty Name="SourceOfAcquisition" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsOne_SourceOfAcquisition" FromRole="ReceiptsOne" ToRole="SourceOfAcquisition" />
+    <NavigationProperty Name="SourceOfReceipt" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsOne_SourceOfReceipt" FromRole="ReceiptsOne" ToRole="SourceOfReceipt" />
+    <NavigationProperty Name="ViewsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsOne" FromRole="ReceiptsOne" ToRole="ViewsReceipts" />
+  </EntityType>
+  <EntityType Name="ReceiptsThree">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NumberInOrder" Type="Int32" Nullable="false" />
+    <Property Name="IdSourceOfReceipt" Type="Int32" Nullable="false" />
+    <Property Name="IdSourceOfAcquisition" Type="Int32" Nullable="false" />
+    <Property Name="NumberDocument" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalInstances" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="DocumentsNotAcceptedForBalance" Type="Int32" />
+    <NavigationProperty Name="ContentsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsThree" FromRole="ReceiptsThree" ToRole="ContentsReceipts" />
+    <NavigationProperty Name="SourceOfAcquisition" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsThree_SourceOfAcquisition" FromRole="ReceiptsThree" ToRole="SourceOfAcquisition" />
+    <NavigationProperty Name="SourceOfReceipt" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsThree_SourceOfReceipt" FromRole="ReceiptsThree" ToRole="SourceOfReceipt" />
+    <NavigationProperty Name="ViewsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsThree" FromRole="ReceiptsThree" ToRole="ViewsReceipts" />
+  </EntityType>
+  <EntityType Name="ReceiptsTwo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NumberInOrder" Type="Int32" Nullable="false" />
+    <Property Name="IdSourceOfReceipt" Type="Int32" Nullable="false" />
+    <Property Name="IdSourceOfAcquisition" Type="Int32" Nullable="false" />
+    <Property Name="NumberDocument" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TotalInstances" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Cost" Type="Double" Nullable="false" />
+    <Property Name="DocumentsNotAcceptedForBalance" Type="Int32" />
+    <NavigationProperty Name="ContentsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsTwo" FromRole="ReceiptsTwo" ToRole="ContentsReceipts" />
+    <NavigationProperty Name="SourceOfAcquisition" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsTwo_SourceOfAcquisition" FromRole="ReceiptsTwo" ToRole="SourceOfAcquisition" />
+    <NavigationProperty Name="SourceOfReceipt" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsTwo_SourceOfReceipt" FromRole="ReceiptsTwo" ToRole="SourceOfReceipt" />
+    <NavigationProperty Name="ViewsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsTwo" FromRole="ReceiptsTwo" ToRole="ViewsReceipts" />
+  </EntityType>
+  <EntityType Name="SourceOfAcquisition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kind" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ReceiptsOne" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsOne_SourceOfAcquisition" FromRole="SourceOfAcquisition" ToRole="ReceiptsOne" />
+    <NavigationProperty Name="ReceiptsThree" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsThree_SourceOfAcquisition" FromRole="SourceOfAcquisition" ToRole="ReceiptsThree" />
+    <NavigationProperty Name="ReceiptsTwo" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsTwo_SourceOfAcquisition" FromRole="SourceOfAcquisition" ToRole="ReceiptsTwo" />
+  </EntityType>
+  <EntityType Name="SourceOfReceipt">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kind" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ReceiptsOne" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsOne_SourceOfReceipt" FromRole="SourceOfReceipt" ToRole="ReceiptsOne" />
+    <NavigationProperty Name="ReceiptsThree" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsThree_SourceOfReceipt" FromRole="SourceOfReceipt" ToRole="ReceiptsThree" />
+    <NavigationProperty Name="ReceiptsTwo" Relationship="П_Фасхиева_ДипломModel.FK_ReceiptsTwo_SourceOfReceipt" FromRole="SourceOfReceipt" ToRole="ReceiptsTwo" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Views">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kind" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ViewsDisposals" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_Views" FromRole="Views" ToRole="ViewsDisposals" />
+    <NavigationProperty Name="ViewsReceipts" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_Views" FromRole="Views" ToRole="ViewsReceipts" />
+  </EntityType>
+  <EntityType Name="ViewsDisposals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdViews" Type="Int32" Nullable="false" />
+    <Property Name="IdDisposals" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="DisposalsOne" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsOne" FromRole="ViewsDisposals" ToRole="DisposalsOne" />
+    <NavigationProperty Name="DisposalsThree" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsThree" FromRole="ViewsDisposals" ToRole="DisposalsThree" />
+    <NavigationProperty Name="DisposalsTwo" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsTwo" FromRole="ViewsDisposals" ToRole="DisposalsTwo" />
+    <NavigationProperty Name="Views" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_Views" FromRole="ViewsDisposals" ToRole="Views" />
+  </EntityType>
+  <EntityType Name="ViewsReceipts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdReceipts" Type="Int32" Nullable="false" />
+    <Property Name="IdViews" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <NavigationProperty Name="ReceiptsOne" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsOne" FromRole="ViewsReceipts" ToRole="ReceiptsOne" />
+    <NavigationProperty Name="ReceiptsThree" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsThree" FromRole="ViewsReceipts" ToRole="ReceiptsThree" />
+    <NavigationProperty Name="ReceiptsTwo" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsTwo" FromRole="ViewsReceipts" ToRole="ReceiptsTwo" />
+    <NavigationProperty Name="Views" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_Views" FromRole="ViewsReceipts" ToRole="Views" />
+  </EntityType>
+  <Association Name="FK_ContentsDisposals_Contents1">
+    <End Type="П_Фасхиева_ДипломModel.Contents" Role="Contents" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ContentsDisposals" Role="ContentsDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentsDisposals">
+        <PropertyRef Name="IdContents" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentsReceipts_Contents">
+    <End Type="П_Фасхиева_ДипломModel.Contents" Role="Contents" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ContentsReceipts" Role="ContentsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentsReceipts">
+        <PropertyRef Name="IdContents" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentsDisposals_DisposalsOne">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsOne" Role="DisposalsOne" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ContentsDisposals" Role="ContentsDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsOne">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentsDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentsReceipts_ReceiptsOne">
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsOne" Role="ReceiptsOne" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ContentsReceipts" Role="ContentsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiptsOne">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentsReceipts">
+        <PropertyRef Name="IdReceipts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentsReceipts_ReceiptsThree">
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsThree" Role="ReceiptsThree" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ContentsReceipts" Role="ContentsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiptsThree">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentsReceipts">
+        <PropertyRef Name="IdReceipts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContentsReceipts_ReceiptsTwo">
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsTwo" Role="ReceiptsTwo" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ContentsReceipts" Role="ContentsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiptsTwo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentsReceipts">
+        <PropertyRef Name="IdReceipts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DisposalsOne_Place">
+    <End Type="П_Фасхиева_ДипломModel.Place" Role="Place" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.DisposalsOne" Role="DisposalsOne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DisposalsOne">
+        <PropertyRef Name="IdPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReasonDisposals_DisposalsOne">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsOne" Role="DisposalsOne" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReasonDisposals" Role="ReasonDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsOne">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReasonDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsDisposals_DisposalsOne">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsOne" Role="DisposalsOne" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsDisposals" Role="ViewsDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsOne">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DisposalsThree_Place">
+    <End Type="П_Фасхиева_ДипломModel.Place" Role="Place" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.DisposalsThree" Role="DisposalsThree" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DisposalsThree">
+        <PropertyRef Name="IdPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReasonDisposals_DisposalsThree">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsThree" Role="DisposalsThree" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReasonDisposals" Role="ReasonDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsThree">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReasonDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsDisposals_DisposalsThree">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsThree" Role="DisposalsThree" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsDisposals" Role="ViewsDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsThree">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DisposalsTwo_Place">
+    <End Type="П_Фасхиева_ДипломModel.Place" Role="Place" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.DisposalsTwo" Role="DisposalsTwo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Place">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DisposalsTwo">
+        <PropertyRef Name="IdPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReasonDisposals_DisposalsTwo">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsTwo" Role="DisposalsTwo" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReasonDisposals" Role="ReasonDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsTwo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReasonDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsDisposals_DisposalsTwo">
+    <End Type="П_Фасхиева_ДипломModel.DisposalsTwo" Role="DisposalsTwo" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsDisposals" Role="ViewsDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DisposalsTwo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsDisposals">
+        <PropertyRef Name="IdDisposals" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReasonDisposals_Reason">
+    <End Type="П_Фасхиева_ДипломModel.Reason" Role="Reason" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReasonDisposals" Role="ReasonDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reason">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReasonDisposals">
+        <PropertyRef Name="IdReason" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptsOne_SourceOfAcquisition">
+    <End Type="П_Фасхиева_ДипломModel.SourceOfAcquisition" Role="SourceOfAcquisition" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsOne" Role="ReceiptsOne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceOfAcquisition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptsOne">
+        <PropertyRef Name="IdSourceOfAcquisition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptsOne_SourceOfReceipt">
+    <End Type="П_Фасхиева_ДипломModel.SourceOfReceipt" Role="SourceOfReceipt" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsOne" Role="ReceiptsOne" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceOfReceipt">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptsOne">
+        <PropertyRef Name="IdSourceOfReceipt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsReceipts_ReceiptsOne">
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsOne" Role="ReceiptsOne" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsReceipts" Role="ViewsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiptsOne">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsReceipts">
+        <PropertyRef Name="IdReceipts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptsThree_SourceOfAcquisition">
+    <End Type="П_Фасхиева_ДипломModel.SourceOfAcquisition" Role="SourceOfAcquisition" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsThree" Role="ReceiptsThree" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceOfAcquisition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptsThree">
+        <PropertyRef Name="IdSourceOfAcquisition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptsThree_SourceOfReceipt">
+    <End Type="П_Фасхиева_ДипломModel.SourceOfReceipt" Role="SourceOfReceipt" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsThree" Role="ReceiptsThree" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceOfReceipt">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptsThree">
+        <PropertyRef Name="IdSourceOfReceipt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsReceipts_ReceiptsThree">
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsThree" Role="ReceiptsThree" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsReceipts" Role="ViewsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiptsThree">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsReceipts">
+        <PropertyRef Name="IdReceipts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptsTwo_SourceOfAcquisition">
+    <End Type="П_Фасхиева_ДипломModel.SourceOfAcquisition" Role="SourceOfAcquisition" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsTwo" Role="ReceiptsTwo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceOfAcquisition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptsTwo">
+        <PropertyRef Name="IdSourceOfAcquisition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptsTwo_SourceOfReceipt">
+    <End Type="П_Фасхиева_ДипломModel.SourceOfReceipt" Role="SourceOfReceipt" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsTwo" Role="ReceiptsTwo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SourceOfReceipt">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptsTwo">
+        <PropertyRef Name="IdSourceOfReceipt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsReceipts_ReceiptsTwo">
+    <End Type="П_Фасхиева_ДипломModel.ReceiptsTwo" Role="ReceiptsTwo" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsReceipts" Role="ViewsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReceiptsTwo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsReceipts">
+        <PropertyRef Name="IdReceipts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsDisposals_Views">
+    <End Type="П_Фасхиева_ДипломModel.Views" Role="Views" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsDisposals" Role="ViewsDisposals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Views">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsDisposals">
+        <PropertyRef Name="IdViews" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewsReceipts_Views">
+    <End Type="П_Фасхиева_ДипломModel.Views" Role="Views" Multiplicity="1" />
+    <End Type="П_Фасхиева_ДипломModel.ViewsReceipts" Role="ViewsReceipts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Views">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ViewsReceipts">
+        <PropertyRef Name="IdViews" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

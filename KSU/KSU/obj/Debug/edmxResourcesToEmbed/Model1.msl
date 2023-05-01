@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище П_Фасхиева_ДипломModelContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Contents">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.Contents">
+        <MappingFragment StoreEntitySet="Contents">
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentsDisposals">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsDisposals">
+        <MappingFragment StoreEntitySet="ContentsDisposals">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
+          <ScalarProperty Name="IdContents" ColumnName="IdContents" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentsReceipts">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsReceipts">
+        <MappingFragment StoreEntitySet="ContentsReceipts">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IdReceipts" ColumnName="IdReceipts" />
+          <ScalarProperty Name="IdContents" ColumnName="IdContents" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisposalsOne">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.DisposalsOne">
+        <MappingFragment StoreEntitySet="DisposalsOne">
+          <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+          <ScalarProperty Name="ActNumber" ColumnName="ActNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisposalsThree">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.DisposalsThree">
+        <MappingFragment StoreEntitySet="DisposalsThree">
+          <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+          <ScalarProperty Name="ActNumber" ColumnName="ActNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DisposalsTwo">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.DisposalsTwo">
+        <MappingFragment StoreEntitySet="DisposalsTwo">
+          <ScalarProperty Name="IdPlace" ColumnName="IdPlace" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+          <ScalarProperty Name="ActNumber" ColumnName="ActNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Place">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.Place">
+        <MappingFragment StoreEntitySet="Place">
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reason">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.Reason">
+        <MappingFragment StoreEntitySet="Reason">
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReasonDisposals">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ReasonDisposals">
+        <MappingFragment StoreEntitySet="ReasonDisposals">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
+          <ScalarProperty Name="IdReason" ColumnName="IdReason" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptsOne">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ReceiptsOne">
+        <MappingFragment StoreEntitySet="ReceiptsOne">
+          <ScalarProperty Name="DocumentsNotAcceptedForBalance" ColumnName="DocumentsNotAcceptedForBalance" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="TotalInstances" ColumnName="TotalInstances" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="NumberDocument" ColumnName="NumberDocument" />
+          <ScalarProperty Name="IdSourceOfAcquisition" ColumnName="IdSourceOfAcquisition" />
+          <ScalarProperty Name="IdSourceOfReceipt" ColumnName="IdSourceOfReceipt" />
+          <ScalarProperty Name="NumberInOrder" ColumnName="NumberInOrder" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptsThree">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ReceiptsThree">
+        <MappingFragment StoreEntitySet="ReceiptsThree">
+          <ScalarProperty Name="DocumentsNotAcceptedForBalance" ColumnName="DocumentsNotAcceptedForBalance" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="TotalInstances" ColumnName="TotalInstances" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="NumberDocument" ColumnName="NumberDocument" />
+          <ScalarProperty Name="IdSourceOfAcquisition" ColumnName="IdSourceOfAcquisition" />
+          <ScalarProperty Name="IdSourceOfReceipt" ColumnName="IdSourceOfReceipt" />
+          <ScalarProperty Name="NumberInOrder" ColumnName="NumberInOrder" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiptsTwo">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ReceiptsTwo">
+        <MappingFragment StoreEntitySet="ReceiptsTwo">
+          <ScalarProperty Name="DocumentsNotAcceptedForBalance" ColumnName="DocumentsNotAcceptedForBalance" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="TotalInstances" ColumnName="TotalInstances" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="NumberDocument" ColumnName="NumberDocument" />
+          <ScalarProperty Name="IdSourceOfAcquisition" ColumnName="IdSourceOfAcquisition" />
+          <ScalarProperty Name="IdSourceOfReceipt" ColumnName="IdSourceOfReceipt" />
+          <ScalarProperty Name="NumberInOrder" ColumnName="NumberInOrder" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SourceOfAcquisition">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.SourceOfAcquisition">
+        <MappingFragment StoreEntitySet="SourceOfAcquisition">
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SourceOfReceipt">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.SourceOfReceipt">
+        <MappingFragment StoreEntitySet="SourceOfReceipt">
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Views">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.Views">
+        <MappingFragment StoreEntitySet="Views">
+          <ScalarProperty Name="Kind" ColumnName="Kind" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewsDisposals">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ViewsDisposals">
+        <MappingFragment StoreEntitySet="ViewsDisposals">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
+          <ScalarProperty Name="IdViews" ColumnName="IdViews" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewsReceipts">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ViewsReceipts">
+        <MappingFragment StoreEntitySet="ViewsReceipts">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IdViews" ColumnName="IdViews" />
+          <ScalarProperty Name="IdReceipts" ColumnName="IdReceipts" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
