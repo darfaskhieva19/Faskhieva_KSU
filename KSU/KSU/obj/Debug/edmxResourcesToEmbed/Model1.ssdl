@@ -14,7 +14,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdContents" Type="int" Nullable="false" />
     <Property Name="IdDisposals" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Counts" Type="int" />
   </EntityType>
   <EntityType Name="ContentsReceipts">
     <Key>
@@ -23,7 +23,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdContents" Type="int" Nullable="false" />
     <Property Name="IdReceipts" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Counts" Type="int" />
   </EntityType>
   <EntityType Name="Disposals">
     <Key>
@@ -65,7 +65,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdReason" Type="int" Nullable="false" />
     <Property Name="IdDisposals" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Counts" Type="int" />
   </EntityType>
   <EntityType Name="Receipts">
     <Key>
@@ -112,7 +112,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdViews" Type="int" Nullable="false" />
     <Property Name="IdDisposals" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Counts" Type="int" />
   </EntityType>
   <EntityType Name="ViewsReceipts">
     <Key>
@@ -121,7 +121,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdReceipts" Type="int" Nullable="false" />
     <Property Name="IdViews" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Counts" Type="int" />
   </EntityType>
   <Association Name="FK_ContentsDisposals_Contents1">
     <End Role="Contents" Type="Self.Contents" Multiplicity="1" />

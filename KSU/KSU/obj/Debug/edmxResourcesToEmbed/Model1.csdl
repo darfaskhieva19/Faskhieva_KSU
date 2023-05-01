@@ -92,7 +92,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdContents" Type="Int32" Nullable="false" />
     <Property Name="IdDisposals" Type="Int32" Nullable="false" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Counts" Type="Int32" />
     <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_Contents1" FromRole="ContentsDisposals" ToRole="Contents" />
     <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_DisposalsOne" FromRole="ContentsDisposals" ToRole="Disposals" />
   </EntityType>
@@ -103,7 +103,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdContents" Type="Int32" Nullable="false" />
     <Property Name="IdReceipts" Type="Int32" Nullable="false" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Counts" Type="Int32" />
     <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents" FromRole="ContentsReceipts" ToRole="Contents" />
     <NavigationProperty Name="Receipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsOne" FromRole="ContentsReceipts" ToRole="Receipts" />
   </EntityType>
@@ -156,7 +156,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdReason" Type="Int32" Nullable="false" />
     <Property Name="IdDisposals" Type="Int32" Nullable="false" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Counts" Type="Int32" />
     <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsOne" FromRole="ReasonDisposals" ToRole="Disposals" />
     <NavigationProperty Name="Reason" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_Reason" FromRole="ReasonDisposals" ToRole="Reason" />
   </EntityType>
@@ -214,7 +214,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdViews" Type="Int32" Nullable="false" />
     <Property Name="IdDisposals" Type="Int32" Nullable="false" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Counts" Type="Int32" />
     <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsOne" FromRole="ViewsDisposals" ToRole="Disposals" />
     <NavigationProperty Name="Views" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_Views" FromRole="ViewsDisposals" ToRole="Views" />
   </EntityType>
@@ -225,7 +225,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdReceipts" Type="Int32" Nullable="false" />
     <Property Name="IdViews" Type="Int32" Nullable="false" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Counts" Type="Int32" />
     <NavigationProperty Name="Receipts" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsOne" FromRole="ViewsReceipts" ToRole="Receipts" />
     <NavigationProperty Name="Views" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_Views" FromRole="ViewsReceipts" ToRole="Views" />
   </EntityType>

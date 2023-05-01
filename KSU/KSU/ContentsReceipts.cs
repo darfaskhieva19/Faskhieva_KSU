@@ -17,7 +17,7 @@ namespace KSU
         public int Id { get; set; }
         public int IdContents { get; set; }
         public int IdReceipts { get; set; }
-        public Nullable<int> Count { get; set; }
+        public Nullable<int> Counts { get; set; }
     
         public virtual Contents Contents { get; set; }
         public virtual Receipts Receipts { get; set; }

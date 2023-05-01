@@ -19,7 +19,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdContents" Type="int" Nullable="false" />
           <Property Name="IdDisposals" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Counts" Type="int" />
         </EntityType>
         <EntityType Name="ContentsReceipts">
           <Key>
@@ -28,7 +28,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdContents" Type="int" Nullable="false" />
           <Property Name="IdReceipts" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Counts" Type="int" />
         </EntityType>
         <EntityType Name="Disposals">
           <Key>
@@ -70,7 +70,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdReason" Type="int" Nullable="false" />
           <Property Name="IdDisposals" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Counts" Type="int" />
         </EntityType>
         <EntityType Name="Receipts">
           <Key>
@@ -117,7 +117,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdViews" Type="int" Nullable="false" />
           <Property Name="IdDisposals" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Counts" Type="int" />
         </EntityType>
         <EntityType Name="ViewsReceipts">
           <Key>
@@ -126,7 +126,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdReceipts" Type="int" Nullable="false" />
           <Property Name="IdViews" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Counts" Type="int" />
         </EntityType>
         <Association Name="FK_ContentsDisposals_Contents1">
           <End Role="Contents" Type="Self.Contents" Multiplicity="1" />
@@ -480,7 +480,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdContents" Type="Int32" Nullable="false" />
           <Property Name="IdDisposals" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
           <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_Contents1" FromRole="ContentsDisposals" ToRole="Contents" />
           <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_ContentsDisposals_DisposalsOne" FromRole="ContentsDisposals" ToRole="Disposals" />
         </EntityType>
@@ -491,7 +491,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdContents" Type="Int32" Nullable="false" />
           <Property Name="IdReceipts" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
           <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents" FromRole="ContentsReceipts" ToRole="Contents" />
           <NavigationProperty Name="Receipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsOne" FromRole="ContentsReceipts" ToRole="Receipts" />
         </EntityType>
@@ -544,7 +544,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdReason" Type="Int32" Nullable="false" />
           <Property Name="IdDisposals" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
           <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_DisposalsOne" FromRole="ReasonDisposals" ToRole="Disposals" />
           <NavigationProperty Name="Reason" Relationship="П_Фасхиева_ДипломModel.FK_ReasonDisposals_Reason" FromRole="ReasonDisposals" ToRole="Reason" />
         </EntityType>
@@ -602,7 +602,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdViews" Type="Int32" Nullable="false" />
           <Property Name="IdDisposals" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
           <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_DisposalsOne" FromRole="ViewsDisposals" ToRole="Disposals" />
           <NavigationProperty Name="Views" Relationship="П_Фасхиева_ДипломModel.FK_ViewsDisposals_Views" FromRole="ViewsDisposals" ToRole="Views" />
         </EntityType>
@@ -613,7 +613,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdReceipts" Type="Int32" Nullable="false" />
           <Property Name="IdViews" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
           <NavigationProperty Name="Receipts" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_ReceiptsOne" FromRole="ViewsReceipts" ToRole="Receipts" />
           <NavigationProperty Name="Views" Relationship="П_Фасхиева_ДипломModel.FK_ViewsReceipts_Views" FromRole="ViewsReceipts" ToRole="Views" />
         </EntityType>
@@ -814,7 +814,7 @@
           <EntitySetMapping Name="ContentsDisposals">
             <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsDisposals">
               <MappingFragment StoreEntitySet="ContentsDisposals">
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
                 <ScalarProperty Name="IdContents" ColumnName="IdContents" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -824,7 +824,7 @@
           <EntitySetMapping Name="ContentsReceipts">
             <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsReceipts">
               <MappingFragment StoreEntitySet="ContentsReceipts">
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="IdReceipts" ColumnName="IdReceipts" />
                 <ScalarProperty Name="IdContents" ColumnName="IdContents" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -871,7 +871,7 @@
           <EntitySetMapping Name="ReasonDisposals">
             <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ReasonDisposals">
               <MappingFragment StoreEntitySet="ReasonDisposals">
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
                 <ScalarProperty Name="IdReason" ColumnName="IdReason" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -923,7 +923,7 @@
           <EntitySetMapping Name="ViewsDisposals">
             <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ViewsDisposals">
               <MappingFragment StoreEntitySet="ViewsDisposals">
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
                 <ScalarProperty Name="IdViews" ColumnName="IdViews" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -933,7 +933,7 @@
           <EntitySetMapping Name="ViewsReceipts">
             <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ViewsReceipts">
               <MappingFragment StoreEntitySet="ViewsReceipts">
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="IdViews" ColumnName="IdViews" />
                 <ScalarProperty Name="IdReceipts" ColumnName="IdReceipts" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

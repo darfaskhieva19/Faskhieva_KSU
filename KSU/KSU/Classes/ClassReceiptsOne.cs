@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
@@ -83,52 +84,44 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if(contentAndAdmissions != null)
                 {
-                    List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndAdmissions.Count > 0)
+                    for(int i = 0; i < contentAndAdmissions.Count; i++)
                     {
-                        foreach (ContentsReceipts content in contentAndAdmissions)
+                        if(contentAndAdmissions[i].IdContents == 1)
                         {
-                            if (Id == 1)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentAndAdmissions[i].Counts.ToString();
                         }
                     }
                 }
-                return str;
+                else
+                {
+                    str = null;
+                }
+                return str;               
             }
         }
         public string SocialS // Технические науки, хоз-во
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentAndAdmissions != null)
                 {
-                    List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndAdmissions.Count > 0)
+                    for (int i = 0; i < contentAndAdmissions.Count; i++)
                     {
-                        foreach (ContentsReceipts content in contentAndAdmissions)
+                        if (contentAndAdmissions[i].IdContents == 2)
                         {
-                            if (Id == 2)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentAndAdmissions[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -137,25 +130,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentAndAdmissions != null)
                 {
-                    List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndAdmissions.Count > 0)
+                    for (int i = 0; i < contentAndAdmissions.Count; i++)
                     {
-                        foreach (ContentsReceipts content in contentAndAdmissions)
+                        if (contentAndAdmissions[i].IdContents == 3)
                         {
-                            if (Id == 3)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentAndAdmissions[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -164,25 +153,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentAndAdmissions != null)
                 {
-                    List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndAdmissions.Count > 0)
+                    for (int i = 0; i < contentAndAdmissions.Count; i++)
                     {
-                        foreach (ContentsReceipts content in contentAndAdmissions)
+                        if (contentAndAdmissions[i].IdContents == 4)
                         {
-                            if (Id == 4)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentAndAdmissions[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -191,25 +176,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentAndAdmissions != null)
                 {
-                    List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndAdmissions.Count > 0)
+                    for (int i = 0; i < contentAndAdmissions.Count; i++)
                     {
-                        foreach (ContentsReceipts content in contentAndAdmissions)
+                        if (contentAndAdmissions[i].IdContents == 5)
                         {
-                            if (Id == 5)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentAndAdmissions[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -218,25 +199,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentAndAdmissions != null)
                 {
-                    List<ContentsReceipts> contentAndAdmissions = DataBase.Base.ContentsReceipts.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndAdmissions.Count > 0)
+                    for (int i = 0; i < contentAndAdmissions.Count; i++)
                     {
-                        foreach (ContentsReceipts content in contentAndAdmissions)
+                        if (contentAndAdmissions[i].IdContents == 6)
                         {
-                            if (Id == 6)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentAndAdmissions[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -246,25 +223,21 @@ namespace KSU
         {
             get
             {
-                Views views = DataBase.Base.Views.FirstOrDefault(z => z.Id == Id);
+                List<ViewsReceipts> viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == Id).ToList();
                 string str = "";
-                if (views != null)
+                if (viewsReceipts != null)
                 {
-                    List<ViewsReceipts> viewsAndReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdViews == views.Id).ToList();
-                    if (viewsAndReceipts.Count > 0)
+                    for (int i = 0; i < viewsReceipts.Count; i++)
                     {
-                        foreach (ViewsReceipts viewsAnd in viewsAndReceipts)
+                        if (viewsReceipts[i].IdViews == 1)
                         {
-                            if (Id == 1)
-                            {
-                                str = viewsAnd.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = viewsReceipts[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -273,48 +246,46 @@ namespace KSU
         {
             get
             {
-                Views views = DataBase.Base.Views.FirstOrDefault(z => z.Id == Id);
-                string strEl = "";
-                if (views != null)
+                List<ViewsReceipts> viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == Id).ToList();
+                string str = "";
+                if (viewsReceipts != null)
                 {
-                    List<ViewsReceipts> viewsAndReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdViews == views.Id).ToList();
-                    foreach (ViewsReceipts viewsAnd in viewsAndReceipts)
+                    for (int i = 0; i < viewsReceipts.Count; i++)
                     {
-                        if (Id == 2)
+                        if (viewsReceipts[i].IdViews == 2)
                         {
-                            strEl = viewsAnd.Count.ToString();
-                        }
-                        else
-                        {
-                            strEl = null;
+                            str = viewsReceipts[i].Counts.ToString();
                         }
                     }
                 }
-                return strEl;
+                else
+                {
+                    str = null;
+                }
+                return str;
             }
         }
         public string periodich // Периодические издания
         {
             get
             {
-                Views views = DataBase.Base.Views.FirstOrDefault(z => z.Id == Id);
-                string strEl = "";
-                if (views != null)
+                List<ViewsReceipts> viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == Id).ToList();
+                string str = "";
+                if (viewsReceipts != null)
                 {
-                    List<ViewsReceipts> viewsAndReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdViews == views.Id).ToList();
-                    foreach (ViewsReceipts viewsAnd in viewsAndReceipts)
+                    for (int i = 0; i < viewsReceipts.Count; i++)
                     {
-                        if (Id == 3)
+                        if (viewsReceipts[i].IdViews == 3)
                         {
-                            strEl = viewsAnd.Count.ToString();
-                        }
-                        else
-                        {
-                            strEl = null;
+                            str = viewsReceipts[i].Counts.ToString();
                         }
                     }
                 }
-                return strEl;
+                else
+                {
+                    str = null;
+                }
+                return str;
             }
         }
     }

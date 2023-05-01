@@ -39,7 +39,7 @@ namespace KSU
             {
                 cbPlace.Items.Add(places[i].Kind);
             }
-            //cbPlace.SelectedIndex = disposal.IdPlace-1;
+            cbPlace.SelectedIndex = disposal.IdPlace;
 
             List<Enclosures> enclosures = DataBase.Base.Enclosures.ToList();
             cbEnclousures.Items.Add("не выбрано");
@@ -47,7 +47,7 @@ namespace KSU
             {
                 cbEnclousures.Items.Add(enclosures[i].Kind);
             }
-            cbEnclousures.SelectedIndex = disposal.IdEnclosures-1;
+            cbEnclousures.SelectedIndex = disposal.IdEnclosures;
 
             lbContent.ItemsSource = DataBase.Base.Contents.ToList();
             lbViews.ItemsSource = DataBase.Base.Views.ToList();
@@ -169,7 +169,7 @@ namespace KSU
                             {
                                 IdContents = Con.Id,
                                 IdDisposals = disposal.Id,
-                                Count = Con.QM
+                                Counts = Con.QM
                             };
                             DataBase.Base.ContentsDisposals.Add(CAD);
                         }

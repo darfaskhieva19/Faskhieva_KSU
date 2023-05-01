@@ -34,29 +34,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsDisposals> contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentsDisposals != null)
                 {
-                    List<ContentsDisposals> contentAndDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndDisposals.Count > 0)
+                    for (int i = 0; i < contentsDisposals.Count; i++)
                     {
-                        foreach (ContentsDisposals content in contentAndDisposals)
+                        if (contentsDisposals[i].IdContents == 1)
                         {
-                            if (Id == 1)
-                            {
-                                int k = content.IdContents;
-                                if (k == 1)
-                                {
-                                    str = content.Count.ToString();
-                                }
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentsDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -65,27 +57,23 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
-                string strSocial = "";
-                if (contents != null)
+                List<ContentsDisposals> contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == Id).ToList();
+                string str = "";
+                if (contentsDisposals != null)
                 {
-                    List<ContentsDisposals> contentAndDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndDisposals.Count > 0)
+                    for (int i = 0; i < contentsDisposals.Count; i++)
                     {
-                        foreach (ContentsDisposals content in contentAndDisposals)
+                        if (contentsDisposals[i].IdContents == 2)
                         {
-                            if (content.Id == 2)
-                            {
-                                strSocial = content.Count.ToString();
-                            }
-                            else
-                            {
-                                strSocial = null;
-                            }
+                            str = contentsDisposals[i].Counts.ToString();
                         }
                     }
                 }
-                return strSocial;
+                else
+                {
+                    str = null;
+                }
+                return str;
             }
         }
 
@@ -93,25 +81,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsDisposals> contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentsDisposals != null)
                 {
-                    List<ContentsDisposals> contentAndDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndDisposals.Count > 0)
+                    for (int i = 0; i < contentsDisposals.Count; i++)
                     {
-                        foreach (ContentsDisposals content in contentAndDisposals)
+                        if (contentsDisposals[i].IdContents == 3)
                         {
-                            if (Id == 3)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentsDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -121,25 +105,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsDisposals> contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentsDisposals != null)
                 {
-                    List<ContentsDisposals> contentAndDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndDisposals.Count > 0)
+                    for (int i = 0; i < contentsDisposals.Count; i++)
                     {
-                        foreach (ContentsDisposals content in contentAndDisposals)
+                        if (contentsDisposals[i].IdContents == 4)
                         {
-                            if (Id == 3)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentsDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -149,25 +129,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsDisposals> contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentsDisposals != null)
                 {
-                    List<ContentsDisposals> contentAndDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndDisposals.Count > 0)
+                    for (int i = 0; i < contentsDisposals.Count; i++)
                     {
-                        foreach (ContentsDisposals content in contentAndDisposals)
+                        if (contentsDisposals[i].IdContents == 5)
                         {
-                            if (Id == 5)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentsDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -177,25 +153,21 @@ namespace KSU
         {
             get
             {
-                Contents contents = DataBase.Base.Contents.FirstOrDefault(z => z.Id == Id);
+                List<ContentsDisposals> contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (contents != null)
+                if (contentsDisposals != null)
                 {
-                    List<ContentsDisposals> contentAndDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdContents == contents.Id).ToList();
-                    if (contentAndDisposals.Count > 0)
+                    for (int i = 0; i < contentsDisposals.Count; i++)
                     {
-                        foreach (ContentsDisposals content in contentAndDisposals)
+                        if (contentsDisposals[i].IdContents == 6)
                         {
-                            if (Id == 6)
-                            {
-                                str = content.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = contentsDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -205,25 +177,21 @@ namespace KSU
         {
             get
             {
-                Views views = DataBase.Base.Views.FirstOrDefault(z => z.Id == Id);
+                List<ViewsDisposals> viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (views != null)
+                if (viewsDisposals != null)
                 {
-                    List<ViewsDisposals> viewsAndDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdViews == views.Id).ToList();
-                    if (viewsAndDisposals.Count > 0)
+                    for (int i = 0; i < viewsDisposals.Count; i++)
                     {
-                        foreach (ViewsDisposals viewsAnd in viewsAndDisposals)
+                        if (viewsDisposals[i].IdViews == 1)
                         {
-                            if (Id == 1)
-                            {
-                                str = viewsAnd.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = viewsDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -233,27 +201,23 @@ namespace KSU
         {
             get
             {
-                Views views = DataBase.Base.Views.FirstOrDefault(z => z.Id == Id);
-                string el = "";
-                if (views != null)
+                List<ViewsDisposals> viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == Id).ToList();
+                string str = "";
+                if (viewsDisposals != null)
                 {
-                    List<ViewsDisposals> viewsAndDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdViews == views.Id).ToList();
-                    if (viewsAndDisposals.Count > 0)
+                    for (int i = 0; i < viewsDisposals.Count; i++)
                     {
-                        foreach (ViewsDisposals viewsAnd in viewsAndDisposals)
+                        if (viewsDisposals[i].IdViews == 2)
                         {
-                            if (Id != 1)
-                            {
-                                el = viewsAnd.Count.ToString();
-                            }
-                            else
-                            {
-                                el = null;
-                            }
+                            str = viewsDisposals[i].Counts.ToString();
                         }
                     }
                 }
-                return el;
+                else
+                {
+                    str = null;
+                }
+                return str;
             }
         }
 
@@ -261,27 +225,23 @@ namespace KSU
         {
             get
             {
-                Views views = DataBase.Base.Views.FirstOrDefault(z => z.Id == Id);
-                string el = "";
-                if (views != null)
+                List<ViewsDisposals> viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == Id).ToList();
+                string str = "";
+                if (viewsDisposals != null)
                 {
-                    List<ViewsDisposals> viewsAndDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdViews == views.Id).ToList();
-                    if (viewsAndDisposals.Count > 0)
+                    for (int i = 0; i < viewsDisposals.Count; i++)
                     {
-                        foreach (ViewsDisposals viewsAnd in viewsAndDisposals)
+                        if (viewsDisposals[i].IdViews == 3)
                         {
-                            if (Id != 1 && Id != 2)
-                            {
-                                el = viewsAnd.Count.ToString();
-                            }
-                            else
-                            {
-                                el = null;
-                            }
+                            str = viewsDisposals[i].Counts.ToString();
                         }
                     }
                 }
-                return el;
+                else
+                {
+                    str = null;
+                }
+                return str;
             }
         }
         // Место выбытия
@@ -289,25 +249,21 @@ namespace KSU
         {
             get
             {
-                Reason reason = DataBase.Base.Reason.FirstOrDefault(z => z.Id == Id);
+                List<ReasonDisposals> reasonDisposals = DataBase.Base.ReasonDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (reason != null)
+                if (reasonDisposals != null)
                 {
-                    List<ReasonDisposals> causesAnds = DataBase.Base.ReasonDisposals.Where(x => x.IdReason == reason.Id).ToList();
-                    if (causesAnds.Count > 0)
+                    for (int i = 0; i < reasonDisposals.Count; i++)
                     {
-                        foreach (ReasonDisposals causesAndDisposals in causesAnds)
+                        if (reasonDisposals[i].IdReason == 1)
                         {
-                            if (Id == 1)
-                            {
-                                str = causesAndDisposals.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = reasonDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -317,25 +273,21 @@ namespace KSU
         {
             get
             {
-                Reason reason = DataBase.Base.Reason.FirstOrDefault(z => z.Id == Id);
+                List<ReasonDisposals> reasonDisposals = DataBase.Base.ReasonDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (reason != null)
+                if (reasonDisposals != null)
                 {
-                    List<ReasonDisposals> causesAnds = DataBase.Base.ReasonDisposals.Where(x => x.IdReason == reason.Id).ToList();
-                    if (causesAnds.Count > 0)
+                    for (int i = 0; i < reasonDisposals.Count; i++)
                     {
-                        foreach (ReasonDisposals causesAndDisposals in causesAnds)
+                        if (reasonDisposals[i].IdReason == 2)
                         {
-                            if (Id == 2)
-                            {
-                                str = causesAndDisposals.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = reasonDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -345,25 +297,21 @@ namespace KSU
         {
             get
             {
-                Reason reason = DataBase.Base.Reason.FirstOrDefault(z => z.Id == Id);
+                List<ReasonDisposals> reasonDisposals = DataBase.Base.ReasonDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (reason != null)
+                if (reasonDisposals != null)
                 {
-                    List<ReasonDisposals> causesAnds = DataBase.Base.ReasonDisposals.Where(x => x.IdReason == reason.Id).ToList();
-                    if (causesAnds.Count > 0)
+                    for (int i = 0; i < reasonDisposals.Count; i++)
                     {
-                        foreach (ReasonDisposals causesAndDisposals in causesAnds)
+                        if (reasonDisposals[i].IdReason == 3)
                         {
-                            if (Id == 3)
-                            {
-                                str = causesAndDisposals.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = reasonDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }
@@ -372,25 +320,21 @@ namespace KSU
         {
             get
             {
-                Reason reason = DataBase.Base.Reason.FirstOrDefault(z => z.Id == Id);
+                List<ReasonDisposals> reasonDisposals = DataBase.Base.ReasonDisposals.Where(x => x.IdDisposals == Id).ToList();
                 string str = "";
-                if (reason != null)
+                if (reasonDisposals != null)
                 {
-                    List<ReasonDisposals> causesAnds = DataBase.Base.ReasonDisposals.Where(x => x.IdReason == reason.Id).ToList();
-                    if (causesAnds.Count > 0)
+                    for (int i = 0; i < reasonDisposals.Count; i++)
                     {
-                        foreach (ReasonDisposals causesAndDisposals in causesAnds)
+                        if (reasonDisposals[i].IdReason == 4)
                         {
-                            if (Id == 3)
-                            {
-                                str = causesAndDisposals.Count.ToString();
-                            }
-                            else
-                            {
-                                str = null;
-                            }
+                            str = reasonDisposals[i].Counts.ToString();
                         }
                     }
+                }
+                else
+                {
+                    str = null;
                 }
                 return str;
             }

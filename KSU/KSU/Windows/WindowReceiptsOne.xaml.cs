@@ -181,7 +181,7 @@ namespace KSU
                         {
                             IdReceipts = receipts.Id,
                             IdContents = Con.Id,
-                            Count = Con.QM
+                            Counts = Con.QM
                         };
                         DataBase.Base.ContentsReceipts.Add(CAA);
                     }

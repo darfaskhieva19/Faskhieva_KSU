@@ -12,7 +12,7 @@
     <EntitySetMapping Name="ContentsDisposals">
       <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsDisposals">
         <MappingFragment StoreEntitySet="ContentsDisposals">
-          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
           <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
           <ScalarProperty Name="IdContents" ColumnName="IdContents" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -22,7 +22,7 @@
     <EntitySetMapping Name="ContentsReceipts">
       <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsReceipts">
         <MappingFragment StoreEntitySet="ContentsReceipts">
-          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
           <ScalarProperty Name="IdReceipts" ColumnName="IdReceipts" />
           <ScalarProperty Name="IdContents" ColumnName="IdContents" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -69,7 +69,7 @@
     <EntitySetMapping Name="ReasonDisposals">
       <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ReasonDisposals">
         <MappingFragment StoreEntitySet="ReasonDisposals">
-          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
           <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
           <ScalarProperty Name="IdReason" ColumnName="IdReason" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -121,7 +121,7 @@
     <EntitySetMapping Name="ViewsDisposals">
       <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ViewsDisposals">
         <MappingFragment StoreEntitySet="ViewsDisposals">
-          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
           <ScalarProperty Name="IdDisposals" ColumnName="IdDisposals" />
           <ScalarProperty Name="IdViews" ColumnName="IdViews" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -131,7 +131,7 @@
     <EntitySetMapping Name="ViewsReceipts">
       <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ViewsReceipts">
         <MappingFragment StoreEntitySet="ViewsReceipts">
-          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
           <ScalarProperty Name="IdViews" ColumnName="IdViews" />
           <ScalarProperty Name="IdReceipts" ColumnName="IdReceipts" />
           <ScalarProperty Name="Id" ColumnName="Id" />

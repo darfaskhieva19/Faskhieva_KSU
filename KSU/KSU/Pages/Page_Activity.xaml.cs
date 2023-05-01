@@ -25,9 +25,12 @@ namespace KSU
         public Page_Activity()
         {
             InitializeComponent();
-            dgReceipt.ItemsSource = DataBase.Base.Receipts.ToList();
-            dgDisposals.ItemsSource = DataBase.Base.Disposals.ToList();
-                     
+            dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
+            dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
+
+            dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
+
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Выбытие
