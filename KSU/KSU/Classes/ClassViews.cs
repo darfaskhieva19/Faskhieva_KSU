@@ -9,13 +9,5 @@ namespace KSU
     public partial class Views
     {
         public int QM { get; set; }
-
-        public string ViewsTitle
-        {
-            get
-            {
-                return Kind;
-            }
-        }
     }
 }

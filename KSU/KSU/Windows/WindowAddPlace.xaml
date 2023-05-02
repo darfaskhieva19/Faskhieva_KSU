@@ -1,0 +1,21 @@
+﻿<Window x:Class="KSU.WindowAddPlace"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KSU"
+        mc:Ignorable="d"
+        Title="Добавление места выбытия" MaxHeight="200" MaxWidth="330" FontFamily="Times New Roman">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="25">
+                <TextBlock Text="Введите место выбытия" FontSize="18px" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox Name="tbPlace" Height="30" Width="250"/>
+            </StackPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Name="btnCanel" Content="Отмена" Width="100" Style="{StaticResource Button}" Click="btnCanel_Click"/>
+                <Button Name="btnSave" Content="Добавить" Width="100" Style="{StaticResource Button}" Click="btnSave_Click"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

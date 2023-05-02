@@ -84,7 +84,7 @@
           <Property Name="NumberDocument" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DocumentDate" Type="date" Nullable="false" />
           <Property Name="TotalInstances" Type="int" Nullable="false" />
-          <Property Name="Count" Type="int" />
+          <Property Name="Counts" Type="int" />
           <Property Name="Cost" Type="float" Nullable="false" />
           <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
           <Property Name="IdEnclosures" Type="int" Nullable="false" />
@@ -560,7 +560,7 @@
           <Property Name="NumberDocument" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalInstances" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" />
+          <Property Name="Counts" Type="Int32" />
           <Property Name="Cost" Type="Double" Nullable="false" />
           <Property Name="DocumentsNotAcceptedForBalance" Type="Int32" />
           <Property Name="IdEnclosures" Type="Int32" Nullable="false" />
@@ -884,7 +884,7 @@
                 <ScalarProperty Name="IdEnclosures" ColumnName="IdEnclosures" />
                 <ScalarProperty Name="DocumentsNotAcceptedForBalance" ColumnName="DocumentsNotAcceptedForBalance" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="TotalInstances" ColumnName="TotalInstances" />
                 <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
                 <ScalarProperty Name="NumberDocument" ColumnName="NumberDocument" />

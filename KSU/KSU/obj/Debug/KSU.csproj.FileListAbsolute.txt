@@ -24,9 +24,15 @@ C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\KSU.exe
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\KSU.pdb
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Pages\Page_Activity.g.cs
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Pages\Page_Activity.baml
-C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\WindowAddSourceOfReceipts.g.cs
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowDisposalsOne.g.cs
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowReceiptsOne.g.cs
-C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\WindowAddSourceOfReceipts.baml
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowDisposalsOne.baml
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowReceiptsOne.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\AutumnTheme.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\WinterTheme.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddSourceOfReceipts.g.cs
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddPlace.g.cs
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddPlace.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddSourceOfReceipts.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\SummerTheme.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\SpringTheme.baml

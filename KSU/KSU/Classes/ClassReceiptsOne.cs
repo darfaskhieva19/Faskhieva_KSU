@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace KSU
 {
@@ -60,7 +61,7 @@ namespace KSU
         {
             get
             {
-                return (int)Count;
+                return (int)Counts;
             }
         }
 
@@ -72,11 +73,18 @@ namespace KSU
             }
         }
 
-        public int NotBalance
+        public string NotBalance
         {
             get
             {
-                return Convert.ToInt32(DocumentsNotAcceptedForBalance);
+                if (Convert.ToString(DocumentsNotAcceptedForBalance) == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return Convert.ToString(DocumentsNotAcceptedForBalance);
+                }                
             }
         }
 
@@ -288,5 +296,12 @@ namespace KSU
                 return str;
             }
         }
+        //public SolidColorBrush Color
+        //{
+        //    get
+        //    {
+
+        //    }
+        //}
     }
 }

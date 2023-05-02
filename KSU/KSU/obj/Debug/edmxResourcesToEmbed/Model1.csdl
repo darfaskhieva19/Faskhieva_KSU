@@ -172,7 +172,7 @@
     <Property Name="NumberDocument" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DocumentDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TotalInstances" Type="Int32" Nullable="false" />
-    <Property Name="Count" Type="Int32" />
+    <Property Name="Counts" Type="Int32" />
     <Property Name="Cost" Type="Double" Nullable="false" />
     <Property Name="DocumentsNotAcceptedForBalance" Type="Int32" />
     <Property Name="IdEnclosures" Type="Int32" Nullable="false" />

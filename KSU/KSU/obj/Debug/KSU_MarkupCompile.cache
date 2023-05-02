@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\App.xaml
-5-1937939567
+101190679664
 2-1957146511
-33-1399626659
+34-321773833
 18-1364511893
-MainWindow.xaml;Pages\Page_Activity.xaml;WindowAddSourceOfReceipts.xaml;Windows\WindowDisposalsOne.xaml;Windows\WindowReceiptsOne.xaml;
+Themes\SpringTheme.xaml;Themes\SummerTheme.xaml;Themes\AutumnTheme.xaml;MainWindow.xaml;Pages\Page_Activity.xaml;Windows\WindowAddPlace.xaml;Windows\WindowAddSourceOfReceipts.xaml;Windows\WindowDisposalsOne.xaml;Windows\WindowReceiptsOne.xaml;Themes\WinterTheme.xaml;
 
 False
 

@@ -79,7 +79,7 @@
     <Property Name="NumberDocument" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DocumentDate" Type="date" Nullable="false" />
     <Property Name="TotalInstances" Type="int" Nullable="false" />
-    <Property Name="Count" Type="int" />
+    <Property Name="Counts" Type="int" />
     <Property Name="Cost" Type="float" Nullable="false" />
     <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
     <Property Name="IdEnclosures" Type="int" Nullable="false" />

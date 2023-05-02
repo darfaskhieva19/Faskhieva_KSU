@@ -29,6 +29,10 @@ namespace KSU
             dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
 
             dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
+            dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z=>z.IdEnclosures == 2).ToList();
+
+            dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
+            dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
 
 
         }
@@ -36,43 +40,23 @@ namespace KSU
         private void btnAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Выбытие
         {
             WindowDisposalsOne addDisposals = new WindowDisposalsOne();
+            WindowDisposalsOne.index = 1;
             addDisposals.ShowDialog();
-            dgDisposals.ItemsSource = DataBase.Base.Disposals.ToList(); //перезагрузка страницы
+            dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(x => x.IdEnclosures == 1).ToList();
         }
 
-        private void btnNewAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Поступление
+        private void btnNewAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Поступление 1 корпус
         {
+
             WindowReceiptsOne addReceipts = new WindowReceiptsOne();
+            WindowReceiptsOne.index = 1;
             addReceipts.ShowDialog();
-            dgReceipt.ItemsSource = DataBase.Base.Receipts.ToList(); //перезагрузка страницы
+            dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1).ToList();
         }
 
         private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов
         {
             spRes.Visibility = Visibility.Visible;
-        }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e) // Удаление из таблицы Выбытие
-        {
-            if(MessageBox.Show("Вы уверены, что хотите удалить эту запись?", "Системное сообщение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                Button btn = (Button)sender;
-                int index = Convert.ToInt32(btn.Uid);
-
-                //this.dgDisposals.Items.Remove(this.dgDisposals.SelectedItem);
-
-            }
-        }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-        private void btnDeleteR_Click(object sender, RoutedEventArgs e) // Удаление из таблицы Поступление
-        {
-
         }
 
         private void dgReceipt_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -91,8 +75,10 @@ namespace KSU
                 else
                 {
                     WindowReceiptsOne windowReceipts = new WindowReceiptsOne(receipt);
+                    WindowReceiptsOne.index = 1;                   
                     windowReceipts.ShowDialog();
-                    dgReceipt.ItemsSource = DataBase.Base.Receipts.ToList();
+                    dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();              
+                                  
                 }
             }
             catch
@@ -118,13 +104,111 @@ namespace KSU
                 {
                     WindowDisposalsOne windowDisposals = new WindowDisposalsOne(disposal);
                     windowDisposals.ShowDialog();
-                    dgDisposals.ItemsSource = DataBase.Base.Disposals.ToList();
+                    dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
+                    dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
+                    dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
                 }
             }
             catch
             {
                 MessageBox.Show("Нажмите на 1 объект!");
             }
+        }
+
+        private void btnNAdd_Click(object sender, RoutedEventArgs e) //2 корпус Поступление
+        {
+            WindowReceiptsOne addReceipts = new WindowReceiptsOne();
+            WindowReceiptsOne.index = 2;
+            addReceipts.ShowDialog();
+            dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(x=>x.IdEnclosures==2).ToList();
+        }
+
+        private void btnAddThree_Click(object sender, RoutedEventArgs e) //3 корпус Поступление
+        {
+            WindowReceiptsOne addReceipts = new WindowReceiptsOne();
+            WindowReceiptsOne.index = 3;
+            addReceipts.ShowDialog();
+            dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 3).ToList();
+        }
+
+        private void btnAddThreeD_Click(object sender, RoutedEventArgs e) // 3 корпус Выбытие
+        {
+            WindowDisposalsOne addDisposals = new WindowDisposalsOne();
+            WindowDisposalsOne.index = 3;
+            addDisposals.ShowDialog();
+            dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(x => x.IdEnclosures == 3).ToList();
+        }
+
+        private void btnAddDisposalsTwo_Click(object sender, RoutedEventArgs e) // 2 корпус Выбытие
+        {
+            WindowDisposalsOne addDisposals = new WindowDisposalsOne();
+            WindowDisposalsOne.index = 2;
+            addDisposals.ShowDialog();
+            dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(x => x.IdEnclosures == 2).ToList();
+        }
+
+        private void dgDisposalsTwo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void dgReceiptTwo_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 2 корпус Поступление
+        {
+            try
+            {
+                Receipts receipt = new Receipts();
+                foreach (Receipts receip in dgReceiptTwo.SelectedItems)
+                {
+                    receipt = receip;
+                }
+                if (receipt == null)
+                {
+                    return;
+                }
+                else
+                {
+                    WindowReceiptsOne windowReceipts = new WindowReceiptsOne(receipt);
+                    WindowReceiptsOne.index = 2;
+                    windowReceipts.ShowDialog();
+                    dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нажмите на 1 объект!");
+            }
+        }
+
+        private void dgReceiptThree_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 3 корпус Поступление
+        {
+            try
+            {
+                Receipts receipt = new Receipts();
+                foreach (Receipts receip in dgReceiptThree.SelectedItems)
+                {
+                    receipt = receip;
+                }
+                if (receipt == null)
+                {
+                    return;
+                }
+                else
+                {
+                    WindowReceiptsOne windowReceipts = new WindowReceiptsOne(receipt);
+                    WindowReceiptsOne.index = 3;
+                    windowReceipts.ShowDialog();
+                    dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нажмите на 1 объект!");
+            }
+        }
+
+        private void dgDisposalsThree_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

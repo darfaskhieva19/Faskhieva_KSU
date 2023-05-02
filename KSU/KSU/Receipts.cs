@@ -29,7 +29,7 @@ namespace KSU
         public string NumberDocument { get; set; }
         public System.DateTime DocumentDate { get; set; }
         public int TotalInstances { get; set; }
-        public Nullable<int> Count { get; set; }
+        public Nullable<int> Counts { get; set; }
         public double Cost { get; set; }
         public Nullable<int> DocumentsNotAcceptedForBalance { get; set; }
         public int IdEnclosures { get; set; }

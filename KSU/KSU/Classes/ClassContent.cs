@@ -9,13 +9,5 @@ namespace KSU
     public partial class Contents
     {
         public int QM { get; set; }
-
-        public string ContentsTitle
-        {
-            get
-            {
-                return Kind;
-            }
-        }
     }
 }
