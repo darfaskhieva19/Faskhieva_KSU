@@ -27,6 +27,15 @@ namespace KSU
         {
             InitializeComponent();
             listFild();
+
+            foreach (Contents Cn in lbContent.Items)
+            {
+                Cn.QM = 0;
+            }
+            foreach (Views v in lbViews.Items)
+            {
+                v.QM = 0;
+            }
         }
         public WindowDisposalsOne(Disposals disposal) // Конструктор для редактирования
         {
@@ -34,60 +43,82 @@ namespace KSU
             this.disposal = disposal;
             flag = true;
 
-            List<Place> places = DataBase.Base.Place.ToList();
+            List<Place> pl = DataBase.Base.Place.ToList();
             cbPlace.Items.Add("не выбрано");
-            for (var i = 0; i < places.Count; i++)
+            for (var i = 0; i < pl.Count; i++)
             {
-                cbPlace.Items.Add(places[i].Kind);
-            }
-            cbPlace.Items.Add("Добавить место выбытия");
-            cbPlace.SelectedIndex = disposal.IdPlace - 1;
-
+                cbPlace.Items.Add(pl[i].Kind);
+            }           
+            cbPlace.SelectedIndex = disposal.IdPlace-1;
 
             lbContent.ItemsSource = DataBase.Base.Contents.ToList();
             lbViews.ItemsSource = DataBase.Base.Views.ToList();
             lbReason.ItemsSource = DataBase.Base.Reason.ToList();
 
+            foreach (Contents Cn in lbContent.Items)
+            {
+                Cn.QM = 0;
+            }
+
             // находим содержания, которого мы редактируем
             List<ContentsDisposals> cd = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == disposal.Id).ToList();
 
             // цикл для отображения содержаний и их количества:
-            foreach (Contents Cn in lbContent.Items)
+            for (int i = 0; i < cd.Count; i++)
             {
-                if (cd.FirstOrDefault(x => x.IdContents == Cn.Id) != null)
+                foreach (Contents Cn in lbContent.Items)
                 {
-                    Cn.QM = cd.Count;
+
+                    if (cd[i].IdContents == Cn.Id && cd[i].Counts != null)
+                    {
+                        Cn.QM = (int)cd[i].Counts;
+                    }
                 }
+            }
+
+            foreach (Views v in lbViews.Items)
+            {
+                v.QM = 0;
             }
 
             // находим виды, которого мы редактируем
             List<ViewsDisposals> vd = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == disposal.Id).ToList();
 
             // цикл для отображения виды и их количества:
-            foreach (Views v in lbViews.Items)
+            for (int i = 0; i < vd.Count; i++)
             {
-                if (vd.FirstOrDefault(x => x.IdViews == v.Id) != null)
+                foreach (Views v in lbViews.Items)
                 {
-                    v.QM = vd.Count;
+                    if (vd[i].IdViews == v.Id && vd[i].Counts != null)
+                    {
+                        v.QM = (int)vd[i].Counts;
+                    }
                 }
+            }
+
+            foreach (Reason r in lbReason.Items)
+            {
+                r.QM = 0;
             }
 
             // находим причины, которого мы редактируем
             List<ReasonDisposals> rd = DataBase.Base.ReasonDisposals.Where(x => x.IdDisposals == disposal.Id).ToList();
 
             // цикл для отображения причин и их количества:
-            foreach (Reason r in lbReason.Items)
+            for (int i = 0; i < rd.Count; i++)
             {
-                if (rd.FirstOrDefault(x => x.IdReason == r.Id) != null)
+                foreach (Reason r in lbReason.Items)
                 {
-                    r.QM = rd.Count;
+                    if (rd[i].IdReason == r.Id && rd[i].Counts != null)
+                    {
+                        r.QM = (int)vd[i].Counts;
+                    }
                 }
             }
 
             dpDate.SelectedDate = disposal.Date;
             tbNumber.Text = Convert.ToString(disposal.ActNumber);
             tbTotalNumber.Text = Convert.ToString(disposal.Cost);
-
 
             tbHeader.Text = "Изменение данных";
             btnSave.Content = "Сохранить";
@@ -211,84 +242,65 @@ namespace KSU
                             DataBase.Base.ContentsDisposals.Add(FCT);
                         }
                     }
-                    
-                }
 
 
-                //    List<ContentsDisposals> contents = DataBase.Base.ContentsDisposals.Where(x => disposal.Id == x.IdDisposals).ToList();
-                //    // если список не пустой, удаляем из него все содержания
-                //    if (contents.Count > 0)
-                //    {
-                //        foreach (ContentsDisposals c in contents)
-                //        {
-                //            DataBase.Base.ContentsDisposals.Remove(c);
-                //        }
-                //    }
-                //    // перезаписываем содержание (или добавляем содержание)
-                //    foreach (Contents Con in lbContent.Items)
-                //    {
-                //        if (Con.QM > 0)
-                //        {
-                //            ContentsDisposals CAD = new ContentsDisposals()  // объект для записи в таблицу ContentAndDisposals
-                //            {
-                //                IdContents = Con.Id,
-                //                IdDisposals = disposal.Id,
-                //                Counts = Con.QM
-                //            };
-                //            DataBase.Base.ContentsDisposals.Add(CAD);
-                //        }
-                //    }
-                //List<ViewsDisposals> viewsAnds = DataBase.Base.ViewsDisposals.Where(x => disposal.Id == x.IdDisposals).ToList();
-                //// если список не пустой, удаляем из него все виды
-                //if (viewsAnds.Count > 0)
-                //{
-                //    foreach (ViewsDisposals v in viewsAnds)
-                //    {
-                //        DataBase.Base.ViewsDisposals.Remove(v);
-                //    }
-                //}
-                //// перезаписываем виды (или добавляем виды)
-                //foreach (ViewsDisposals View in lbViews.Items)
-                //{
-                //    if (View.QM > 0)
-                //    {
-                //        ViewsDisposals VAD = new ViewsDisposals()
-                //        {
-                //            IdDisposals = disposal.Id,
-                //            IdViews = View.Id,
-                //            Count = View.QM
-                //        };
-                //        DataBase.Base.ViewsDisposals.Add(VAD);
-                //    }
-                //}
-                //List<ReasonDisposals> reason = DataBase.Base.ReasonDisposals.Where(x => disposal.Id == x.IdDisposals).ToList();
-                //// если список не пустой, удаляем из него все виды
-                //if (reason.Count > 0)
-                //{
-                //    foreach (ReasonDisposals v in reason)
-                //    {
-                //        DataBase.Base.ReasonDisposals.Remove(v);
-                //    }
-                //}
-                //// перезаписываем виды (или добавляем виды)
-                //foreach (ReasonDisposals causes in lbReason.Items)
-                //{
-                //    if (causes.QM > 0)
-                //    {
-                //        ReasonDisposals CAD = new ReasonDisposals()
-                //        {
-                //            IdDisposals = disposal.Id,
-                //            IdReason = causes.Id,
-                //            Count = causes.QM
-                //        };
-                //        DataBase.Base.ReasonDisposals.Add(CAD);
-                //    }
-                //}
-                //DataBase.Base.SaveChanges();
-                //MessageBox.Show("Информация добавлена");
-                //Close();
+                    // находим список с видами
+                    List<ViewsDisposals> viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => disposal.Id == x.IdDisposals).ToList();
 
-                //}
+                    // если список не пустой, удаляем из него все виды
+                    if (viewsDisposals.Count > 0)
+                    {
+                        foreach (ViewsDisposals v in viewsDisposals)
+                        {
+                            DataBase.Base.ViewsDisposals.Remove(v);
+                        }
+                    }
+
+                    // перезаписываем виды (или добавляем виды)
+                    foreach (Views f in lbViews.Items)
+                    {
+                        if (f.QM > 0)
+                        {
+                            ViewsDisposals FCT = new ViewsDisposals()  // объект для записи в таблицу ViewsDisposals
+                            {
+                                IdDisposals = disposal.Id,
+                                IdViews = f.Id,
+                                Counts = f.QM
+                            };
+                            DataBase.Base.ViewsDisposals.Add(FCT);
+                        }
+                    }
+
+                    // находим список с причинами
+                    List<ReasonDisposals> reasonDisposals = DataBase.Base.ReasonDisposals.Where(x => disposal.Id == x.IdDisposals).ToList();
+
+                    // если список не пустой, удаляем из него все причины
+                    if (reasonDisposals.Count > 0)
+                    {
+                        foreach (ReasonDisposals v in reasonDisposals)
+                        {
+                            DataBase.Base.ReasonDisposals.Remove(v);
+                        }
+                    }
+
+                    // перезаписываем причину (или добавляем причину)
+                    foreach (Reason f in lbReason.Items)
+                    {
+                        if (f.QM > 0)
+                        {
+                            ReasonDisposals FCT = new ReasonDisposals()  // объект для записи в таблицу ReasonDisposals
+                            {
+                                IdDisposals = disposal.Id,
+                                IdReason = f.Id,
+                                Counts = f.QM
+                            };
+                            DataBase.Base.ReasonDisposals.Add(FCT);
+                        }
+                    }
+                    DataBase.Base.SaveChanges();
+                    MessageBox.Show("Информация добавлена!");
+                    this.Close();
+                }                
             }
         }
 

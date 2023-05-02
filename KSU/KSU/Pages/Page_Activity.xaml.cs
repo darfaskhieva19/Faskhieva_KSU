@@ -33,8 +33,6 @@ namespace KSU
 
             dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
             dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
-
-
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Выбытие
@@ -59,7 +57,7 @@ namespace KSU
             spRes.Visibility = Visibility.Visible;
         }
 
-        private void dgReceipt_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void dgReceipt_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 1 корпус Поступление редактирование
         {
             try
             {
@@ -87,7 +85,7 @@ namespace KSU
             }
         }
 
-        private void dgDisposals_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void dgDisposals_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 1 корпус Выбытие редактирование
         {
             try
             {
@@ -103,10 +101,9 @@ namespace KSU
                 else
                 {
                     WindowDisposalsOne windowDisposals = new WindowDisposalsOne(disposal);
+                    WindowDisposalsOne.index = 1;
                     windowDisposals.ShowDialog();
                     dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
-                    dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
-                    dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
                 }
             }
             catch
@@ -115,7 +112,7 @@ namespace KSU
             }
         }
 
-        private void btnNAdd_Click(object sender, RoutedEventArgs e) //2 корпус Поступление
+        private void btnNAdd_Click(object sender, RoutedEventArgs e) //2 корпус Поступление добавление
         {
             WindowReceiptsOne addReceipts = new WindowReceiptsOne();
             WindowReceiptsOne.index = 2;
@@ -123,7 +120,7 @@ namespace KSU
             dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(x=>x.IdEnclosures==2).ToList();
         }
 
-        private void btnAddThree_Click(object sender, RoutedEventArgs e) //3 корпус Поступление
+        private void btnAddThree_Click(object sender, RoutedEventArgs e) //3 корпус Поступление добавление
         {
             WindowReceiptsOne addReceipts = new WindowReceiptsOne();
             WindowReceiptsOne.index = 3;
@@ -131,7 +128,7 @@ namespace KSU
             dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 3).ToList();
         }
 
-        private void btnAddThreeD_Click(object sender, RoutedEventArgs e) // 3 корпус Выбытие
+        private void btnAddThreeD_Click(object sender, RoutedEventArgs e) // 3 корпус Выбытие добавление
         {
             WindowDisposalsOne addDisposals = new WindowDisposalsOne();
             WindowDisposalsOne.index = 3;
@@ -139,7 +136,7 @@ namespace KSU
             dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(x => x.IdEnclosures == 3).ToList();
         }
 
-        private void btnAddDisposalsTwo_Click(object sender, RoutedEventArgs e) // 2 корпус Выбытие
+        private void btnAddDisposalsTwo_Click(object sender, RoutedEventArgs e) // 2 корпус Выбытие добавление
         {
             WindowDisposalsOne addDisposals = new WindowDisposalsOne();
             WindowDisposalsOne.index = 2;
@@ -147,12 +144,34 @@ namespace KSU
             dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(x => x.IdEnclosures == 2).ToList();
         }
 
-        private void dgDisposalsTwo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void dgDisposalsTwo_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 2 корпус Выбытие редактирование
         {
-
+            try
+            {
+                Disposals disposals = new Disposals();
+                foreach (Disposals disp in dgDisposalsTwo.SelectedItems)
+                {
+                    disposals = disp;
+                }
+                if (disposals == null)
+                {
+                    return;
+                }
+                else
+                {
+                    WindowDisposalsOne windowDisposals = new WindowDisposalsOne(disposal);
+                    WindowDisposalsOne.index = 2;
+                    windowDisposals.ShowDialog();
+                    dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нажмите на 1 объект!");
+            }
         }
 
-        private void dgReceiptTwo_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 2 корпус Поступление
+        private void dgReceiptTwo_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 2 корпус Поступление редактирование
         {
             try
             {
@@ -179,7 +198,7 @@ namespace KSU
             }
         }
 
-        private void dgReceiptThree_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 3 корпус Поступление
+        private void dgReceiptThree_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 3 корпус Поступление редактирование
         {
             try
             {
@@ -206,9 +225,31 @@ namespace KSU
             }
         }
 
-        private void dgDisposalsThree_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void dgDisposalsThree_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 3 корпус Выбытие редактирование
         {
-
+            try
+            {
+                Disposals disposals = new Disposals();
+                foreach (Disposals disp in dgDisposalsThree.SelectedItems)
+                {
+                    disposals = disp;
+                }
+                if (disposals == null)
+                {
+                    return;
+                }
+                else
+                {
+                    WindowDisposalsOne windowDisposals = new WindowDisposalsOne(disposal);
+                    WindowDisposalsOne.index = 3;
+                    windowDisposals.ShowDialog();
+                    dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нажмите на 1 объект!");
+            }
         }
     }
 }

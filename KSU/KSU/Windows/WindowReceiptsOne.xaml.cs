@@ -63,8 +63,8 @@ namespace KSU
             cbSourceOfReceipt.SelectedIndex = receipts.IdSourceOfReceipt;
 
             foreach (Contents Cn in lbContent.Items)
-            {                
-               Cn.QM = 0;
+            {
+                Cn.QM = 0;
             }
 
             // находим содержания, которого мы редактируем
@@ -78,7 +78,7 @@ namespace KSU
                     if (cr[i].IdContents == Cn.Id && cr[i].Counts != null)
                     {
                         Cn.QM = (int)cr[i].Counts;
-                    }                  
+                    }
                 }
             }
 
@@ -99,7 +99,7 @@ namespace KSU
                         v.QM = (int)vr[i].Counts;
                     }
                 }
-            }           
+            }
 
             dpDate.SelectedDate = receipts.Date;
             tbNumber.Text = Convert.ToString(receipts.NumberInOrder);
@@ -191,115 +191,115 @@ namespace KSU
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{ 
-            if(CheckData(dpDate.Text, tbNumber.Text, cbSourceOfAcquisition.Text, cbSourceOfReceipt.Text, tbNumberOfDocument.Text, dpDateDocuments.Text, tbTotalInstances.Text, tbCountNumber.Text, tbCost.Text))
+            try
             {
-                if (proverkaDate(Convert.ToDateTime(dpDate.Text)))
+                if (CheckData(dpDate.Text, tbNumber.Text, cbSourceOfAcquisition.Text, cbSourceOfReceipt.Text, tbNumberOfDocument.Text, dpDateDocuments.Text, tbTotalInstances.Text, tbCountNumber.Text, tbCost.Text))
                 {
-                    if(flag == false)
+                    if (proverkaDate(Convert.ToDateTime(dpDate.Text)))
                     {
-                        receipts = new Receipts();
-                    }
-                    receipts.Date = Convert.ToDateTime(dpDate.Text);
-                    receipts.NumberInOrder = Convert.ToInt32(tbNumber.Text);
-                    receipts.IdSourceOfReceipt = cbSourceOfReceipt.SelectedIndex;
-                    receipts.IdSourceOfAcquisition = cbSourceOfAcquisition.SelectedIndex;
-                    receipts.NumberDocument = tbNumberOfDocument.Text; // Сопроводительный документ
-                    receipts.DocumentDate = Convert.ToDateTime(dpDate.Text);
-                    receipts.TotalInstances = Convert.ToInt32(tbTotalInstances.Text);
-                    if (tbCountNumber.Text == "")  //Документы, принятые на баланс 
-                    {
-                        receipts.Counts = null;
-                    }
-                    else
-                    {
-                        receipts.Counts = Convert.ToInt32(tbCountNumber.Text);
-                    }
-                    receipts.Cost = Convert.ToDouble(tbCost.Text);
-                    if (tbCount.Text == "") // Документы, не принятые на баланс
-                    {
-                        receipts.DocumentsNotAcceptedForBalance = null;
-                    }
-                    else
-                    {
-                        receipts.DocumentsNotAcceptedForBalance = Convert.ToInt32(tbCount.Text);
-                    }
-                    receipts.IdEnclosures = index;
-                    // если флаг равен false, то добавляем объект в базу
-                    if (flag == false)
-                    {
-                        DataBase.Base.Receipts.Add(receipts);
-                    }
-                    // находим список с кормами для кота
-                    List<ContentsReceipts> contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => receipts.Id == x.IdReceipts).ToList();
-
-                    // если список не пустой, удаляем из него все содержания
-                    if (contentsReceipts.Count > 0)
-                    {
-                        foreach (ContentsReceipts t in contentsReceipts)
+                        if (flag == false)
                         {
-                            DataBase.Base.ContentsReceipts.Remove(t);
+                            receipts = new Receipts();
                         }
-                    }
-
-                    // перезаписываем содержания (или добавляем содержания)
-                    foreach (Contents f in lbContent.Items)
-                    {
-                        if (f.QM > 0)
+                        receipts.Date = Convert.ToDateTime(dpDate.Text);
+                        receipts.NumberInOrder = Convert.ToInt32(tbNumber.Text);
+                        receipts.IdSourceOfReceipt = cbSourceOfReceipt.SelectedIndex;
+                        receipts.IdSourceOfAcquisition = cbSourceOfAcquisition.SelectedIndex;
+                        receipts.NumberDocument = tbNumberOfDocument.Text; // Сопроводительный документ
+                        receipts.DocumentDate = Convert.ToDateTime(dpDate.Text);
+                        receipts.TotalInstances = Convert.ToInt32(tbTotalInstances.Text);
+                        if (tbCountNumber.Text == "")  //Документы, принятые на баланс 
                         {
-                            ContentsReceipts FCT = new ContentsReceipts()  // объект для записи в таблицу ContentsReceipts
+                            receipts.Counts = null;
+                        }
+                        else
+                        {
+                            receipts.Counts = Convert.ToInt32(tbCountNumber.Text);
+                        }
+                        receipts.Cost = Convert.ToDouble(tbCost.Text);
+                        if (tbCount.Text == "") // Документы, не принятые на баланс
+                        {
+                            receipts.DocumentsNotAcceptedForBalance = null;
+                        }
+                        else
+                        {
+                            receipts.DocumentsNotAcceptedForBalance = Convert.ToInt32(tbCount.Text);
+                        }
+                        receipts.IdEnclosures = index;
+                        // если флаг равен false, то добавляем объект в базу
+                        if (flag == false)
+                        {
+                            DataBase.Base.Receipts.Add(receipts);
+                        }
+                        // находим список с кормами для кота
+                        List<ContentsReceipts> contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => receipts.Id == x.IdReceipts).ToList();
+
+                        // если список не пустой, удаляем из него все содержания
+                        if (contentsReceipts.Count > 0)
+                        {
+                            foreach (ContentsReceipts t in contentsReceipts)
                             {
-                                IdReceipts = receipts.Id,
-                                IdContents = f.Id,
-                                Counts = f.QM
-                            };
-                            DataBase.Base.ContentsReceipts.Add(FCT);
+                                DataBase.Base.ContentsReceipts.Remove(t);
+                            }
                         }
-                    }
 
-                    List<ViewsReceipts> viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => receipts.Id == x.IdReceipts).ToList();
-
-                    // если список не пустой, удаляем из него все корма для  этого кота
-                    if (viewsReceipts.Count > 0)
-                    {
-                        foreach (ViewsReceipts t in viewsReceipts)
+                        // перезаписываем содержания (или добавляем содержания)
+                        foreach (Contents f in lbContent.Items)
                         {
-                            DataBase.Base.ViewsReceipts.Remove(t);
-                        }
-                    }
-
-                    // перезаписываем корма для кота (или добавляем корма для нового кота)
-                    foreach (Views v in lbViews.Items)
-                    {
-                        if (v.QM > 0)
-                        {
-                            ViewsReceipts FCT = new ViewsReceipts()  // объект для записи в таблицу FeedCatTable
+                            if (f.QM > 0)
                             {
-                                IdReceipts = receipts.Id,
-                                IdViews = v.Id,
-                                Counts = v.QM
-                            };
-                            DataBase.Base.ViewsReceipts.Add(FCT);
+                                ContentsReceipts FCT = new ContentsReceipts()  // объект для записи в таблицу ContentsReceipts
+                                {
+                                    IdReceipts = receipts.Id,
+                                    IdContents = f.Id,
+                                    Counts = f.QM
+                                };
+                                DataBase.Base.ContentsReceipts.Add(FCT);
+                            }
                         }
+
+                        List<ViewsReceipts> viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => receipts.Id == x.IdReceipts).ToList();
+
+                        // если список не пустой, удаляем из него все корма для  этого кота
+                        if (viewsReceipts.Count > 0)
+                        {
+                            foreach (ViewsReceipts t in viewsReceipts)
+                            {
+                                DataBase.Base.ViewsReceipts.Remove(t);
+                            }
+                        }
+
+                        // перезаписываем корма для кота (или добавляем корма для нового кота)
+                        foreach (Views v in lbViews.Items)
+                        {
+                            if (v.QM > 0)
+                            {
+                                ViewsReceipts FCT = new ViewsReceipts()  // объект для записи в таблицу FeedCatTable
+                                {
+                                    IdReceipts = receipts.Id,
+                                    IdViews = v.Id,
+                                    Counts = v.QM
+                                };
+                                DataBase.Base.ViewsReceipts.Add(FCT);
+                            }
+                        }
+                        DataBase.Base.SaveChanges();
+                        MessageBox.Show("Информация добавлена!");
+                        this.Close();
                     }
-                    DataBase.Base.SaveChanges();
-                    MessageBox.Show("Информация добавлена!");
-                    this.Close();
                 }
             }
-            //}
-            //catch
-            //{
-            //    if (flag == true)
-            //    {
-            //        MessageBox.Show("При изменение возникла ошибка!");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("При добавление возникла ошибка!");
-            //    }
-            //}
+            catch
+            {
+                if (flag == true)
+                {
+                    MessageBox.Show("При изменение возникла ошибка!");
+                }
+                else
+                {
+                    MessageBox.Show("При добавление возникла ошибка!");
+                }
+            }
 
         }
 
