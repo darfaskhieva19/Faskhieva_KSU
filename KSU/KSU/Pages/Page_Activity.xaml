@@ -18,10 +18,8 @@
         <TabControl Grid.Row="1">
             <TabItem Header="I корпус" VerticalAlignment="Center">
                 <ScrollViewer>
-                    <Grid>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
-                        </Grid.Background>
+                    <Grid Style="{DynamicResource ThemeGrid}">
+                       
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
@@ -36,11 +34,11 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Выбытие" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold"/>
-                            <Button Name="btnAdd" Grid.Column="1" Content="Добавить запись" Click="btnAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                            <Button Name="btnAdd" Grid.Column="1" Content="Добавить запись" Click="btnAdd_Click" Template="{DynamicResource Btn}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                            <DataGrid Name="dgDisposals" MouseDoubleClick="dgDisposals_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
+                        <StackPanel Grid.Row="3">
+                            <DataGrid Name="dgDisposals" MouseDoubleClick="dgDisposals_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.HorizontalScrollBarVisibility="Auto" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="Auto"/>
                                     <DataGridTextColumn Header="№ акта" Binding="{Binding ActNumber}" Width="0.5*"/>
@@ -70,7 +68,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Поступление" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold"/>
-                            <Button Name="btnNewAdd" Grid.Column="1" Content="Добавить запись" Click="btnNewAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                            <Button Name="btnNewAdd" Grid.Column="1" Content="Добавить запись" Click="btnNewAdd_Click" Template="{DynamicResource Btn}" HorizontalAlignment="Right"/>
                         </Grid>
 
                         <StackPanel Grid.Row="1">
@@ -98,7 +96,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Button}" Click="btnResult_Click"/>
+                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Template="{DynamicResource Btn}" Click="btnResult_Click"/>
 
                         <StackPanel Grid.Row="5" Name="spRes" Visibility="Collapsed">
                             <DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -127,10 +125,8 @@
             
             <TabItem Header="II корпус" VerticalAlignment="Center">
                 <ScrollViewer>
-                    <Grid>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
-                        </Grid.Background>
+                    <Grid Style="{DynamicResource ThemeGrid}">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
@@ -145,7 +141,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Поступление" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold"/>
-                            <Button Name="btnNAdd" Grid.Column="1" Content="Добавить запись" Click="btnNAdd_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                            <Button Name="btnNAdd" Grid.Column="1" Content="Добавить запись" Click="btnNAdd_Click" Template="{DynamicResource Btn}" HorizontalAlignment="Right"/>
                         </Grid>
 
                         <StackPanel Grid.Row="1">
@@ -179,7 +175,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Выбытие" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold"/>
-                            <Button  Grid.Column="1" Name="btnAddDisposalsTwo" Content="Добавить запись" Click="btnAddDisposalsTwo_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                            <Button  Grid.Column="1" Name="btnAddDisposalsTwo" Content="Добавить запись" Click="btnAddDisposalsTwo_Click" Template="{DynamicResource Btn}" HorizontalAlignment="Right"/>
                         </Grid>
 
                         <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -207,7 +203,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResultTwo" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Button}" Click="btnResultTwo_Click"/>
+                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResultTwo" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Template="{DynamicResource Btn}" Click="btnResultTwo_Click"/>
 
                         <StackPanel Grid.Row="5" Name="spResultTwo" Visibility="Collapsed">
                             <DataGrid Name="dgResultsTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -235,10 +231,8 @@
             
             <TabItem Header="III корпус" VerticalAlignment="Center">
                 <ScrollViewer>
-                    <Grid>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
-                        </Grid.Background>
+                    <Grid Style="{DynamicResource ThemeGrid}">
+                       
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
@@ -253,7 +247,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Поступление" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold"/>
-                            <Button Grid.Column="1" Name="btnAddThree" Content="Добавить запись" Click="btnAddThree_Click" Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                            <Button Grid.Column="1" Name="btnAddThree" Content="Добавить запись" Click="btnAddThree_Click" Template="{DynamicResource Btn}" HorizontalAlignment="Right"/>
                         </Grid>
 
                         <StackPanel Grid.Row="1">
@@ -287,7 +281,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Выбытие" FontSize="16" HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Center" FontWeight="DemiBold"/>
-                            <Button  Grid.Column="1" Name="btnAddThreeD" Content="Добавить запись" Click="btnAddThreeD_Click"  Style="{StaticResource Button}" HorizontalAlignment="Right"/>
+                            <Button  Grid.Column="1" Name="btnAddThreeD" Content="Добавить запись" Click="btnAddThreeD_Click"  Template="{DynamicResource Btn}" HorizontalAlignment="Right"/>
                         </Grid>
 
                         <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -315,7 +309,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResultThree" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Button}" Click="btnResultThree_Click"/>
+                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnResultThree" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Template="{DynamicResource Btn}" Click="btnResultThree_Click"/>
 
                         <StackPanel Grid.Row="5" Name="spResThree" Visibility="Collapsed">
                             <DataGrid Name="dgResultsThree" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
@@ -343,10 +337,8 @@
             
             <TabItem Header="Итоги" VerticalAlignment="Center">
                 <ScrollViewer>
-                    <Grid>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="\Resources\spring-green.jpg"/>
-                        </Grid.Background>
+                    <Grid Style="{DynamicResource ThemeGrid}">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
@@ -419,7 +411,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnTotalResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Button}" Click="btnTotalResult_Click"/>
+                        <Button Margin="10 20 10 0" Grid.Row="4" Name="btnTotalResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Template="{DynamicResource Btn}" Click="btnTotalResult_Click"/>
 
                         <StackPanel Grid.Row="5" Name="spResults" Visibility="Collapsed">
                             <DataGrid Name="dgTotalResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">

@@ -4,65 +4,13 @@
              xmlns:local="clr-namespace:KSU"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="TextBlock" x:Key="Header">
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="FontWeight" Value="Regular"/>
-            <Setter Property="Margin" Value="15"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="Button" TargetType="Button">
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Width" Value="190"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Background" Value="#26922C"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Manrope"/>
-            <Setter Property="FontWeight" Value="Light"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="1">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                            </ContentPresenter>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <DataTemplate x:Key="HeaderTemplate">
-            <TextBlock Text="{Binding}" TextWrapping="Wrap"  TextAlignment="Center"/>
-        </DataTemplate>
-
-        <Style TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="ContentTemplate" Value="{StaticResource HeaderTemplate}"/>
-        </Style>
-
-        <Style TargetType="TabItem">
-            <Setter Property="Background" Value="LightGreen"></Setter>
-            <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="BorderBrush" Value="#26922C"/>
-        </Style>
-
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
-        <Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="Times New Roman"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Padding" Value="2"/>
-            <Setter Property="Height" Value="27"/>
-            <Setter Property="Width" Value="130"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>               
+                <ResourceDictionary Source="/Themes/SummerTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Themes/AutumnTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Themes/WinterTheme.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Themes/SpringTheme.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,6 +43,54 @@ namespace KSU
             dgReceiptResult.ItemsSource = DataBase.Base.Receipts.ToList();
             dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.ToList();
             dgTotalResults.ItemsSource = DataBase.Base.Results.ToList();
+
+            DateTime today = DateTime.Today;
+            int year = today.Year;
+            DateTime September = new DateTime(year,9,1);
+            DateTime November = new DateTime(year, 11, 30);
+            DateTime December = new DateTime(year, 12, 1);
+            DateTime Marchs = new DateTime(year+1, 3, 1);
+            DateTime March = new DateTime(year, 3, 1);
+            DateTime May = new DateTime(year, 5, 31);
+            DateTime June = new DateTime(year, 6, 1);
+            DateTime August = new DateTime(year, 8, 31);
+            if (December <= DateTime.Today && DateTime.Today < Marchs)
+            {
+                var uri = new Uri(@"Themes\WinterTheme.xaml", UriKind.Relative);
+                ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                // очищаем коллекцию ресурсов приложения
+                Application.Current.Resources.Clear();
+                // добавляем загруженный словарь ресурсов
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            }
+            else if (March <= DateTime.Today && DateTime.Today <= May)
+            {
+                var uri = new Uri(@"Themes\SpringTheme.xaml", UriKind.Relative);
+                ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                // очищаем коллекцию ресурсов приложения
+                Application.Current.Resources.Clear();
+                // добавляем загруженный словарь ресурсов
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            }
+            else if (June <= DateTime.Today && DateTime.Today <= August)
+            {
+                var uri = new Uri(@"Themes\SummerTheme.xaml", UriKind.Relative);
+                ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                // очищаем коллекцию ресурсов приложения
+                Application.Current.Resources.Clear();
+                // добавляем загруженный словарь ресурсов
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            }
+            else if (September <= DateTime.Today && DateTime.Today <= November)
+            {
+                var uri = new Uri(@"Themes\AutumnTheme.xaml", UriKind.Relative);
+                ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+                // очищаем коллекцию ресурсов приложения
+                Application.Current.Resources.Clear();
+                // добавляем загруженный словарь ресурсов
+                Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            }
+            //else 
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Выбытие

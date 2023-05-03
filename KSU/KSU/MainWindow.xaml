@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="\Resources\NKG_Logo.png" Width="150"/>
+            <Image Style="{DynamicResource ThemeLogo}" Width="150"/>
             <TextBlock Text="Книга суммарного учета библиотечного фонда" Grid.Column="1" FontSize="32" Style="{StaticResource Header}">
             </TextBlock>
         </Grid>
