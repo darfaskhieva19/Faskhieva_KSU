@@ -20,8 +20,6 @@ namespace KSU
     /// </summary>
     public partial class Page_Activity : Page
     {
-        Disposals disposal;
-        Receipts receipt;
         public Page_Activity()
         {
             InitializeComponent();
@@ -56,7 +54,6 @@ namespace KSU
 
         private void btnNewAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Поступление 1 корпус
         {
-
             WindowReceiptsOne addReceipts = new WindowReceiptsOne();
             WindowReceiptsOne.index = 1;
             addReceipts.ShowDialog();
@@ -81,8 +78,7 @@ namespace KSU
                     WindowReceiptsOne windowReceipts = new WindowReceiptsOne(receipt);
                     WindowReceiptsOne.index = 1;                   
                     windowReceipts.ShowDialog();
-                    dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();              
-                                  
+                    dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();                     
                 }
             }
             catch
@@ -95,12 +91,12 @@ namespace KSU
         {
             try
             {
-                Disposals disposals = new Disposals();
+                Disposals disposal = new Disposals();
                 foreach (Disposals disp in dgDisposals.SelectedItems)
                 {
-                    disposals = disp;
+                    disposal = disp;
                 }
-                if (disposals == null)
+                if (disposal == null)
                 {
                     return;
                 }
@@ -154,12 +150,12 @@ namespace KSU
         {
             try
             {
-                Disposals disposals = new Disposals();
+                Disposals disposal = new Disposals();
                 foreach (Disposals disp in dgDisposalsTwo.SelectedItems)
                 {
-                    disposals = disp;
+                    disposal = disp;
                 }
-                if (disposals == null)
+                if (disposal == null)
                 {
                     return;
                 }
@@ -235,12 +231,12 @@ namespace KSU
         {
             try
             {
-                Disposals disposals = new Disposals();
+                Disposals disposal = new Disposals();
                 foreach (Disposals disp in dgDisposalsThree.SelectedItems)
                 {
-                    disposals = disp;
+                    disposal = disp;
                 }
-                if (disposals == null)
+                if (disposal == null)
                 {
                     return;
                 }

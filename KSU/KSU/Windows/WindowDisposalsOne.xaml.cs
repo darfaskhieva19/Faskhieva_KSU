@@ -49,7 +49,7 @@ namespace KSU
             {
                 cbPlace.Items.Add(pl[i].Kind);
             }           
-            cbPlace.SelectedIndex = disposal.IdPlace-1;
+            cbPlace.SelectedIndex = disposal.IdPlace;
 
             lbContent.ItemsSource = DataBase.Base.Contents.ToList();
             lbViews.ItemsSource = DataBase.Base.Views.ToList();
@@ -96,9 +96,9 @@ namespace KSU
                 }
             }
 
-            foreach (Reason r in lbReason.Items)
+            foreach (Reason reason in lbReason.Items)
             {
-                r.QM = 0;
+                reason.QM = 0;
             }
 
             // находим причины, которого мы редактируем
@@ -107,18 +107,19 @@ namespace KSU
             // цикл для отображения причин и их количества:
             for (int i = 0; i < rd.Count; i++)
             {
-                foreach (Reason r in lbReason.Items)
+                foreach (Reason reason in lbReason.Items)
                 {
-                    if (rd[i].IdReason == r.Id && rd[i].Counts != null)
+                    if (rd[i].IdReason == reason.Id && rd[i].Counts != null)
                     {
-                        r.QM = (int)vd[i].Counts;
+                        reason.QM = (int)rd[i].Counts;
                     }
                 }
             }
 
             dpDate.SelectedDate = disposal.Date;
             tbNumber.Text = Convert.ToString(disposal.ActNumber);
-            tbTotalNumber.Text = Convert.ToString(disposal.Cost);
+            tbTotalNumber.Text = Convert.ToString(disposal.TotalNumber);
+            tbCost.Text = Convert.ToString(disposal.Cost);
 
             tbHeader.Text = "Изменение данных";
             btnSave.Content = "Сохранить";
