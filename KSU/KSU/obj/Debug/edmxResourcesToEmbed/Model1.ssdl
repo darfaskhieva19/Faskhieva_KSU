@@ -84,6 +84,17 @@
     <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
     <Property Name="IdEnclosures" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FundMovement" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TotalCount" Type="int" Nullable="false" />
+    <Property Name="TotalCost" Type="float" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="IdEnclosures" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="SourceOfAcquisition">
     <Key>
       <PropertyRef Name="Id" />
@@ -255,6 +266,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Results_Enclosures">
+    <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enclosures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="IdEnclosures" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ViewsDisposals_DisposalsOne">
     <End Role="Disposals" Type="Self.Disposals" Multiplicity="1" />
     <End Role="ViewsDisposals" Type="Self.ViewsDisposals" Multiplicity="*" />
@@ -313,6 +336,7 @@
     <EntitySet Name="Reason" EntityType="Self.Reason" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReasonDisposals" EntityType="Self.ReasonDisposals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Receipts" EntityType="Self.Receipts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SourceOfAcquisition" EntityType="Self.SourceOfAcquisition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SourceOfReceipt" EntityType="Self.SourceOfReceipt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
@@ -361,6 +385,10 @@
     <AssociationSet Name="FK_ReceiptsOne_SourceOfReceipt" Association="Self.FK_ReceiptsOne_SourceOfReceipt">
       <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
       <End Role="Receipts" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Enclosures" Association="Self.FK_Results_Enclosures">
+      <End Role="Enclosures" EntitySet="Enclosures" />
+      <End Role="Results" EntitySet="Results" />
     </AssociationSet>
     <AssociationSet Name="FK_ViewsDisposals_DisposalsOne" Association="Self.FK_ViewsDisposals_DisposalsOne">
       <End Role="Disposals" EntitySet="Disposals" />

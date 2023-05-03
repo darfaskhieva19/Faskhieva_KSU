@@ -104,6 +104,9 @@
     <Compile Include="Receipts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Results.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="SourceOfAcquisition.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

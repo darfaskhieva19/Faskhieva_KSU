@@ -34,6 +34,7 @@ namespace KSU
         public virtual DbSet<Reason> Reason { get; set; }
         public virtual DbSet<ReasonDisposals> ReasonDisposals { get; set; }
         public virtual DbSet<Receipts> Receipts { get; set; }
+        public virtual DbSet<Results> Results { get; set; }
         public virtual DbSet<SourceOfAcquisition> SourceOfAcquisition { get; set; }
         public virtual DbSet<SourceOfReceipt> SourceOfReceipt { get; set; }
         public virtual DbSet<Views> Views { get; set; }

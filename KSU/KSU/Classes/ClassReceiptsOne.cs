@@ -296,11 +296,29 @@ namespace KSU
                 return str;
             }
         }
+
         //public SolidColorBrush Color
         //{
         //    get
         //    {
-
+        //        int k = Convert.ToInt32(Date);
+        //        var brush = new BrushConverter();
+        //        if (k == 2018 && k == 2023)
+        //        {
+        //            return (SolidColorBrush)(Brush)brush.ConvertFrom("#F2F3B1");
+        //        }
+        //        else if (k == 2019 && k == 2024)
+        //        {
+        //            return (SolidColorBrush)(Brush)brush.ConvertFrom("#BEF3B1");
+        //        }
+        //        else if (k == 2020 && k == 2025)
+        //        {
+        //            return (SolidColorBrush)(Brush)brush.ConvertFrom("#B1C7F3");
+        //        }
+        //        else
+        //        {
+        //            return (SolidColorBrush)(Brush)brush.ConvertFrom("#F3DDB1");
+        //        }                
         //    }
         //}
     }

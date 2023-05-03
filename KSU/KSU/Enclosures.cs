@@ -19,6 +19,7 @@ namespace KSU
         {
             this.Disposals = new HashSet<Disposals>();
             this.Receipts = new HashSet<Receipts>();
+            this.Results = new HashSet<Results>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,7 @@ namespace KSU
         public virtual ICollection<Disposals> Disposals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Receipts> Receipts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Results> Results { get; set; }
     }
 }

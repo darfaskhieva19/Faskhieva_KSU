@@ -21,18 +21,29 @@ namespace KSU
     public partial class Page_Activity : Page
     {
         Disposals disposal;
-        Receipts receipts;
+        Receipts receipt;
         public Page_Activity()
         {
             InitializeComponent();
+            // 1 Корпус
             dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
             dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
+            dgResults.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 1).ToList();
 
+            // 2 Корпус
             dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
             dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z=>z.IdEnclosures == 2).ToList();
+            dgResultsTwo.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 2).ToList();
 
+            // 3 Корпус
             dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
             dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
+            dgResultsThree.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 3).ToList();
+
+            // Все корпуса
+            dgReceiptResult.ItemsSource = DataBase.Base.Receipts.ToList();
+            dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.ToList();
+            dgTotalResults.ItemsSource = DataBase.Base.Results.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Выбытие
@@ -50,12 +61,7 @@ namespace KSU
             WindowReceiptsOne.index = 1;
             addReceipts.ShowDialog();
             dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1).ToList();
-        }
-
-        private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов
-        {
-            spRes.Visibility = Visibility.Visible;
-        }
+        }       
 
         private void dgReceipt_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 1 корпус Поступление редактирование
         {
@@ -250,6 +256,34 @@ namespace KSU
             {
                 MessageBox.Show("Нажмите на 1 объект!");
             }
+        }
+
+        private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов 1 корпус
+        {
+            spRes.Visibility = Visibility.Visible;
+
+
+        }
+
+        private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус
+        {
+            spResultTwo.Visibility = Visibility.Visible;
+
+
+        }
+
+        private void btnResultThree_Click(object sender, RoutedEventArgs e) // Формирование итогов 3 корпус
+        {
+            spResThree.Visibility = Visibility.Visible;
+
+
+        }
+
+        private void btnTotalResult_Click(object sender, RoutedEventArgs e) // Формирование итогов всех 3 корпусов
+        {
+            spResults.Visibility = Visibility.Visible;
+
+
         }
     }
 }
