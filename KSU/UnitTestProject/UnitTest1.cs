@@ -45,6 +45,38 @@ namespace UnitTestProject
             Assert.IsNotInstanceOfType(actual, typeof(string));
         }
 
+        [TestMethod]
+        public void IsNotNullDataReceipts_Result()
+        {
+            string a = "";
+            string b = "";
+            string c = "";
+            string d = "";
+            string e = "";
+            string h = "";
+            string j = "";
+            string k = "";
+            string l = "";
+            bool actual = WindowReceiptsOne.CheckData(a,b,c,d,e,h,j,k,l);
+            Assert.IsNotNull(actual);
+        }
+
+        [TestMethod]
+        public void IsTrueDataReceipts_Result()
+        {
+            string a = "21.03.2023";
+            string b = "2";
+            string c = "Офисмаг";
+            string d = "бюджет";
+            string e = "0000-023500";
+            string h = "15.03.2023";
+            string j = "25";
+            string k = "25";
+            string l = "15550";
+            bool actual = WindowReceiptsOne.CheckData(a, b, c, d, e, h, j, k, l);
+            Assert.IsTrue(actual);
+        }
+
 
     }
 }

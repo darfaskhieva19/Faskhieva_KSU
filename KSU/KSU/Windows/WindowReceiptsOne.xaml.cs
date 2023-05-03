@@ -159,7 +159,7 @@ namespace KSU
         /// <param name="k"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        public bool CheckData(string a, string b, string c, string d, string e, string h, string j, string k, string l)
+        public static bool CheckData(string a, string b, string c, string d, string e, string h, string j, string k, string l)
         {
             if (a == "" || b == "" || c == "" || d == "" || e == "" || h == "" || j == "" || k == "" || l == "")
             {

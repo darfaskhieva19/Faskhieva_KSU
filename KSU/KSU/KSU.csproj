@@ -241,7 +241,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\NGK_blue.png" />
+    <Resource Include="Resources\NKG_blue.png" />
     <Resource Include="Resources\summer-green.jpg" />
     <Resource Include="Resources\autumn-orange.jpg" />
     <Resource Include="Resources\winter-snow.jpg" />
