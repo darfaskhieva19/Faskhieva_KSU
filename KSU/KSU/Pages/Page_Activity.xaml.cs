@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -40,7 +41,7 @@ namespace KSU
             dgResultsThree.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 3).ToList();
 
             // Все корпуса
-            dgReceiptResult.ItemsSource = DataBase.Base.Receipts.ToList();
+            dgReceiptResult.ItemsSource = DataBase.Base.Receipts.OrderBy(x => x.Date).ToList();
             dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.ToList();
             dgTotalResults.ItemsSource = DataBase.Base.Results.ToList();
 
@@ -90,7 +91,39 @@ namespace KSU
                 // добавляем загруженный словарь ресурсов
                 Application.Current.Resources.MergedDictionaries.Add(resourceDict);
             }
-            //else 
+        }
+
+        private void dgReceipt_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            Receipts receipts = (Receipts)e.Row.DataContext;
+            DateTime date = receipts.Date;
+            int year = date.Year;
+            var brush = new BrushConverter();
+            if (year <= 2018)
+            {
+                e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#F2F3B1");
+            }
+            else if (year <= 2019 && year <= 2024)
+            {
+                e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#BEF3B1");
+            }
+            else if ((year <= 2020 && year <= 2025))
+            {
+                e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#B1C7F3");
+            }
+            else if(year <= 2021 && year <= 2026)
+            {
+                e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#F3DDB1");
+            }
+            else if(year <= 2022) 
+            {
+                e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#BEF3B1");
+            }
+            else if (year <= 2023)
+            {
+                e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#F2F3B1");
+            }
+            //EED2FF
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e) // Добавление записи в таблицу Выбытие
@@ -329,6 +362,6 @@ namespace KSU
             spResults.Visibility = Visibility.Visible;
 
 
-        }
+        }       
     }
 }

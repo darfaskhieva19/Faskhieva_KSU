@@ -14,9 +14,9 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
-            <Image Style="{DynamicResource ThemeLogo}" Width="150"/>
+            <Image Style="{DynamicResource ThemeLogo}" Width="170"/>
             <TextBlock Text="Книга суммарного учета библиотечного фонда" Grid.Column="1" FontSize="32" Style="{StaticResource Header}">
             </TextBlock>
         </Grid>

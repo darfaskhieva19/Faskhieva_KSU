@@ -22,21 +22,21 @@
                 <WrapPanel>
                     <TextBlock Text="Дата записи" Margin="5"/>
                     <DatePicker Name="dpDate" />
-                    <TextBlock Text="Номер акта по порядку" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="Номер акта по порядку" HorizontalAlignment="Center" Margin="5"/>
                     <TextBox Name="tbNumber" Width="55"/>
                 </WrapPanel>
 
-                <TextBlock Text="Выбыло книг, записанных в инвентарную книгу, регистрационную книгу учетных карточек" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0" Foreground="#26922C" FontWeight="DemiBold" FontSize="16"/>
-                <TextBlock Text="многоэкземплярной литературы" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#26922C" FontWeight="DemiBold" FontSize="16"/>
+                <TextBlock Text="Выбыло книг, записанных в инвентарную книгу, регистрационную книгу учетных карточек" Style="{DynamicResource TextWindow}"/>
+                <TextBlock Text="многоэкземплярной литературы" Style="{DynamicResource TextWindow}"/>
 
                 <WrapPanel Margin="5 15 0 0">
-                    <TextBlock Text="Общее количество" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 0 5 0"/>
+                    <TextBlock Text="Общее количество" HorizontalAlignment="Center" Margin="5 0 5 0"/>
                     <TextBox Name="tbTotalNumber" PreviewTextInput="tbTotalNumber_PreviewTextInput" Width="100"/>
-                    <TextBlock Text="На сумму" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 0 5 0"/>
+                    <TextBlock Text="На сумму" HorizontalAlignment="Center" Margin="5 0 5 0"/>
                     <TextBox Name="tbCost" Width="100"/>
                 </WrapPanel>
 
-                <TextBlock Text="По содержанию" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0" Foreground="#26922C" FontWeight="ExtraBold" FontSize="16"/>
+                <TextBlock Text="По содержанию" Style="{DynamicResource TextWindow}"/>
 
                 <ListBox Name="lbContent" SelectionMode="Multiple">
                     <ListBox.ItemTemplate>
@@ -49,7 +49,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <TextBlock Text="По видам" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0" Foreground="#26922C" FontWeight="ExtraBold"/>
+                <TextBlock Text="По видам" Style="{DynamicResource TextWindow}"/>
 
                 <ListBox Name="lbViews" SelectionMode="Multiple">
                     <ListBox.ItemTemplate>
@@ -62,7 +62,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <TextBlock Text="Причина выбытия" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 15 0 0" Foreground="#26922C" FontWeight="ExtraBold"/>
+                <TextBlock Text="Причина выбытия" Style="{DynamicResource TextWindow}"/>
 
                 <ListBox Name="lbReason" SelectionMode="Multiple">
                     <ListBox.ItemTemplate>
@@ -76,8 +76,8 @@
                 </ListBox>
 
                 <WrapPanel Margin="5 15 5 0">
-                    <TextBlock Text="Место выбытия" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0"/>
-                    <ComboBox Name="cbPlace" IsEditable="True" SelectionChanged="cbPlace_SelectionChanged"/>
+                    <TextBlock Text="Место выбытия" HorizontalAlignment="Center" Margin="0 0 5 0"/>
+                    <ComboBox Name="cbPlace" IsEditable="True" SelectionChanged="cbPlace_SelectionChanged" Style="{DynamicResource ThemeComboBox}"/>
                 </WrapPanel>                
             </StackPanel>
             <Grid Grid.Row="2" Margin="5 10 0 0">

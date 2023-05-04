@@ -9,8 +9,8 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="25">
-                <TextBlock Text="Введите источник поступления" FontSize="18px" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox Name="tbSourceOfReceipt" Height="30" Width="250"/>
+                <TextBlock Text="Введите источник поступления" HorizontalAlignment="Left"/>
+                <TextBox Name="tbSourceOfReceipt" Width="250"/>
             </StackPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <Button Name="btnCanel" Content="Отмена" Width="100" Style="{StaticResource Button}" Click="btnCanel_Click"/>
