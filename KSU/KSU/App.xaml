@@ -5,11 +5,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>               
-                <ResourceDictionary Source="/Themes/SummerTheme.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Themes/AutumnTheme.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Themes/WinterTheme.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="/Themes/SpringTheme.xaml"></ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/SummerTheme.xaml"/>
+                <ResourceDictionary Source="/Themes/AutumnTheme.xaml"/>
+                <ResourceDictionary Source="/Themes/WinterTheme.xaml"/>
+                <ResourceDictionary Source="/Themes/SpringTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

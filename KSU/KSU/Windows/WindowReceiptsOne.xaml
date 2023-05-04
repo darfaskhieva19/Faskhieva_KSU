@@ -21,16 +21,16 @@
             <StackPanel Grid.Row="1">
                 <WrapPanel>
                     <TextBlock Text="Дата записи" Margin="5" HorizontalAlignment="Center"/>
-                    <DatePicker Name="dpDate" Width="150" Height="30"/>
+                    <DatePicker Name="dpDate" Style="{DynamicResource ThemeDatePicker}"/>
                     <TextBlock Text="Номер записи по порядку" HorizontalAlignment="Center" Margin="5"/>
                     <TextBox Width="40" Name="tbNumber" PreviewTextInput="tbNumber_PreviewTextInput"/>
                 </WrapPanel>
 
                 <WrapPanel Margin="5 15 0 0">
                     <TextBlock Text="Источник поступления" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 0 5 0"/>
-                    <ComboBox Name="cbSourceOfReceipt" SelectionChanged="cbSourceOfReceipt_SelectionChanged" Width="180" FontSize="14" IsEditable="True" IsReadOnly="True"/>
+                    <ComboBox Name="cbSourceOfReceipt" SelectionChanged="cbSourceOfReceipt_SelectionChanged" Style="{DynamicResource ThemeComboBox}"/>
                     <TextBlock Text="Источник комплектования" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 0 5 0"/>
-                    <ComboBox Name="cbSourceOfAcquisition" Width="180" FontSize="14" IsEditable="True" IsReadOnly="True"/>
+                    <ComboBox Name="cbSourceOfAcquisition" Style="{DynamicResource ThemeComboBox}"/>
                 </WrapPanel>
 
                 <TextBlock  Text="Данные о сопроводительном документе" Style="{DynamicResource TextWindow}"/>
@@ -38,9 +38,9 @@
                 <StackPanel Orientation="Vertical" Margin="5 0 0 0">
                     <WrapPanel Margin="0 10 0 0">
                         <TextBlock Text="Номер документа" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 5 0"/>
-                        <TextBox Name="tbNumberOfDocument"/>
+                        <TextBox Name="tbNumberOfDocument" Width="180"/>
                         <TextBlock Text="Дата" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0 10 0"/>
-                        <DatePicker Name="dpDateDocuments" Width="150" Height="30"/>
+                        <DatePicker Name="dpDateDocuments" Style="{DynamicResource ThemeDatePicker}"/>
                     </WrapPanel>
                 </StackPanel>
 
