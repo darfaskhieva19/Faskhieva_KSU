@@ -48,7 +48,8 @@ namespace KSU
             for (var i = 0; i < pl.Count; i++)
             {
                 cbPlace.Items.Add(pl[i].Kind);
-            }           
+            }
+            cbPlace.Items.Add("Добавить место выбытия");
             cbPlace.SelectedIndex = disposal.IdPlace;
 
             lbContent.ItemsSource = DataBase.Base.Contents.ToList();

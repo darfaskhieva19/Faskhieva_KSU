@@ -36,3 +36,4 @@ C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddPlac
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddSourceOfReceipts.baml
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\SummerTheme.baml
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\SpringTheme.baml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

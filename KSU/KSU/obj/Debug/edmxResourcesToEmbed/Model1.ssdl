@@ -90,8 +90,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FundMovement" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalCount" Type="int" Nullable="false" />
-    <Property Name="TotalCost" Type="float" Nullable="false" />
+    <Property Name="TotalCount" Type="int" />
+    <Property Name="TotalCost" Type="float" />
     <Property Name="Notes" Type="nvarchar(max)" />
     <Property Name="IdEnclosures" Type="int" Nullable="false" />
   </EntityType>

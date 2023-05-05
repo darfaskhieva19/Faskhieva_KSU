@@ -56,6 +56,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -84,6 +88,7 @@
     <Compile Include="Classes\ClassReceiptsOne.cs" />
     <Compile Include="Classes\ClassReason.cs" />
     <Compile Include="Classes\ClassViews.cs" />
+    <Compile Include="Classes\ClassResults.cs" />
     <Compile Include="Contents.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

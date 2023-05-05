@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="898d96bf307a4f2f885c45b98667c2e1" Name="Diagram1">
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Contents" Width="1.5" PointX="6" PointY="13.25" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ContentsDisposals" Width="1.5" PointX="8.25" PointY="9.125" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ContentsReceipts" Width="1.5" PointX="11.25" PointY="6.125" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Disposals" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Contents" Width="1.5" PointX="6" PointY="2.25" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ContentsDisposals" Width="1.5" PointX="8.25" PointY="6.125" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ContentsReceipts" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Disposals" Width="1.5" PointX="6" PointY="8.5" />
         <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Enclosures" Width="1.5" PointX="0.75" PointY="9.125" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Place" Width="1.5" PointX="0.75" PointY="6.375" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Reason" Width="1.5" PointX="6" PointY="5.375" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ReasonDisposals" Width="1.5" PointX="8.25" PointY="6.125" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Receipts" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Place" Width="1.5" PointX="3.75" PointY="2.375" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Reason" Width="1.5" PointX="6" PointY="16.375" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ReasonDisposals" Width="1.5" PointX="8.25" PointY="9.125" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Receipts" Width="1.5" PointX="3" PointY="8" />
         <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Results" Width="1.5" PointX="3" PointY="18.125" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.SourceOfAcquisition" Width="1.5" PointX="3.75" PointY="13.5" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.SourceOfReceipt" Width="1.5" PointX="3.75" PointY="5.25" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Views" Width="1.5" PointX="6" PointY="16.25" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.SourceOfAcquisition" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.SourceOfReceipt" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.Views" Width="1.5" PointX="6" PointY="19.25" />
         <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ViewsDisposals" Width="1.5" PointX="8.25" PointY="12.125" />
-        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ViewsReceipts" Width="1.5" PointX="11.25" PointY="9.125" />
+        <EntityTypeShape EntityType="П_Фасхиева_ДипломModel.ViewsReceipts" Width="1.5" PointX="5.25" PointY="13.125" />
         <AssociationConnector Association="П_Фасхиева_ДипломModel.FK_ContentsDisposals_Contents1" />
         <AssociationConnector Association="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents" />
         <AssociationConnector Association="П_Фасхиева_ДипломModel.FK_ContentsDisposals_DisposalsOne" />

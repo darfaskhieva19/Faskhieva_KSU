@@ -16,8 +16,8 @@ namespace KSU
     {
         public int Id { get; set; }
         public string FundMovement { get; set; }
-        public int TotalCount { get; set; }
-        public double TotalCost { get; set; }
+        public Nullable<int> TotalCount { get; set; }
+        public Nullable<double> TotalCost { get; set; }
         public string Notes { get; set; }
         public int IdEnclosures { get; set; }
     

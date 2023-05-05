@@ -95,8 +95,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FundMovement" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="TotalCount" Type="int" Nullable="false" />
-          <Property Name="TotalCost" Type="float" Nullable="false" />
+          <Property Name="TotalCount" Type="int" />
+          <Property Name="TotalCost" Type="float" />
           <Property Name="Notes" Type="nvarchar(max)" />
           <Property Name="IdEnclosures" Type="int" Nullable="false" />
         </EntityType>
@@ -610,8 +610,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FundMovement" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TotalCount" Type="Int32" Nullable="false" />
-          <Property Name="TotalCost" Type="Double" Nullable="false" />
+          <Property Name="TotalCount" Type="Int32" />
+          <Property Name="TotalCost" Type="Double" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdEnclosures" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Enclosures" Relationship="П_Фасхиева_ДипломModel.FK_Results_Enclosures" FromRole="Results" ToRole="Enclosures" />

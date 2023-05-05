@@ -22,13 +22,17 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="2">
+
+                        <TextBlock MouseDown="tbExport_MouseDown" Name="tbExport" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+
+                        <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -37,7 +41,7 @@
                             <Button Name="btnAdd" Grid.Column="1" Content="Добавить запись" Click="btnAdd_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="3">
+                        <StackPanel Grid.Row="4">
                             <DataGrid Name="dgDisposals" MouseDoubleClick="dgDisposals_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.HorizontalScrollBarVisibility="Auto" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="Auto"/>
@@ -62,7 +66,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Grid Grid.Row="0">
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -71,7 +75,7 @@
                             <Button Name="btnNewAdd" Grid.Column="1" Content="Добавить запись" Click="btnNewAdd_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="1">
+                        <StackPanel Grid.Row="2">
                             <DataGrid Name="dgReceipt" LoadingRow="dgReceipt_LoadingRow" MouseDoubleClick="dgReceipt_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="Auto"/>
@@ -96,14 +100,14 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Grid.Row="4" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnResult_Click"/>
+                        <Button Grid.Row="5" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnResult_Click"/>
 
-                        <StackPanel Grid.Row="5" Name="spRes" Visibility="Collapsed">
+                        <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed">
                             <DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Движение фонда" Width="Auto"/>
-                                    <DataGridTextColumn Header="Общее кол-во"/>
-                                    <DataGridTextColumn Header="Общая стоимость"/>
+                                    <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMovement}"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding Counts}"/>
+                                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding Cost}"/>
                                     <DataGridTextColumn Header="Естественные науки (2)"/>
                                     <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)"/>
                                     <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)"/>
@@ -129,13 +133,15 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <TextBlock MouseDown="tbExportTwo_MouseDown" Name="tbExportTwo" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -144,7 +150,7 @@
                             <Button Name="btnNAdd" Grid.Column="1" Content="Добавить запись" Click="btnNAdd_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="1">
+                        <StackPanel Grid.Row="2">
                             <DataGrid Name="dgReceiptTwo" LoadingRow="dgReceipt_LoadingRow" MouseDoubleClick="dgReceiptTwo_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="Auto"/>
@@ -169,7 +175,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -178,7 +184,7 @@
                             <Button  Grid.Column="1" Name="btnAddDisposalsTwo" Content="Добавить запись" Click="btnAddDisposalsTwo_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Grid.Row="4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <DataGrid Name="dgDisposalsTwo" MouseDoubleClick="dgDisposalsTwo_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="Auto"/>
@@ -203,9 +209,9 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Grid.Row="4" Name="btnResultTwo" Content="Сформировать итоги" Click="btnResultTwo_Click" HorizontalAlignment="Left" Style="{DynamicResource Button}"/>
+                        <Button Grid.Row="5" Name="btnResultTwo" Content="Сформировать итоги" Click="btnResultTwo_Click" HorizontalAlignment="Left" Style="{DynamicResource Button}"/>
 
-                        <StackPanel Grid.Row="5" Name="spResultTwo" Visibility="Collapsed">
+                        <StackPanel Grid.Row="6" Name="spResultTwo" Visibility="Collapsed">
                             <DataGrid Name="dgResultsTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto"/>
@@ -234,14 +240,15 @@
                     <Grid Style="{DynamicResource ThemeGrid}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0">
+                        <TextBlock MouseDown="tbExportThree_MouseDown" Name="tbExportThree" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -250,7 +257,7 @@
                             <Button Grid.Column="1" Name="btnAddThree" Content="Добавить запись" Click="btnAddThree_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="1">
+                        <StackPanel Grid.Row="2">
                             <DataGrid Name="dgReceiptThree" LoadingRow="dgReceipt_LoadingRow" MouseDoubleClick="dgReceiptThree_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="Auto"/>
@@ -275,7 +282,7 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -284,7 +291,7 @@
                             <Button  Grid.Column="1" Name="btnAddThreeD" Content="Добавить запись" Click="btnAddThreeD_Click"  Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="3">
+                        <StackPanel Grid.Row="4">
                             <DataGrid Name="dgDisposalsThree" MouseDoubleClick="dgDisposalsThree_MouseDoubleClick" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="Auto"/>
@@ -309,9 +316,9 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Grid.Row="4" Name="btnResultThree" Content="Сформировать итоги" HorizontalAlignment="Left" Style="{DynamicResource Button}" Click="btnResultThree_Click"/>
+                        <Button Grid.Row="5" Name="btnResultThree" Content="Сформировать итоги" HorizontalAlignment="Left" Style="{DynamicResource Button}" Click="btnResultThree_Click"/>
 
-                        <StackPanel Grid.Row="5" Name="spResThree" Visibility="Collapsed">
+                        <StackPanel Grid.Row="6" Name="spResThree" Visibility="Collapsed">
                             <DataGrid Name="dgResultsThree" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto"/>
@@ -341,20 +348,22 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <TextBlock MouseDown="tbExportResults_MouseDown" Name="tbExportResults" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Поступление" Style="{DynamicResource BoldText}"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="1">
+                        <StackPanel Grid.Row="2">
                             <DataGrid Name="dgReceiptResult" LoadingRow="dgReceipt_LoadingRow" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateReceipts}" Width="Auto"/>
@@ -379,14 +388,14 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Выбытие" Style="{DynamicResource BoldText}"/>
                         </Grid>
 
-                        <StackPanel Grid.Row="3" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Grid.Row="4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <DataGrid Name="dgDisposalsResults" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="Auto"/>
@@ -411,9 +420,9 @@
                             </DataGrid>
                         </StackPanel>
 
-                        <Button Grid.Row="4" Name="btnTotalResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnTotalResult_Click"/>
+                        <Button Grid.Row="5" Name="btnTotalResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnTotalResult_Click"/>
 
-                        <StackPanel Grid.Row="5" Name="spResults" Visibility="Collapsed">
+                        <StackPanel Grid.Row="6" Name="spResults" Visibility="Collapsed">
                             <DataGrid Name="dgTotalResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto"/>

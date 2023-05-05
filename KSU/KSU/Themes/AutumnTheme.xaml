@@ -41,6 +41,27 @@
         </Setter>
     </Style>
 
+    <!--Стиль для Экспорта в Excel-->
+    <Style x:Key="ThemeExportExcel" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Times New Roman"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="0 5 10 5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="20"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <!--Стиль для DataGrid Page_Activity-->
     <DataTemplate x:Key="HeaderTemplate">
         <TextBlock Text="{Binding}" TextWrapping="Wrap"  TextAlignment="Center"/>
