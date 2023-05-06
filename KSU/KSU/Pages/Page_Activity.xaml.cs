@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace KSU
@@ -33,7 +28,7 @@ namespace KSU
 
             // 2 Корпус
             dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
-            dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z=>z.IdEnclosures == 2).ToList();
+            dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
             dgResultsTwo.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 2).ToList();
 
             // 3 Корпус
@@ -43,15 +38,15 @@ namespace KSU
 
             // Все корпуса
             dgReceiptResult.ItemsSource = DataBase.Base.Receipts.OrderBy(x => x.Date).ToList();
-            dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.ToList();
+            dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.OrderBy(x => x.Date).ToList();
             dgTotalResults.ItemsSource = DataBase.Base.Results.ToList();
 
             DateTime today = DateTime.Today;
             int year = today.Year;
-            DateTime September = new DateTime(year,9,1);
+            DateTime September = new DateTime(year, 9, 1);
             DateTime November = new DateTime(year, 11, 30);
             DateTime December = new DateTime(year, 12, 1);
-            DateTime Marchs = new DateTime(year+1, 3, 1);
+            DateTime Marchs = new DateTime(year + 1, 3, 1);
             DateTime March = new DateTime(year, 3, 1);
             DateTime May = new DateTime(year, 5, 31);
             DateTime June = new DateTime(year, 6, 1);
@@ -113,11 +108,11 @@ namespace KSU
             {
                 e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#B1C7F3");
             }
-            else if(year <= 2021 && year <= 2026)
+            else if (year <= 2021 && year <= 2026)
             {
                 e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#F3DDB1");
             }
-            else if(year <= 2022) 
+            else if (year <= 2022)
             {
                 e.Row.Background = (SolidColorBrush)(Brush)brush.ConvertFrom("#BEF3B1");
             }
@@ -141,7 +136,7 @@ namespace KSU
             WindowReceiptsOne.index = 1;
             addReceipts.ShowDialog();
             dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1).ToList();
-        }       
+        }
 
         private void dgReceipt_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 1 корпус Поступление редактирование
         {
@@ -159,9 +154,9 @@ namespace KSU
                 else
                 {
                     WindowReceiptsOne windowReceipts = new WindowReceiptsOne(receipt);
-                    WindowReceiptsOne.index = 1;                   
+                    WindowReceiptsOne.index = 1;
                     windowReceipts.ShowDialog();
-                    dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();                     
+                    dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
                 }
             }
             catch
@@ -202,7 +197,7 @@ namespace KSU
             WindowReceiptsOne addReceipts = new WindowReceiptsOne();
             WindowReceiptsOne.index = 2;
             addReceipts.ShowDialog();
-            dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(x=>x.IdEnclosures==2).ToList();
+            dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 2).ToList();
         }
 
         private void btnAddThree_Click(object sender, RoutedEventArgs e) //3 корпус Поступление добавление
@@ -365,11 +360,45 @@ namespace KSU
 
         }
 
+        private void ExportToExcel()
+        {
+            
+        }
+
         private void tbExport_MouseDown(object sender, MouseButtonEventArgs e) // Экспорт данных по 1 корпусу
         {
-            {
-                
-            }
+                try
+                {
+                    // Создаем новый файл Excel
+                    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                    excel.Visible = true;
+                    Microsoft.Office.Interop.Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Microsoft.Office.Interop.Excel.Worksheet sheet1 = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+                    Microsoft.Office.Interop.Excel.Worksheet sheet2 = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[2];
+                    Microsoft.Office.Interop.Excel.Worksheet sheet3 = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[3];
+                    sheet1.Name = "Поступление";
+                    // Добавляем заголовки столбцов
+                    for (int i = 0; i < dgReceiptTwo.Columns.Count; i++)
+                    {
+                        sheet1.Cells[1, i + 1] = dgReceiptTwo.Columns[i].Header;
+                    }
+                    // Добавление данных из DataGrid1
+                    for (int i = 0; i < dgReceipt.Items.Count; i++)
+                    {
+                        for (int j = 0; j < dgReceipt.Columns.Count; j++)
+                        {
+                            string columnName = dgReceipt.Columns[j].Header.ToString();
+                            Binding binding = (dgReceipt.Columns[j].ClipboardContentBinding as Binding);
+                            PropertyInfo pi = dgReceipt.Items[i].GetType().GetProperty(binding.Path.Path);
+                            string value = pi.GetValue(dgReceipt.Items[i], null).ToString();
+                        }
+
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Ошибка сохранения файла:\n" + ex.Message);
+                }
         }
 
         private void tbExportTwo_MouseDown(object sender, MouseButtonEventArgs e) // Экспорт данных по 2 корпусу
