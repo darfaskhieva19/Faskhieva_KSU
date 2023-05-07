@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KSU"
         mc:Ignorable="d"
-        Title="КСУ библиотечного фонда" Height="900" Width="1600" Icon="\Resources\NGK.png" FontFamily="Comic Sans MS">
+        Title="КСУ библиотечного фонда" Height="750" Width="1200" Icon="\Resources\NGK.png" FontFamily="Comic Sans MS">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

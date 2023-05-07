@@ -26,6 +26,7 @@ namespace KSU
             DataBase.Base = new Entities();
             ClassFrame.MainF = frameL;
             ClassFrame.MainF.Navigate(new Page_Activity());
+            this.WindowState = WindowState.Maximized;
         }
     }
 }
