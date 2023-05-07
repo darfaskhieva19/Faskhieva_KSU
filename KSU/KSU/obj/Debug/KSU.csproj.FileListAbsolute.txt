@@ -37,3 +37,9 @@ C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Windows\WindowAddSour
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\SummerTheme.baml
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\obj\Debug\Themes\SpringTheme.baml
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\EPPlus.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\EPPlus.xml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\KSU\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
