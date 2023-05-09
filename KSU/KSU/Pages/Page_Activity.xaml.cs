@@ -469,6 +469,7 @@ namespace KSU
                         var file = new FileInfo(saveFileDialog.FileName);
                         excelPackage.SaveAs(file);
                     }
+                    MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (IOException ex)
@@ -580,6 +581,7 @@ namespace KSU
                     var file = new FileInfo(saveFileDialog.FileName);
                     excelPackage.SaveAs(file);
                 }
+                MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -686,6 +688,7 @@ namespace KSU
                     var file = new FileInfo(saveFileDialog.FileName);
                     excelPackage.SaveAs(file);
                 }
+                MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -793,6 +796,7 @@ namespace KSU
                     var file = new FileInfo(saveFileDialog.FileName);
                     excelPackage.SaveAs(file);
                 }
+                MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

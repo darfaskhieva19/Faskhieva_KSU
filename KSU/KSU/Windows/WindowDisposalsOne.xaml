@@ -20,9 +20,9 @@
 
             <StackPanel Grid.Row="1">
                 <WrapPanel>
-                    <TextBlock Text="Дата записи" Margin="5"/>
+                    <TextBlock Text="Дата записи*" Margin="5"/>
                     <DatePicker Name="dpDate" Style="{DynamicResource ThemeDatePicker}"/>
-                    <TextBlock Text="Номер акта по порядку" HorizontalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="Номер акта по порядку*" HorizontalAlignment="Center" Margin="5"/>
                     <TextBox Name="tbNumber" Width="55"/>
                 </WrapPanel>
 
@@ -30,9 +30,9 @@
                 <TextBlock Text="многоэкземплярной литературы" Style="{DynamicResource TextWindow}"/>
 
                 <WrapPanel Margin="5 15 0 0">
-                    <TextBlock Text="Общее количество" HorizontalAlignment="Center" Margin="5 0 5 0"/>
+                    <TextBlock Text="Общее количество*" HorizontalAlignment="Center" Margin="5 0 5 0"/>
                     <TextBox Name="tbTotalNumber" PreviewTextInput="tbTotalNumber_PreviewTextInput" Width="100"/>
-                    <TextBlock Text="На сумму" HorizontalAlignment="Center" Margin="5 0 5 0"/>
+                    <TextBlock Text="На сумму*" HorizontalAlignment="Center" Margin="5 0 5 0"/>
                     <TextBox Name="tbCost" Width="100"/>
                 </WrapPanel>
 
@@ -76,9 +76,11 @@
                 </ListBox>
 
                 <WrapPanel Margin="5 15 5 0">
-                    <TextBlock Text="Место выбытия" HorizontalAlignment="Center" Margin="0 0 5 0"/>
+                    <TextBlock Text="Место выбытия*" HorizontalAlignment="Center" Margin="0 0 5 0"/>
                     <ComboBox Name="cbPlace" SelectionChanged="cbPlace_SelectionChanged" Style="{DynamicResource ThemeComboBox}"/>
-                </WrapPanel>                
+                </WrapPanel>
+
+                <TextBlock Text="* - обязательные поля для заполнения" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15"/>
             </StackPanel>
             <Grid Grid.Row="2" Margin="5 10 0 0">
                 <Button Name="btnBack" Content="Вернуться" Click="btnBack_Click" Style="{StaticResource Button}" HorizontalAlignment="Left"/>
