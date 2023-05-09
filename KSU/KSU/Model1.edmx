@@ -30,13 +30,23 @@
           <Property Name="IdReceipts" Type="int" Nullable="false" />
           <Property Name="Counts" Type="int" />
         </EntityType>
+        <EntityType Name="ContentsViewsResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdViews" Type="int" Nullable="false" />
+          <Property Name="IdContents" Type="int" Nullable="false" />
+          <Property Name="IdResults" Type="int" Nullable="false" />
+          <Property Name="Counts" Type="int" />
+        </EntityType>
         <EntityType Name="Disposals">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="ActNumber" Type="int" Nullable="false" />
+          <Property Name="ActNumber" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="TotalNumber" Type="int" Nullable="false" />
           <Property Name="Cost" Type="float" Nullable="false" />
           <Property Name="IdPlace" Type="int" Nullable="false" />
@@ -78,7 +88,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="NumberInOrder" Type="int" Nullable="false" />
+          <Property Name="NumberInOrder" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="IdSourceOfReceipt" Type="int" Nullable="false" />
           <Property Name="IdSourceOfAcquisition" Type="int" Nullable="false" />
           <Property Name="NumberDocument" Type="nvarchar(max)" Nullable="false" />
@@ -97,6 +107,15 @@
           <Property Name="FundMovement" Type="nvarchar(max)" Nullable="false" />
           <Property Name="TotalCount" Type="int" />
           <Property Name="TotalCost" Type="float" />
+          <Property Name="NaturalSocial" Type="int" />
+          <Property Name="Social" Type="int" />
+          <Property Name="Humanitarian" Type="int" />
+          <Property Name="MetodicalSocial" Type="int" />
+          <Property Name="ReferenceLiterature" Type="int" />
+          <Property Name="ArtLiterature" Type="int" />
+          <Property Name="Printed" Type="int" />
+          <Property Name="Electronic" Type="int" />
+          <Property Name="Periodich" Type="int" />
           <Property Name="Notes" Type="nvarchar(max)" />
           <Property Name="IdEnclosures" Type="int" Nullable="false" />
         </EntityType>
@@ -187,6 +206,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ContentsViewsResult_Results">
+          <End Role="Results" Type="Self.Results" Multiplicity="1" />
+          <End Role="ContentsViewsResult" Type="Self.ContentsViewsResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Results">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentsViewsResult">
+              <PropertyRef Name="IdResults" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Disposals_Enclosures">
           <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
           <End Role="Disposals" Type="Self.Disposals" Multiplicity="*" />
@@ -271,7 +302,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Results_Enclosures">
+        <Association Name="FK_Results_Enclosures1">
           <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
           <End Role="Results" Type="Self.Results" Multiplicity="*" />
           <ReferentialConstraint>
@@ -335,6 +366,7 @@
           <EntitySet Name="Contents" EntityType="Self.Contents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContentsDisposals" EntityType="Self.ContentsDisposals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContentsReceipts" EntityType="Self.ContentsReceipts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContentsViewsResult" EntityType="Self.ContentsViewsResult" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disposals" EntityType="Self.Disposals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Enclosures" EntityType="Self.Enclosures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
@@ -362,6 +394,10 @@
           <AssociationSet Name="FK_ContentsReceipts_ReceiptsOne" Association="Self.FK_ContentsReceipts_ReceiptsOne">
             <End Role="Receipts" EntitySet="Receipts" />
             <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContentsViewsResult_Results" Association="Self.FK_ContentsViewsResult_Results">
+            <End Role="Results" EntitySet="Results" />
+            <End Role="ContentsViewsResult" EntitySet="ContentsViewsResult" />
           </AssociationSet>
           <AssociationSet Name="FK_Disposals_Enclosures" Association="Self.FK_Disposals_Enclosures">
             <End Role="Enclosures" EntitySet="Enclosures" />
@@ -391,7 +427,7 @@
             <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
             <End Role="Receipts" EntitySet="Receipts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Results_Enclosures" Association="Self.FK_Results_Enclosures">
+          <AssociationSet Name="FK_Results_Enclosures1" Association="Self.FK_Results_Enclosures1">
             <End Role="Enclosures" EntitySet="Enclosures" />
             <End Role="Results" EntitySet="Results" />
           </AssociationSet>
@@ -420,6 +456,7 @@
           <EntitySet Name="Contents" EntityType="П_Фасхиева_ДипломModel.Contents" />
           <EntitySet Name="ContentsDisposals" EntityType="П_Фасхиева_ДипломModel.ContentsDisposals" />
           <EntitySet Name="ContentsReceipts" EntityType="П_Фасхиева_ДипломModel.ContentsReceipts" />
+          <EntitySet Name="ContentsViewsResult" EntityType="П_Фасхиева_ДипломModel.ContentsViewsResult" />
           <EntitySet Name="Disposals" EntityType="П_Фасхиева_ДипломModel.Disposals" />
           <EntitySet Name="Enclosures" EntityType="П_Фасхиева_ДипломModel.Enclosures" />
           <EntitySet Name="Place" EntityType="П_Фасхиева_ДипломModel.Place" />
@@ -448,6 +485,10 @@
             <End Role="Receipts" EntitySet="Receipts" />
             <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
           </AssociationSet>
+          <AssociationSet Name="FK_ContentsViewsResult_Results" Association="П_Фасхиева_ДипломModel.FK_ContentsViewsResult_Results">
+            <End Role="Results" EntitySet="Results" />
+            <End Role="ContentsViewsResult" EntitySet="ContentsViewsResult" />
+          </AssociationSet>
           <AssociationSet Name="FK_Disposals_Enclosures" Association="П_Фасхиева_ДипломModel.FK_Disposals_Enclosures">
             <End Role="Enclosures" EntitySet="Enclosures" />
             <End Role="Disposals" EntitySet="Disposals" />
@@ -468,7 +509,7 @@
             <End Role="Enclosures" EntitySet="Enclosures" />
             <End Role="Receipts" EntitySet="Receipts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Results_Enclosures" Association="П_Фасхиева_ДипломModel.FK_Results_Enclosures">
+          <AssociationSet Name="FK_Results_Enclosures1" Association="П_Фасхиева_ДипломModel.FK_Results_Enclosures1">
             <End Role="Enclosures" EntitySet="Enclosures" />
             <End Role="Results" EntitySet="Results" />
           </AssociationSet>
@@ -528,13 +569,24 @@
           <NavigationProperty Name="Contents" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_Contents" FromRole="ContentsReceipts" ToRole="Contents" />
           <NavigationProperty Name="Receipts" Relationship="П_Фасхиева_ДипломModel.FK_ContentsReceipts_ReceiptsOne" FromRole="ContentsReceipts" ToRole="Receipts" />
         </EntityType>
+        <EntityType Name="ContentsViewsResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdViews" Type="Int32" Nullable="false" />
+          <Property Name="IdContents" Type="Int32" Nullable="false" />
+          <Property Name="IdResults" Type="Int32" Nullable="false" />
+          <Property Name="Counts" Type="Int32" />
+          <NavigationProperty Name="Results" Relationship="П_Фасхиева_ДипломModel.FK_ContentsViewsResult_Results" FromRole="ContentsViewsResult" ToRole="Results" />
+        </EntityType>
         <EntityType Name="Disposals">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ActNumber" Type="Int32" Nullable="false" />
+          <Property Name="ActNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="TotalNumber" Type="Int32" Nullable="false" />
           <Property Name="Cost" Type="Double" Nullable="false" />
           <Property Name="IdPlace" Type="Int32" Nullable="false" />
@@ -553,7 +605,7 @@
           <Property Name="Kind" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Disposals" Relationship="П_Фасхиева_ДипломModel.FK_Disposals_Enclosures" FromRole="Enclosures" ToRole="Disposals" />
           <NavigationProperty Name="Receipts" Relationship="П_Фасхиева_ДипломModel.FK_Receipts_Enclosures" FromRole="Enclosures" ToRole="Receipts" />
-          <NavigationProperty Name="Results" Relationship="П_Фасхиева_ДипломModel.FK_Results_Enclosures" FromRole="Enclosures" ToRole="Results" />
+          <NavigationProperty Name="Results" Relationship="П_Фасхиева_ДипломModel.FK_Results_Enclosures1" FromRole="Enclosures" ToRole="Results" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -588,7 +640,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NumberInOrder" Type="Int32" Nullable="false" />
+          <Property Name="NumberInOrder" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="IdSourceOfReceipt" Type="Int32" Nullable="false" />
           <Property Name="IdSourceOfAcquisition" Type="Int32" Nullable="false" />
           <Property Name="NumberDocument" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -612,9 +664,19 @@
           <Property Name="FundMovement" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TotalCount" Type="Int32" />
           <Property Name="TotalCost" Type="Double" />
+          <Property Name="NaturalSocial" Type="Int32" />
+          <Property Name="Social" Type="Int32" />
+          <Property Name="Humanitarian" Type="Int32" />
+          <Property Name="MetodicalSocial" Type="Int32" />
+          <Property Name="ReferenceLiterature" Type="Int32" />
+          <Property Name="ArtLiterature" Type="Int32" />
+          <Property Name="Printed" Type="Int32" />
+          <Property Name="Electronic" Type="Int32" />
+          <Property Name="Periodich" Type="Int32" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdEnclosures" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Enclosures" Relationship="П_Фасхиева_ДипломModel.FK_Results_Enclosures" FromRole="Results" ToRole="Enclosures" />
+          <NavigationProperty Name="ContentsViewsResult" Relationship="П_Фасхиева_ДипломModel.FK_ContentsViewsResult_Results" FromRole="Results" ToRole="ContentsViewsResult" />
+          <NavigationProperty Name="Enclosures" Relationship="П_Фасхиева_ДипломModel.FK_Results_Enclosures1" FromRole="Results" ToRole="Enclosures" />
         </EntityType>
         <EntityType Name="SourceOfAcquisition">
           <Key>
@@ -711,6 +773,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ContentsViewsResult_Results">
+          <End Type="П_Фасхиева_ДипломModel.Results" Role="Results" Multiplicity="1" />
+          <End Type="П_Фасхиева_ДипломModel.ContentsViewsResult" Role="ContentsViewsResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Results">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentsViewsResult">
+              <PropertyRef Name="IdResults" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Disposals_Enclosures">
           <End Type="П_Фасхиева_ДипломModel.Enclosures" Role="Enclosures" Multiplicity="1" />
           <End Type="П_Фасхиева_ДипломModel.Disposals" Role="Disposals" Multiplicity="*" />
@@ -771,7 +845,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Results_Enclosures">
+        <Association Name="FK_Results_Enclosures1">
           <End Type="П_Фасхиева_ДипломModel.Enclosures" Role="Enclosures" Multiplicity="1" />
           <End Type="П_Фасхиева_ДипломModel.Results" Role="Results" Multiplicity="*" />
           <ReferentialConstraint>
@@ -889,6 +963,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ContentsViewsResult">
+            <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsViewsResult">
+              <MappingFragment StoreEntitySet="ContentsViewsResult">
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
+                <ScalarProperty Name="IdResults" ColumnName="IdResults" />
+                <ScalarProperty Name="IdContents" ColumnName="IdContents" />
+                <ScalarProperty Name="IdViews" ColumnName="IdViews" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Disposals">
             <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.Disposals">
               <MappingFragment StoreEntitySet="Disposals">
@@ -959,6 +1044,15 @@
               <MappingFragment StoreEntitySet="Results">
                 <ScalarProperty Name="IdEnclosures" ColumnName="IdEnclosures" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Periodich" ColumnName="Periodich" />
+                <ScalarProperty Name="Electronic" ColumnName="Electronic" />
+                <ScalarProperty Name="Printed" ColumnName="Printed" />
+                <ScalarProperty Name="ArtLiterature" ColumnName="ArtLiterature" />
+                <ScalarProperty Name="ReferenceLiterature" ColumnName="ReferenceLiterature" />
+                <ScalarProperty Name="MetodicalSocial" ColumnName="MetodicalSocial" />
+                <ScalarProperty Name="Humanitarian" ColumnName="Humanitarian" />
+                <ScalarProperty Name="Social" ColumnName="Social" />
+                <ScalarProperty Name="NaturalSocial" ColumnName="NaturalSocial" />
                 <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
                 <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
                 <ScalarProperty Name="FundMovement" ColumnName="FundMovement" />

@@ -102,7 +102,7 @@ namespace KSU
             }
 
             dpDate.SelectedDate = receipts.Date;
-            tbNumber.Text = Convert.ToString(receipts.NumberInOrder);
+            tbNumber.Text = receipts.NumberInOrder;
             tbNumberOfDocument.Text = receipts.NumberDocument;
             dpDateDocuments.SelectedDate = receipts.DocumentDate;
             tbTotalInstances.Text = Convert.ToString(receipts.TotalInstances);
@@ -202,7 +202,7 @@ namespace KSU
                             receipts = new Receipts();
                         }
                         receipts.Date = Convert.ToDateTime(dpDate.Text);
-                        receipts.NumberInOrder = Convert.ToInt32(tbNumber.Text);
+                        receipts.NumberInOrder = tbNumber.Text;
                         receipts.IdSourceOfReceipt = cbSourceOfReceipt.SelectedIndex;
                         receipts.IdSourceOfAcquisition = cbSourceOfAcquisition.SelectedIndex;
                         receipts.NumberDocument = tbNumberOfDocument.Text; // Сопроводительный документ
@@ -284,7 +284,14 @@ namespace KSU
                             }
                         }
                         DataBase.Base.SaveChanges();
-                        MessageBox.Show("Информация добавлена!");
+                        if (flag == false)
+                        {
+                            MessageBox.Show("Информация добавлена!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Информация изменена!");
+                        }
                         this.Close();
                     }
                 }

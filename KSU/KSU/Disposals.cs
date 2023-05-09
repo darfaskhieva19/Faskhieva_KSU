@@ -24,7 +24,7 @@ namespace KSU
     
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
-        public int ActNumber { get; set; }
+        public string ActNumber { get; set; }
         public int TotalNumber { get; set; }
         public double Cost { get; set; }
         public int IdPlace { get; set; }

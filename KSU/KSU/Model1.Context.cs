@@ -28,6 +28,7 @@ namespace KSU
         public virtual DbSet<Contents> Contents { get; set; }
         public virtual DbSet<ContentsDisposals> ContentsDisposals { get; set; }
         public virtual DbSet<ContentsReceipts> ContentsReceipts { get; set; }
+        public virtual DbSet<ContentsViewsResult> ContentsViewsResult { get; set; }
         public virtual DbSet<Disposals> Disposals { get; set; }
         public virtual DbSet<Enclosures> Enclosures { get; set; }
         public virtual DbSet<Place> Place { get; set; }

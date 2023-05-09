@@ -108,6 +108,9 @@
     <Compile Include="ContentsReceipts.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ContentsViewsResult.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Disposals.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -23,7 +23,7 @@ namespace KSU
     
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
-        public int NumberInOrder { get; set; }
+        public string NumberInOrder { get; set; }
         public int IdSourceOfReceipt { get; set; }
         public int IdSourceOfAcquisition { get; set; }
         public string NumberDocument { get; set; }

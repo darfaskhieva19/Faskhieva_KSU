@@ -118,7 +118,7 @@ namespace KSU
             }
 
             dpDate.SelectedDate = disposal.Date;
-            tbNumber.Text = Convert.ToString(disposal.ActNumber);
+            tbNumber.Text = disposal.ActNumber;
             tbTotalNumber.Text = Convert.ToString(disposal.TotalNumber);
             tbCost.Text = Convert.ToString(disposal.Cost);
 
@@ -208,7 +208,7 @@ namespace KSU
                         disposal = new Disposals();
                     }
                     disposal.Date = Convert.ToDateTime(dpDate.SelectedDate);
-                    disposal.ActNumber = Convert.ToInt32(tbNumber.Text);
+                    disposal.ActNumber = tbNumber.Text;
                     disposal.TotalNumber = Convert.ToInt32(tbTotalNumber.Text);
                     disposal.Cost = Convert.ToDouble(tbCost.Text);
                     disposal.IdPlace = cbPlace.SelectedIndex;
@@ -300,7 +300,14 @@ namespace KSU
                         }
                     }
                     DataBase.Base.SaveChanges();
-                    MessageBox.Show("Информация добавлена!");
+                    if (flag == false)
+                    {
+                        MessageBox.Show("Информация добавлена!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Информация изменена!");
+                    }                    
                     this.Close();
                 }                
             }

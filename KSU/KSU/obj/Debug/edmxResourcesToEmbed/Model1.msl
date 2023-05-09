@@ -29,6 +29,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ContentsViewsResult">
+      <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.ContentsViewsResult">
+        <MappingFragment StoreEntitySet="ContentsViewsResult">
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
+          <ScalarProperty Name="IdResults" ColumnName="IdResults" />
+          <ScalarProperty Name="IdContents" ColumnName="IdContents" />
+          <ScalarProperty Name="IdViews" ColumnName="IdViews" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Disposals">
       <EntityTypeMapping TypeName="П_Фасхиева_ДипломModel.Disposals">
         <MappingFragment StoreEntitySet="Disposals">
@@ -99,6 +110,15 @@
         <MappingFragment StoreEntitySet="Results">
           <ScalarProperty Name="IdEnclosures" ColumnName="IdEnclosures" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Periodich" ColumnName="Periodich" />
+          <ScalarProperty Name="Electronic" ColumnName="Electronic" />
+          <ScalarProperty Name="Printed" ColumnName="Printed" />
+          <ScalarProperty Name="ArtLiterature" ColumnName="ArtLiterature" />
+          <ScalarProperty Name="ReferenceLiterature" ColumnName="ReferenceLiterature" />
+          <ScalarProperty Name="MetodicalSocial" ColumnName="MetodicalSocial" />
+          <ScalarProperty Name="Humanitarian" ColumnName="Humanitarian" />
+          <ScalarProperty Name="Social" ColumnName="Social" />
+          <ScalarProperty Name="NaturalSocial" ColumnName="NaturalSocial" />
           <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
           <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
           <ScalarProperty Name="FundMovement" ColumnName="FundMovement" />

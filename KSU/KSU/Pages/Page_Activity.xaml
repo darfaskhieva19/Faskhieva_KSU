@@ -108,16 +108,16 @@
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMovement}"/>
                                     <DataGridTextColumn Header="Общее кол-во" Binding="{Binding Counts}"/>
                                     <DataGridTextColumn Header="Общая стоимость" Binding="{Binding Cost}"/>
-                                    <DataGridTextColumn Header="Естественные науки (2)"/>
-                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)"/>
-                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)"/>
-                                    <DataGridTextColumn Header="Методическая литература (74)"/>
-                                    <DataGridTextColumn Header="Справочная литература (9)"/>
-                                    <DataGridTextColumn Header="Художественная литература (84)"/>
-                                    <DataGridTextColumn Header="Печатные"/>
-                                    <DataGridTextColumn Header="Электронные"/>
-                                    <DataGridTextColumn Header="Периодические издания"/>
-                                    <DataGridTextColumn Header="Примечания" Width="Auto"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding Natural}"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialResult}"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanResult}"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalResult}"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceResult}"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtResult}"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedResult}"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicResult}"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichResult}"/>
+                                    <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesResult}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>

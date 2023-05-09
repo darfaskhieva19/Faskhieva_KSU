@@ -342,8 +342,7 @@ namespace KSU
         private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов 1 корпус
         {
             spRes.Visibility = Visibility.Visible;
-
-
+            
         }
 
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус
