@@ -15,7 +15,8 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Drawing;
-
+using System.Runtime.InteropServices.ComTypes;
+using System.Collections.Generic;
 
 namespace KSU
 {
@@ -24,7 +25,7 @@ namespace KSU
     /// </summary>
     public partial class Page_Activity : Page
     {
-        public int indexx;
+        Receipts receipts;
         public Page_Activity()
         {
             InitializeComponent();
@@ -336,23 +337,176 @@ namespace KSU
             }
         }
 
+        // Метод для формирования итогов по 1 корпусу
+        public string CountsReceipts()
+        {
+            int year = 2018;  // указываем год, за который хотим посчитать количество поступивших книг
+            DateTime startDate = new DateTime(year, 1, 1, 0, 0, 0);
+            DateTime endDate = new DateTime(year, 12, 31, 23, 59, 59);
+
+            int totalCount = 0; //Общее количество
+            double totalCost = 0; //Общая стоимость
+            int natural = 0;
+            int social = 0;
+            int human = 0;
+            int metodical = 0;
+            int reference = 0;
+            int art = 0;
+            int print = 0;
+            int electr = 0;
+            int period = 0;
+
+
+            var items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= startDate && x.Date <= endDate);
+            foreach (var item in items)
+            {
+                totalCount += item.TotalInstances;
+                totalCost += item.Cost;
+            }
+            int contentId = 1; // идентификатор книги, количество которой нужно подсчитать
+            foreach (var item in items)
+            {
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    {
+                        natural += (int)itemContent.Counts;
+                    }
+                }
+            }
+            int contentIdTwo = 2; // идентификатор книги, количество которой нужно подсчитать
+            foreach (var item in items)
+            {
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    {
+                        social += (int)itemContent.Counts;
+                    }
+                }
+            }
+
+            // По виду
+            int viewId = 1; // идентификатор книги, количество которой нужно подсчитать            
+            int viewIdTwo = 2;
+            int viewIdThree = 3;
+            foreach (var item in items)
+            {
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in viewsReceipts)
+                {
+                    if (itemContent.IdViews == viewId)
+                    {
+                        print += (int)itemContent.Counts;
+                    }
+                }
+            }
+
+            return totalCount + "по стоимости " + totalCost + "\n" + natural + "\n" + social;
+        }
+
+
         private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов 1 корпус
         {
             spRes.Visibility = Visibility.Visible;
-            indexx = 1;
+
+            //int year = 2018;  // указываем год, за который хотим посчитать количество поступивших книг
+            //DateTime startDate = new DateTime(year, 1, 1, 0, 0, 0);
+            //DateTime endDate = new DateTime(year, 12, 31, 23, 59, 59);         
+
+           
+
+            //var items = DataBase.Base.Receipts.Where(r => r.IdEnclosures == enclosureId && r.Date >= startDate && r.Date <= endDate);
+            //int sum = items.SelectMany(r => r.ContentsReceipts).Where(c => c.IdReceipts == r.Id && c.IdContent == contentId).Sum(c => c.Quantity);
+            //tbPost.Text = sum.ToString();
+
+
+            //var items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= startDate && x.Date <= endDate);
+            //foreach (var item in items)
+            //{
+            //    var itemContent = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == Id);
+            //    foreach(var itemContent2 in itemContent)
+            //    {
+            //        natural += itemContent2.NaturalS;
+            //    }              
+            //}
+
+            //var items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= startDate && x.Date <= endDate);
+            //foreach (var item in items)
+            //{
+            //    ContentsReceipts contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == items.Id);
+            //    var itemContent = contentsReceipts;
+            //    foreach (var itemContent2 in itemContent)
+            //    {
+            //        return itemContent2.CountsReceipts();
+            //    }
+            //}
+
+            //int year = 2018;// указываем год, за который хотим посчитать количество поступивших книг
+            //DateTime startDate = new DateTime(year, 1, 1, 0, 0, 0); // начало периода
+            //DateTime endDate = new DateTime(year, 12, 31, 23, 59, 59); // окончание периода
+            //int natural = 0;
+            //var items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= startDate && x.Date <= endDate);
+            //foreach (var item in items)
+            //{
+            //    var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+            //    foreach (var itemContent in contentsReceipts)
+            //    {
+            //        for (int i = 0; i < contentsReceipts.Count; i++)
+            //        {
+            //            if (contentsReceipts[i].IdContents == 1)
+            //            {
+            //                natural += (int)contentsReceipts[i].Counts;
+            //            }
+            //        }
+            //    }
+            //}
+
+            int year = 2018;// указываем год, за который хотим посчитать количество поступивших книг
+            DateTime startDate = new DateTime(year, 1, 1, 0, 0, 0); // начало периода
+            DateTime endDate = new DateTime(year, 12, 31, 23, 59, 59); // окончание периода
+            int print = 0;
+            int viewId = 1; // идентификатор книги, количество которой нужно подсчитать
+            var items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= startDate && x.Date <= endDate);
+            foreach (var item in items)
+            {
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in viewsReceipts)
+                {
+                    if (itemContent.IdViews == viewId)
+                    {
+                        print += (int)itemContent.Counts;
+                    }
+                }
+            }
+
+            //var items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= startDate && x.Date <= endDate);
+            //int sum = items.SelectMany(r => r.ContentsReceipts).Where(c => c.IdReceipts == items.Id).Sum(c => c.Quantity);
+            //tbPost.Text = sum.ToString();
+
+
+            tbPost.Text = "Поступило за 2018 год - " + print;
+            //Начало года
+            //tbPt.Text = "Состоит на 01.01.2018 г. " + 42655 + " " + 6281 + " " + 3304 + " " + 26145 + " " + 21 + " " + 218 + " " + 6686 + 42655;
+
+
+
+
         }
 
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус
         {
             spResultTwo.Visibility = Visibility.Visible;
-            indexx = 2;
+            //indexx = 2;
 
         }
 
         private void btnResultThree_Click(object sender, RoutedEventArgs e) // Формирование итогов 3 корпус
         {
             spResThree.Visibility = Visibility.Visible;
-            indexx = 3;
+            //indexx = 3;
 
         }
 
@@ -431,32 +585,32 @@ namespace KSU
                     }
 
                     //запись заголовков и данных третьего DataGrid
-                    for (int i = 0; i < dgResults.Columns.Count; i++)
-                    {
-                        var columnHeader = dgResults.Columns[i].Header.ToString();
-                        sheet3.Cells[1, i + 1].Value = columnHeader;
-                        sheet3.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
-                        sheet3.Cells.Style.Font.Size = 11; //размер шрифта                    
-                        sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-                        sheet3.Cells[1, i + 1].Style.WrapText = true;
-                        // Выравнивание по центру
-                        sheet3.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                        sheet3.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-                        sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-                    }
-                    for (int i = 0; i < dgResults.Items.Count; i++)
-                    {
-                        for (int j = 0; j < dgResults.Columns.Count; j++)
-                        {
-                            var value = dgResults.Columns[j].GetCellContent(dgResults.Items[i]) as TextBlock;
-                            if (value != null)
-                            {
-                                sheet3.Cells[i + 2, j + 1].Value = value.Text;
-                                sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-                                sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-                            }
-                        }
-                    }
+                    //for (int i = 0; i < dgResults.Columns.Count; i++)
+                    //{
+                    //    var columnHeader = dgResults.Columns[i].Header.ToString();
+                    //    sheet3.Cells[1, i + 1].Value = columnHeader;
+                    //    sheet3.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
+                    //    sheet3.Cells.Style.Font.Size = 11; //размер шрифта                    
+                    //    sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                    //    sheet3.Cells[1, i + 1].Style.WrapText = true;
+                    //    // Выравнивание по центру
+                    //    sheet3.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    //    sheet3.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    //    sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                    //}
+                    //for (int i = 0; i < dgResults.Items.Count; i++)
+                    //{
+                    //    for (int j = 0; j < dgResults.Columns.Count; j++)
+                    //    {
+                    //        var value = dgResults.Columns[j].GetCellContent(dgResults.Items[i]) as TextBlock;
+                    //        if (value != null)
+                    //        {
+                    //            sheet3.Cells[i + 2, j + 1].Value = value.Text;
+                    //            sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                    //            sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                    //        }
+                    //    }
+                    //}
                     //Сохраните созданный Excel - файл
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.FileName = "КСУ 1 корпус"; // Имя по умолчанию

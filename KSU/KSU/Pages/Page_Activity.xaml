@@ -117,7 +117,9 @@
                         <Button Grid.Row="5" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnResult_Click"/>
 
                         <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed">
-                            <DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <TextBlock Name="tbPt"/>
+                            <TextBlock Name="tbPost"/>
+                            <!--<DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMovement}"/>
                                     <DataGridTextColumn Header="Общее кол-во" Binding="{Binding Counts}"/>
@@ -133,7 +135,7 @@
                                     <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichResult}"/>
                                     <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesResult}"/>
                                 </DataGrid.Columns>
-                            </DataGrid>
+                            </DataGrid>-->
                         </StackPanel>
 
                     </Grid>
