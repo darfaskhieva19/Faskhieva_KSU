@@ -19,7 +19,7 @@ namespace KSU
             : base("name=Entities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -28,14 +28,12 @@ namespace KSU
         public virtual DbSet<Contents> Contents { get; set; }
         public virtual DbSet<ContentsDisposals> ContentsDisposals { get; set; }
         public virtual DbSet<ContentsReceipts> ContentsReceipts { get; set; }
-        public virtual DbSet<ContentsViewsResult> ContentsViewsResult { get; set; }
         public virtual DbSet<Disposals> Disposals { get; set; }
         public virtual DbSet<Enclosures> Enclosures { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Reason> Reason { get; set; }
         public virtual DbSet<ReasonDisposals> ReasonDisposals { get; set; }
         public virtual DbSet<Receipts> Receipts { get; set; }
-        public virtual DbSet<Results> Results { get; set; }
         public virtual DbSet<SourceOfAcquisition> SourceOfAcquisition { get; set; }
         public virtual DbSet<SourceOfReceipt> SourceOfReceipt { get; set; }
         public virtual DbSet<Views> Views { get; set; }

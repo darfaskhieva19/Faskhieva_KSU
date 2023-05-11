@@ -24,28 +24,25 @@ namespace KSU
     /// </summary>
     public partial class Page_Activity : Page
     {
+        public int indexx;
         public Page_Activity()
         {
             InitializeComponent();
             // 1 Корпус
             dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
             dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
-            dgResults.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 1).ToList();
-
+          
             // 2 Корпус
             dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
             dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
-            dgResultsTwo.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 2).ToList();
 
             // 3 Корпус
             dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
             dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
-            dgResultsThree.ItemsSource = DataBase.Base.Results.Where(z => z.IdEnclosures == 3).ToList();
 
             // Все корпуса
             dgReceiptResult.ItemsSource = DataBase.Base.Receipts.OrderBy(x => x.Date).ToList();
             dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.OrderBy(x => x.Date).ToList();
-            dgTotalResults.ItemsSource = DataBase.Base.Results.ToList();
 
             // Настройка темы по временам года
             DateTime today = DateTime.Today;
@@ -342,20 +339,20 @@ namespace KSU
         private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов 1 корпус
         {
             spRes.Visibility = Visibility.Visible;
-            
+            indexx = 1;
         }
 
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус
         {
             spResultTwo.Visibility = Visibility.Visible;
-
+            indexx = 2;
 
         }
 
         private void btnResultThree_Click(object sender, RoutedEventArgs e) // Формирование итогов 3 корпус
         {
             spResThree.Visibility = Visibility.Visible;
-
+            indexx = 3;
 
         }
 
@@ -797,6 +794,126 @@ namespace KSU
                     excelPackage.SaveAs(file);
                 }
                 MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void btnDeleteDisposals_Click(object sender, RoutedEventArgs e) // Удаление данных из таблицы Выбытие 1 корпуса
+        {
+            // Получаем выбранный элемент
+            var selectedItem = dgDisposals.SelectedItem as Disposals;
+            if (selectedItem != null)
+            {
+                // Спрашиваем у пользователя подтверждение удаления
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаляем элемент из источника данных
+                    DataBase.Base.Disposals.Remove(selectedItem);
+                    DataBase.Base.SaveChanges();
+
+                    // Обновляем содержимое DataGrid
+                    dgDisposals.ItemsSource = DataBase.Base.Disposals.ToList();
+                }
+            }
+        }
+
+        private void btnDeleteReceipts_Click(object sender, RoutedEventArgs e) // Удаление данных из таблицы Поступления 1 корпуса
+        {
+            // Получаем выбранный элемент
+            var selectedItem = dgReceipt.SelectedItem as Receipts;
+            if (selectedItem != null)
+            {
+                // Спрашиваем у пользователя подтверждение удаления
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаляем элемент из источника данных
+                    DataBase.Base.Receipts.Remove(selectedItem);
+                    DataBase.Base.SaveChanges();
+
+                    // Обновляем содержимое DataGrid
+                    dgReceipt.ItemsSource = DataBase.Base.Receipts.ToList();
+                }
+            }
+        }
+
+        private void btnDeleteReceiptsTwo_Click(object sender, RoutedEventArgs e) // Удаление данных из таблицы Поступления 2 корпуса
+        {
+            // Получаем выбранный элемент
+            var selectedItem = dgReceiptTwo.SelectedItem as Receipts;
+            if (selectedItem != null)
+            {
+                // Спрашиваем у пользователя подтверждение удаления
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаляем элемент из источника данных
+                    DataBase.Base.Receipts.Remove(selectedItem);
+                    DataBase.Base.SaveChanges();
+
+                    // Обновляем содержимое DataGrid
+                    dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.ToList();
+                }
+            }
+        }
+
+        private void btnDeleteReceiptsThree_Click(object sender, RoutedEventArgs e) // Удаление данных из таблицы Поступления 3 корпуса
+        {
+            // Получаем выбранный элемент
+            var selectedItem = dgReceiptThree.SelectedItem as Receipts;
+            if (selectedItem != null)
+            {
+                // Спрашиваем у пользователя подтверждение удаления
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаляем элемент из источника данных
+                    DataBase.Base.Receipts.Remove(selectedItem);
+                    DataBase.Base.SaveChanges();
+
+                    // Обновляем содержимое DataGrid
+                    dgReceiptThree.ItemsSource = DataBase.Base.Receipts.ToList();
+                }
+            }
+        }
+
+        private void btnDeleteDisposalsTwo_Click(object sender, RoutedEventArgs e) // Удаление данных из таблицы Выбытие 2 корпуса
+        {
+            // Получаем выбранный элемент
+            var selectedItem = dgDisposalsTwo.SelectedItem as Disposals;
+            if (selectedItem != null)
+            {
+                // Спрашиваем у пользователя подтверждение удаления
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаляем элемент из источника данных
+                    DataBase.Base.Disposals.Remove(selectedItem);
+                    DataBase.Base.SaveChanges();
+
+                    // Обновляем содержимое DataGrid
+                    dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.ToList();
+                }
+            }
+        }
+
+        private void btnDeleteDisposalsThree_Click(object sender, RoutedEventArgs e) // Удаление данных из таблицы Выбытие 3 корпуса
+        {
+            // Получаем выбранный элемент
+            var selectedItem = dgDisposalsThree.SelectedItem as Disposals;
+            if (selectedItem != null)
+            {
+                // Спрашиваем у пользователя подтверждение удаления
+                var result = MessageBox.Show($"Вы уверены, что хотите удалить запись?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаляем элемент из источника данных
+                    DataBase.Base.Disposals.Remove(selectedItem);
+                    DataBase.Base.SaveChanges();
+
+                    // Обновляем содержимое DataGrid
+                    dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.ToList();
+                }
             }
         }
     }

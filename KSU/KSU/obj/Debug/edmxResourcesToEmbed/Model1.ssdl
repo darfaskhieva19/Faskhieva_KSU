@@ -25,16 +25,6 @@
     <Property Name="IdReceipts" Type="int" Nullable="false" />
     <Property Name="Counts" Type="int" />
   </EntityType>
-  <EntityType Name="ContentsViewsResult">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdViews" Type="int" Nullable="false" />
-    <Property Name="IdContents" Type="int" Nullable="false" />
-    <Property Name="IdResults" Type="int" Nullable="false" />
-    <Property Name="Counts" Type="int" />
-  </EntityType>
   <EntityType Name="Disposals">
     <Key>
       <PropertyRef Name="Id" />
@@ -92,26 +82,6 @@
     <Property Name="Counts" Type="int" />
     <Property Name="Cost" Type="float" Nullable="false" />
     <Property Name="DocumentsNotAcceptedForBalance" Type="int" />
-    <Property Name="IdEnclosures" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Results">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FundMovement" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TotalCount" Type="int" />
-    <Property Name="TotalCost" Type="float" />
-    <Property Name="NaturalSocial" Type="int" />
-    <Property Name="Social" Type="int" />
-    <Property Name="Humanitarian" Type="int" />
-    <Property Name="MetodicalSocial" Type="int" />
-    <Property Name="ReferenceLiterature" Type="int" />
-    <Property Name="ArtLiterature" Type="int" />
-    <Property Name="Printed" Type="int" />
-    <Property Name="Electronic" Type="int" />
-    <Property Name="Periodich" Type="int" />
-    <Property Name="Notes" Type="nvarchar(max)" />
     <Property Name="IdEnclosures" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="SourceOfAcquisition">
@@ -201,18 +171,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ContentsViewsResult_Results">
-    <End Role="Results" Type="Self.Results" Multiplicity="1" />
-    <End Role="ContentsViewsResult" Type="Self.ContentsViewsResult" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Results">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ContentsViewsResult">
-        <PropertyRef Name="IdResults" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Disposals_Enclosures">
     <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
     <End Role="Disposals" Type="Self.Disposals" Multiplicity="*" />
@@ -297,18 +255,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Results_Enclosures1">
-    <End Role="Enclosures" Type="Self.Enclosures" Multiplicity="1" />
-    <End Role="Results" Type="Self.Results" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Enclosures">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Results">
-        <PropertyRef Name="IdEnclosures" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ViewsDisposals_DisposalsOne">
     <End Role="Disposals" Type="Self.Disposals" Multiplicity="1" />
     <End Role="ViewsDisposals" Type="Self.ViewsDisposals" Multiplicity="*" />
@@ -361,14 +307,12 @@
     <EntitySet Name="Contents" EntityType="Self.Contents" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContentsDisposals" EntityType="Self.ContentsDisposals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContentsReceipts" EntityType="Self.ContentsReceipts" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ContentsViewsResult" EntityType="Self.ContentsViewsResult" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Disposals" EntityType="Self.Disposals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Enclosures" EntityType="Self.Enclosures" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reason" EntityType="Self.Reason" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReasonDisposals" EntityType="Self.ReasonDisposals" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Receipts" EntityType="Self.Receipts" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SourceOfAcquisition" EntityType="Self.SourceOfAcquisition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SourceOfReceipt" EntityType="Self.SourceOfReceipt" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Views" EntityType="Self.Views" Schema="dbo" store:Type="Tables" />
@@ -389,10 +333,6 @@
     <AssociationSet Name="FK_ContentsReceipts_ReceiptsOne" Association="Self.FK_ContentsReceipts_ReceiptsOne">
       <End Role="Receipts" EntitySet="Receipts" />
       <End Role="ContentsReceipts" EntitySet="ContentsReceipts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ContentsViewsResult_Results" Association="Self.FK_ContentsViewsResult_Results">
-      <End Role="Results" EntitySet="Results" />
-      <End Role="ContentsViewsResult" EntitySet="ContentsViewsResult" />
     </AssociationSet>
     <AssociationSet Name="FK_Disposals_Enclosures" Association="Self.FK_Disposals_Enclosures">
       <End Role="Enclosures" EntitySet="Enclosures" />
@@ -421,10 +361,6 @@
     <AssociationSet Name="FK_ReceiptsOne_SourceOfReceipt" Association="Self.FK_ReceiptsOne_SourceOfReceipt">
       <End Role="SourceOfReceipt" EntitySet="SourceOfReceipt" />
       <End Role="Receipts" EntitySet="Receipts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Results_Enclosures1" Association="Self.FK_Results_Enclosures1">
-      <End Role="Enclosures" EntitySet="Enclosures" />
-      <End Role="Results" EntitySet="Results" />
     </AssociationSet>
     <AssociationSet Name="FK_ViewsDisposals_DisposalsOne" Association="Self.FK_ViewsDisposals_DisposalsOne">
       <End Role="Disposals" EntitySet="Disposals" />
