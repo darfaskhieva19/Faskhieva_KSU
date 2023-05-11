@@ -116,9 +116,36 @@
 
                         <Button Grid.Row="5" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnResult_Click"/>
 
-                        <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed">
-                            <TextBlock Name="tbPt"/>
+                        <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed" Background="White">
                             <TextBlock Name="tbPost"/>
+                            <TextBlock Name="tbPt"/>     
+                            
+                            
+                            <TextBlock Name="tbPos"/>
+                            <TextBlock Name="tbR19"/>
+                            <TextBlock Name="tbD19"/>
+                            
+                            
+                            <TextBlock Name="tbB20"/>
+                            <TextBlock Name="tbR20"/>
+                            <TextBlock Name="tbD20"/>
+                            
+                            
+                            <TextBlock Name="tbB21"/>
+                            <TextBlock Name="tbR1K21"/>
+                            <TextBlock Name="tbD1K21"/>
+
+                            <TextBlock Name="tbB21K2"/>
+                            <TextBlock Name="tbR2K21"/>
+                            <TextBlock Name="tbD2K21"/>
+
+                            <TextBlock Name="tbB21K3"/>
+                            <TextBlock Name="tbR3K21"/>
+                            <TextBlock Name="tbD3K21"/>
+
+                            <TextBlock Name="tbB21K4"/>
+                            <TextBlock Name="tbR4K21"/>
+                            <TextBlock Name="tbD4K21"/>
                             <!--<DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMovement}"/>
