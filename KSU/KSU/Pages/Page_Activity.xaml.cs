@@ -6,8 +6,11 @@ using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -1218,20 +1221,20 @@ namespace KSU
                 electrDis2021 = electrDis21K1 + electrDis21K2 + electrDis21K3 + electrDis21K4;
                 periodDis2021 = periodDis21K1 + periodDis21K2 + periodDis21K3 + periodDis21K4;
             }
-            string DisposalsResult = "Итого списано";
-            int totalCountResult = 0, naturalResult = 0, socialResult = 0, humanResult = 0, metResult = 0, referResult = 0, artResult = 0, printResult = 0, electrResult = 0, periodResult = 0;
-            double totalCostResult = 0;
-            totalCountResult = totalCountDis + totalCountDis20 + totalCountDis2021;
-            totalCostResult = totalCostDis + totalCostDis20 + totalCostDis2021;
-            naturalResult = naturalDis + naturalDis20 + natural2021;
-            socialResult = socialDis + socialDis20 + social2021;
-            humanResult = humanDis + humanDis20 + humanDis2021;
-            metResult = metodicalDis + metodicalDis20 + metodical2021;
-            referResult = referenceDis + referenceDis20 + referenceDis2021;
-            artResult = artDis + artDis20 + artDis2021;
-            printResult = printDis + printDis20 + print2021;
-            electrResult = electrDis + electrDis20 + electrDis2021;
-            periodResult = periodDis + periodDis20 + periodDis2021;
+            //string DisposalsResult = "Итого списано";
+            //int totalCountResult = 0, naturalResult = 0, socialResult = 0, humanResult = 0, metResult = 0, referResult = 0, artResult = 0, printResult = 0, electrResult = 0, periodResult = 0;
+            //double totalCostResult = 0;
+            //totalCountResult = totalCountDis + totalCountDis20 + totalCountDis2021;
+            //totalCostResult = totalCostDis + totalCostDis20 + totalCostDis2021;
+            //naturalResult = naturalDis + naturalDis20 + natural2021;
+            //socialResult = socialDis + socialDis20 + social2021;
+            //humanResult = humanDis + humanDis20 + humanDis2021;
+            //metResult = metodicalDis + metodicalDis20 + metodical2021;
+            //referResult = referenceDis + referenceDis20 + referenceDis2021;
+            //artResult = artDis + artDis20 + artDis2021;
+            //printResult = printDis + printDis20 + print2021;
+            //electrResult = electrDis + electrDis20 + electrDis2021;
+            //periodResult = periodDis + periodDis20 + periodDis2021;
 
             string BeginningOfTheYear22 = "Состоит на 01.01.2022 г.";
             int _countBeginingYear22 = 0, _costYear22 = 0, _naturalYear22 = 0, _socialYear22 = 0, _humanYear22 = 0, _metodicalYear22 = 0, _referenceYear22 = 0, _artYear22 = 0, _printYear22 = 0, _electrYear22 = 0, _periodYear22 = 0;
@@ -1260,7 +1263,7 @@ namespace KSU
             // Диапазон четвертого квартала
             DateTime Octobers = new DateTime(year22, 10, 1);
             DateTime Decembers = new DateTime(year22, 12, 31);
-            // Рассчитываем Выбытие 1 rd. 2022 ujl
+            // Рассчитываем Выбытие 1 кв. 2022 год
             string DisYear2022K1 = "Выбыло за 1 кв. 2022 г.";
             int totalCountDis22K1 = 0, naturalDis22K1 = 0, socialDis22K1 = 0, humanDis22K1 = 0, metodicalDis22K1 = 0, referenceDis22K1 = 0, artDis22K1 = 0, printDis22K1 = 0, electrDis22K1 = 0, periodDis22K1 = 0;
             double totalCostDis22K1 = 0; 
@@ -1303,6 +1306,135 @@ namespace KSU
                 }
             }
 
+            string BeginningOfTheYear22K2 = "Состоит на 2 кв. 2022 г.";
+            int _countBeginingYear22K2 = 0, _costYear22K2 = 0, _naturalYear22K2 = 0, _socialYear22K2 = 0, _humanYear22K2 = 0, _metodicalYear22K2 = 0, _referenceYear22K2 = 0, _artYear22K2 = 0, _printYear22K2 = 0, _electrYear22K2 = 0, _periodYear22K2 = 0;
+            //Подсчеты сколько состоит на 2 кв. 2022 года
+            _countBeginingYear22K2 = _countBeginingYear22 - totalCountDis22K1;
+            _naturalYear22K2 = _naturalYear22 - naturalDis22K1;
+            _socialYear22K2 = _socialYear22 - socialDis22K1;
+            _referenceYear22K2 = _referenceYear22 - referenceDis22K1;
+            _humanYear22K2 = _humanYear22 - humanDis22K1;
+            _metodicalYear22K2 = _metodicalYear22 - metodicalDis22K1;
+            _artYear22K2 = _artYear22 - artDis22K1;
+            _printYear22K2 = _printYear22 - printDis22K1;
+            _electrYear22K2 = _electrYear22 - electrDis22K1;
+            _periodYear22K2 = _periodYear22 - periodDis22K1;
+
+            // Рассчитываем Поступление 2022 год за 2 квартал
+            var items2022Q2 = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= Aprils && x.Date <= Junes);
+            string Title22 = "Поступило за 2 квартал " + year22 + " г.";
+            int totalCountQ22 = 0; //Общее количество
+            double totalCostQ22 = 0; //Общая стоимость
+            int naturalQ22 = 0; //Естественные науки
+            int socialQ22 = 0; //Технические науки
+            int humanQ22 = 0; //Гуманитарные науки
+            int metodicalQ22 = 0; //Методическая литература
+            int referenceQ22 = 0; //Справочная литература
+            int artQ22 = 0; //Художественная литература
+            int printQ22 = 0; //Печатный вид
+            int electrQ22 = 0; //Электронный вид
+            int periodQ22 = 0; //Периодические издания
+            foreach (var item in items2022Q2) { totalCountQ22 += item.TotalInstances; totalCostQ22 += item.Cost; }
+            foreach (var item in items2022Q2) //По содержанию
+            {
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { naturalQ22 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { socialQ22 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { humanQ22 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { metodicalQ22 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { referenceQ22 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { artQ22 += (int)itemContent.Counts; }
+                }
+            }
+            foreach (var item in items2022Q2) //По виду
+            {
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { printQ22 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { electrQ22 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { periodQ22 += (int)itemView.Counts; }
+                }
+            }
+
+            string BeginningOfTheYear23 = "Состоит на 01.01.2023 г.";
+            int _countBeginingYear23 = 0, _costYear23 = 0, _naturalYear23 = 0, _socialYear23 = 0, _humanYear23 = 0, _metodicalYear23 = 0, _referenceYear23 = 0, _artYear23 = 0, _printYear23 = 0, _electrYear23 = 0, _periodYear23 = 0;
+            //Подсчеты сколько состоит на 2 кв. 2022 года
+            _countBeginingYear23 = _countBeginingYear22K2 + totalCountQ22;
+            _naturalYear23 = _naturalYear22K2 + naturalQ22;
+            _socialYear23 = _socialYear22K2 + socialQ22;
+            _referenceYear23 = _referenceYear22K2 + referenceQ22;
+            _humanYear23 = _humanYear22K2 + humanQ22;
+            _metodicalYear23 = _metodicalYear22K2 + metodicalQ22;
+            _artYear23 = _artYear22K2 + artQ22;
+            _printYear23 = _printYear22K2 + printQ22;
+            _electrYear23 = _electrYear22K2 + electrQ22;
+            _periodYear23 = _periodYear22K2 + periodQ22;
+
+            int year23 = 2023;
+            // Диапазон первого квартала
+            DateTime Jans = new DateTime(year23, 1, 1);
+            DateTime Mars = new DateTime(year23, 3, 31);
+            // Диапазон второго квартала
+            DateTime Aprs = new DateTime(year23, 4, 1);
+            DateTime Juns = new DateTime(year23, 6, 30);
+            // Диапазон третьего квартала
+            DateTime Juls = new DateTime(year23, 7, 1);
+            DateTime Seps = new DateTime(year23, 9, 30);
+            // Диапазон четвертого квартала
+            DateTime Octs = new DateTime(year23, 10, 1);
+            DateTime Decs = new DateTime(year23, 12, 31);
+            // Рассчитываем Поступление 2023 год за 1 квартал
+            var items2023Q1 = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= Jans && x.Date <= Mars);
+            string Title23 = "Поступило за 1 квартал " + year22 + " г.";
+            int totalCountQ23 = 0, naturalQ23 = 0, socialQ23 = 0, humanQ23 = 0, metodicalQ23 = 0, referenceQ23 = 0, artQ23 = 0, printQ23 = 0, electrQ23 = 0, periodQ23 = 0;
+            double totalCostQ23 = 0;
+            foreach (var item in items2023Q1) { totalCountQ23 += item.TotalInstances; totalCostQ23 += item.Cost; }
+            foreach (var item in items2023Q1) //По содержанию
+            {
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { naturalQ23 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { socialQ23 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { humanQ23 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { metodicalQ23 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { referenceQ23 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { artQ23 += (int)itemContent.Counts; }
+                }
+            }
+            foreach (var item in items2023Q1) //По виду
+            {
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { printQ23 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { electrQ23 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { periodQ23 += (int)itemView.Counts; }
+                }
+            }
+
+
 
             tbPost.Text = BeginningOfTheYear + " - " + _countBegining + " " + _cost + " " + _natural + " " + _social + " " + _human + " " + _metodical + " " + _reference + " " + _art + " " + _print + " " + _electr + " " + _period;
             tbPt.Text = Year2018 + " - " + totalCount + " " + totalCost + " " + natural + " " + social + " " + human + " " + metodical + " " + reference + " " + art + " " + print + " " + electr + " " + period;           
@@ -1332,20 +1464,15 @@ namespace KSU
             tbReceipts21.Text = Title2021 + " - " + totalCount2021 + " " + totalCost2021 + " " + natural2021 + " " + social2021 + " " + human2021 + " " + metodical2021 + " " + reference2021 + " " + art2021 + " " + print2021 + " " + electr2021 + " " + period2021;
             tbDisposals21.Text = DisYear2021 + " - " + totalCountDis2021 + " " + totalCostDis2021 + " " + naturalDis2021 + " " + socialDis2021 + " " + humanDis2021 + " " + metodicalDis2021 + " " + referenceDis2021 + " " + artDis2021 + " " + printDis2021 + " " + electrDis2021 + " " + periodDis2021;
 
-            tbDisposalsResult.Text = DisposalsResult + " - " + totalCountResult + " " + totalCostResult + " " + naturalResult + " " + socialResult + " " + humanResult + " " + metResult + " " + referResult + " " + artResult + " " + printResult + " " + electrResult + " " + periodResult;
+            //tbDisposalsResult.Text = DisposalsResult + " - " + totalCountResult + " " + totalCostResult + " " + naturalResult + " " + socialResult + " " + humanResult + " " + metResult + " " + referResult + " " + artResult + " " + printResult + " " + electrResult + " " + periodResult;
 
             tbB1K22.Text = BeginningOfTheYear22 + " - " + _countBeginingYear22 + " " + _costYear22 + " " + _naturalYear22 + " " + _socialYear22 + " " + _humanYear22 + " " + _metodicalYear22 + " " + _referenceYear22 + " " + _artYear22 + " " + _printYear22 + " " + _electrYear22 + " " + _periodYear22; //на начало года 
             tbD1K22.Text = DisYear2022K1 + " - " + totalCountDis22K1 + " " + totalCostDis22K1 + " " + naturalDis22K1 + " " + socialDis22K1 + " " + humanDis22K1 + " " + metodicalDis22K1 + " " + referenceDis22K1 + " " + artDis22K1 + " " + printDis22K1 + " " + electrDis22K1 + " " + periodDis22K1;
+            tbB2K22.Text = BeginningOfTheYear22K2 + " - " + _countBeginingYear22K2 + " " + _costYear22K2 + " " + _naturalYear22K2 + " " + _socialYear22K2 + " " + _humanYear22K2 + " " + _metodicalYear22K2 + " " + _referenceYear22K2 + " " + _artYear22K2 + " " + _printYear22K2 + " " + _electrYear22K2 + " " + _periodYear22K2; //на начало года 
+            tbR2K22.Text = Title22 + " - " + totalCountQ22 + " " + totalCostQ22 + " " + naturalQ22 + " " + socialQ22 + " " + humanQ22 + " " + metodicalQ22 + " " + referenceQ22 + " " + artQ22 + " " + printQ22 + " " + electrQ22 + " " + periodQ22;
 
-
-
-            //< TextBlock Name = "tbB1K22" />
-            //                   < TextBlock Name = "tbD1K22" />
-            //                   < TextBlock Name = "tbB2K22" />
-            //                   < TextBlock Name = "tbR2K22" />
-            //                   < TextBlock />
-            //                   < TextBlock Name = "tbB23" />
-            //                   < TextBlock Name = "tbR1K23" />
+            tbB23.Text = BeginningOfTheYear23 + " - " + _countBeginingYear23 + " " + _costYear23 + " " + _naturalYear23 + " " + _socialYear23 + " " + _humanYear23 + " " + _metodicalYear23 + " " + _referenceYear23 + " " + _artYear23 + " " + _printYear23 + " " + _electrYear23 + " " + _periodYear23; //на начало года 
+            tbR1K23.Text = Title23 + " - " + totalCountQ23 + " " + totalCostQ23 + " " + naturalQ23 + " " + socialQ23 + " " + humanQ23 + " " + metodicalQ23 + " " + referenceQ23 + " " + artQ23 + " " + printQ23 + " " + electrQ23 + " " + periodQ23;
 
 
 
@@ -1354,7 +1481,148 @@ namespace KSU
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус
         {
             spResultTwo.Visibility = Visibility.Visible;
-            //indexx = 2;
+            string TwoTitle = "Состоит на 01.01.2018 г.";
+            int _twocount = 17764, _twonatural = 2621, _twosocial = 1144, _twohuman = 9211, _twometodical = 10, _tworeference = 115, _twoart = 4663, _twoprint = 17764, _twoelectr = 0, _twoperiod = 0;
+            double _twocost = 0;
+
+            // идентификатор книг по содержанию, количество которой нужно подсчитать
+            int contentId = 1;
+            int contentIdTwo = 2;
+            int contentIdThree = 3;
+            int contentIdFour = 4;
+            int contentIdFive = 5;
+            int contentIdSix = 6;
+            // идентификатор книг по виду, количество которой нужно подсчитать 
+            int viewId = 1;
+            int viewIdTwo = 2;
+            int viewIdThree = 3;
+
+            int _year = 2018;
+            DateTime _startDate = new DateTime(_year, 1, 1);
+            DateTime _endDate = new DateTime(_year, 12, 31);
+            // Рассчитываем Поступление за 2018 год 
+            var _item = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= _startDate && x.Date <= _endDate);
+            string _title = "Поступило за 2018 г.";
+            int _totalCount = 0, _natural18 = 0, _social18 = 0, _human18 = 0, _metodical18 = 0, _reference18 = 0, _art18 = 0, _print18 = 0, _electr18 = 0, _period18 = 0;
+            double _totalCost = 0;
+            foreach (var item in _item) { _totalCount += item.TotalInstances; _totalCost += item.Cost; }
+            foreach (var item in _item) //По содержанию
+            {
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _natural18 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _social18 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _human18 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _metodical18 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _reference18 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _art18 += (int)itemContent.Counts; }
+                }
+            }
+            foreach (var item in _item) //По виду
+            {
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _print18 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _electr18 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _period18 += (int)itemView.Counts; }
+                }
+            }
+            //Состоит на начало 2019 года
+            string BeginningOfTheYear19 = "Состоит на 01.01.2019-20 г.";
+            int _countBeginingYear19 = 0, _costYear19 = 0, _naturalYear19 = 0, _socialYear19 = 0, _humanYear19 = 0, _metodicalYear19 = 0, _referenceYear19 = 0, _artYear19 = 0, _printYear19 = 0, _electrYear19 = 0, _periodYear19 = 0;
+            //Подсчеты сколько состоит на начало 2019 года
+            _countBeginingYear19 = _twocount + _totalCount; 
+            _naturalYear19 = _twonatural + _natural18;
+            _socialYear19 = _twosocial + _social18;
+            _referenceYear19 = _tworeference + _reference18;
+            _humanYear19 = _twohuman + _human18;
+            _metodicalYear19 = _twometodical + _metodical18;
+            _artYear19 = _twoart + _art18;
+            _printYear19 = _twoprint + _print18;
+            _electrYear19 = _twoelectr + _electr18;
+            _periodYear19 = _twoperiod + _period18;
+
+            int _year20 = 2020;
+            DateTime _startDate20 = new DateTime(_year, 1, 1);
+            DateTime _endDate20 = new DateTime(_year, 12, 31);
+            // Рассчитываем Поступление за 2018 год 
+            var _items = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1 && x.Date >= _startDate20 && x.Date <= _endDate20);
+            string _title20 = "Поступило за 2020 г.";
+            int _totalCount20 = 0, _natural20 = 0, _social20 = 0, _human20 = 0, _metodical20 = 0, _reference20 = 0, _art20 = 0, _print20 = 0, _electr20 = 0, _period20 = 0;
+            double _totalCost20 = 0;
+            foreach (var item in _items) { _totalCount20 += item.TotalInstances; _totalCost20 += item.Cost; }
+            foreach (var item in _items) //По содержанию
+            {
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _natural20 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _social20 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _human20 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _metodical20 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _reference20 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _art20 += (int)itemContent.Counts; }
+                }
+            }
+            foreach (var item in _items) //По виду
+            {
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _print20 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _electr20 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _period20 += (int)itemView.Counts; }
+                }
+            }
+            //Состоит на начало 2021 года
+            string BeginningOfTheYear21 = "Состоит на 01.01.2021 г.";
+            int _countBeginingYear21 = 0, _costYear21 = 0, _naturalYear21 = 0, _socialYear21 = 0, _humanYear21 = 0, _metodicalYear21 = 0, _referenceYear21 = 0, _artYear21 = 0, _printYear21 = 0, _electrYear21 = 0, _periodYear21 = 0;
+            //Подсчеты сколько состоит на начало 2019 года
+            _countBeginingYear21 = _countBeginingYear19 + _totalCount20;
+            _naturalYear21 = _naturalYear19 + _natural20;
+            _socialYear21 = _socialYear19 + _social20;
+            _referenceYear21 = _referenceYear19 + _reference20;
+            _humanYear21 = _humanYear19 + _human20;
+            _metodicalYear21 = _metodicalYear19 + _metodical20;
+            _artYear21 = _artYear19 + _art20;
+            _printYear21 = _printYear19 + _print20;
+            _electrYear21 = _electrYear19 + _electr20;
+            _periodYear21 = _periodYear19 + _period20;
+
+            //Состоит на начало 2021 года
+            string _BeginningOfTheYear21 = "Состоит на 1 кв. 2021 г.";
+            //int _countBeginingYear21Q1 = 0, _costYear21 = 0, _naturalYear21 = 0, _socialYear21 = 0, _humanYear21 = 0, _metodicalYear21 = 0, _referenceYear21 = 0, _artYear21 = 0, _printYear21 = 0, _electrYear21 = 0, _periodYear21 = 0;
+            //Подсчеты сколько состоит на начало 2019 года
+            //_countBeginingYear21 = _countBeginingYear19 + _totalCount20;
+            //_naturalYear21 = _naturalYear19 + _natural20;
+            //_socialYear21 = _socialYear19 + _social20;
+            //_referenceYear21 = _referenceYear19 + _reference20;
+            //_humanYear21 = _humanYear19 + _human20;
+            //_metodicalYear21 = _metodicalYear19 + _metodical20;
+            //_artYear21 = _artYear19 + _art20;
+            //_printYear21 = _printYear19 + _print20;
+            //_electrYear21 = _electrYear19 + _electr20;
+            //_periodYear21 = _periodYear19 + _period20;
 
         }
 
