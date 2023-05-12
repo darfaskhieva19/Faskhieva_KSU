@@ -129,23 +129,35 @@
                             <TextBlock Name="tbB20"/>
                             <TextBlock Name="tbR20"/>
                             <TextBlock Name="tbD20"/>
-                            
+                            <TextBlock/>
                             
                             <TextBlock Name="tbB21"/>
                             <TextBlock Name="tbR1K21"/>
                             <TextBlock Name="tbD1K21"/>
-
+                            <TextBlock/>
                             <TextBlock Name="tbB21K2"/>
                             <TextBlock Name="tbR2K21"/>
                             <TextBlock Name="tbD2K21"/>
-
+                            <TextBlock />
                             <TextBlock Name="tbB21K3"/>
                             <TextBlock Name="tbR3K21"/>
                             <TextBlock Name="tbD3K21"/>
-
+                            <TextBlock/>
                             <TextBlock Name="tbB21K4"/>
                             <TextBlock Name="tbR4K21"/>
                             <TextBlock Name="tbD4K21"/>
+                            <TextBlock Name="tbReceipts21"/>
+                            <TextBlock Name="tbDisposals21"/>
+                            <TextBlock Name="tbDisposalsResult"/>
+                            <TextBlock />
+                            <TextBlock Name="tbB1K22"/>
+                            <TextBlock Name="tbD1K22"/>
+                            <TextBlock Name="tbB2K22"/>
+                            <TextBlock Name="tbR2K22"/>
+                            <TextBlock />
+                            <TextBlock Name="tbB23"/>
+                            <TextBlock Name="tbR1K23"/>
+                            
                             <!--<DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMovement}"/>
