@@ -100,8 +100,9 @@
     <Compile Include="Classes\ClassReceiptsOne.cs" />
     <Compile Include="Classes\ClassReason.cs" />
     <Compile Include="Classes\ClassViews.cs" />
-    <Compile Include="Classes\ClassResults.cs" />
     <Compile Include="ClassResultsOne.cs" />
+    <Compile Include="ClassResultThree.cs" />
+    <Compile Include="ClassResultTwo.cs" />
     <Compile Include="Contents.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

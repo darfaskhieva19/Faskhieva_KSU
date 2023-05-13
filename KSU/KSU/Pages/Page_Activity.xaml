@@ -240,25 +240,23 @@
                         <Button Grid.Row="5" Name="btnResultTwo" Content="Сформировать итоги" Click="btnResultTwo_Click" HorizontalAlignment="Left" Style="{DynamicResource Button}"/>
 
                         <StackPanel Grid.Row="6" Name="spResultTwo" Visibility="Collapsed" Background="White">
-                            <TextBlock Name="tbTwoBen"/>
-                            <TextBlock Name="tbTwoReceipts"/>
-                            <TextBlock/>
-                            <TextBlock Name="tbTwoBen19"/>
-                            <TextBlock Name="tbTwoReceipts20"/>
-                            <TextBlock Name="tbD20year"/>
-                            <TextBlock/>
-                            <TextBlock Name="tbTwoBen21"/>
-                            <TextBlock Name="tbTwoBen21Q1"/>
-                            <TextBlock Name="tbRK21"/>
-                            <TextBlock/>
-                            <TextBlock Name="tbBK3"/>
-                            <TextBlock Name="tbR421"/>
-                            <TextBlock Name="tbD421"/>
-                            <TextBlock Name="tbReceipts"/>
-                            <TextBlock Name="tbDisposals"/>
-                            <TextBlock/>
-                            <TextBlock Name="tbB2022"/>
-
+                            <DataGrid Name="dgResultsTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentTwo}"/>
+                                        <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalCountTwo}"/>
+                                        <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalCostTwo}"/>
+                                        <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocialTwo}"/>
+                                        <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialTwo}"/>
+                                        <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianTwo}"/>
+                                        <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalTwo}"/>
+                                        <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceTwo}"/>
+                                        <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtTwo}"/>
+                                        <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedTwo}"/>
+                                        <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicTwo}"/>
+                                        <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichTwo}"/>
+                                    <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesTwo}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </StackPanel>
                         
                     </Grid>
@@ -364,7 +362,23 @@
                         <Button Grid.Row="5" Name="btnResultThree" Content="Сформировать итоги" HorizontalAlignment="Left" Style="{DynamicResource Button}" Click="btnResultThree_Click"/>
 
                         <StackPanel Grid.Row="6" Name="spResThree" Visibility="Collapsed">
-                            
+                            <DataGrid Name="dgResultsThree" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentThree}"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalCountThree}"/>
+                                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalCostThree}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocialThree}"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialThree}"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianThree}"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalThree}"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceThree}"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtThree}"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedThree}"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicThree}"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichThree}"/>
+                                    <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesThree}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>
