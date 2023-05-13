@@ -30,7 +30,7 @@
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock MouseDown="tbExport_MouseDown" Name="tbExport" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <TextBlock MouseDown="tbExport_MouseDown" Name="tbExport" Text="Экспортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
 
                         <Grid Grid.Row="3">
                             <Grid.ColumnDefinitions>
@@ -158,23 +158,7 @@
                             <TextBlock Name="tbB23"/>
                             <TextBlock Name="tbR1K23"/>
                             
-                            <!--<DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMovement}"/>
-                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding Counts}"/>
-                                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding Cost}"/>
-                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding Natural}"/>
-                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialResult}"/>
-                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanResult}"/>
-                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalResult}"/>
-                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceResult}"/>
-                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtResult}"/>
-                                    <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedResult}"/>
-                                    <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicResult}"/>
-                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichResult}"/>
-                                    <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesResult}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>-->
+                           
                         </StackPanel>
 
                     </Grid>
@@ -195,7 +179,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock MouseDown="tbExportTwo_MouseDown" Name="tbExportTwo" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <TextBlock MouseDown="tbExportTwo_MouseDown" Name="tbExportTwo" Text="Экспортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -280,25 +264,28 @@
 
                         <Button Grid.Row="5" Name="btnResultTwo" Content="Сформировать итоги" Click="btnResultTwo_Click" HorizontalAlignment="Left" Style="{DynamicResource Button}"/>
 
-                        <StackPanel Grid.Row="6" Name="spResultTwo" Visibility="Collapsed">
-                            <DataGrid Name="dgResultsTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Движение фонда" Width="Auto"/>
-                                    <DataGridTextColumn Header="Общее кол-во"/>
-                                    <DataGridTextColumn Header="Общая стоимость"/>
-                                    <DataGridTextColumn Header="Естественные науки (2)"/>
-                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)"/>
-                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)"/>
-                                    <DataGridTextColumn Header="Методическая литература (74)"/>
-                                    <DataGridTextColumn Header="Справочная литература (9)"/>
-                                    <DataGridTextColumn Header="Художественная литература (84)"/>
-                                    <DataGridTextColumn Header="Печатные"/>
-                                    <DataGridTextColumn Header="Электронные"/>
-                                    <DataGridTextColumn Header="Периодические издания"/>
-                                    <DataGridTextColumn Header="Примечания" Width="Auto"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                        <StackPanel Grid.Row="6" Name="spResultTwo" Visibility="Collapsed" Background="White">
+                            <TextBlock Name="tbTwoBen"/>
+                            <TextBlock Name="tbTwoReceipts"/>
+                            <TextBlock/>
+                            <TextBlock Name="tbTwoBen19"/>
+                            <TextBlock Name="tbTwoReceipts20"/>
+                            <TextBlock Name="tbD20year"/>
+                            <TextBlock/>
+                            <TextBlock Name="tbTwoBen21"/>
+                            <TextBlock Name="tbTwoBen21Q1"/>
+                            <TextBlock Name="tbRK21"/>
+                            <TextBlock/>
+                            <TextBlock Name="tbBK3"/>
+                            <TextBlock Name="tbR421"/>
+                            <TextBlock Name="tbD421"/>
+                            <TextBlock Name="tbReceipts"/>
+                            <TextBlock Name="tbDisposals"/>
+                            <TextBlock/>
+                            <TextBlock Name="tbB2022"/>
+
                         </StackPanel>
+                        
                     </Grid>
                 </ScrollViewer>
             </TabItem>
@@ -316,7 +303,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock MouseDown="tbExportThree_MouseDown" Name="tbExportThree" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <TextBlock MouseDown="tbExportThree_MouseDown" Name="tbExportThree" Text="Экспортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -438,7 +425,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock MouseDown="tbExportResults_MouseDown" Name="tbExportResults" Text="Эксортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
+                        <TextBlock MouseDown="tbExportResults_MouseDown" Name="tbExportResults" Text="Экспортировать в Excel" Grid.Row="0" Style="{DynamicResource ThemeExportExcel}"/>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
