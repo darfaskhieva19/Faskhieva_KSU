@@ -117,48 +117,23 @@
                         <Button Grid.Row="5" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnResult_Click"/>
 
                         <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed" Background="White">
-                            <TextBlock Name="tbPost"/>
-                            <TextBlock Name="tbPt"/>     
-                            
-                            
-                            <TextBlock Name="tbPos"/>
-                            <TextBlock Name="tbR19"/>
-                            <TextBlock Name="tbD19"/>
-                            
-                            
-                            <TextBlock Name="tbB20"/>
-                            <TextBlock Name="tbR20"/>
-                            <TextBlock Name="tbD20"/>
-                            <TextBlock/>
-                            
-                            <TextBlock Name="tbB21"/>
-                            <TextBlock Name="tbR1K21"/>
-                            <TextBlock Name="tbD1K21"/>
-                            <TextBlock/>
-                            <TextBlock Name="tbB21K2"/>
-                            <TextBlock Name="tbR2K21"/>
-                            <TextBlock Name="tbD2K21"/>
-                            <TextBlock />
-                            <TextBlock Name="tbB21K3"/>
-                            <TextBlock Name="tbR3K21"/>
-                            <TextBlock Name="tbD3K21"/>
-                            <TextBlock/>
-                            <TextBlock Name="tbB21K4"/>
-                            <TextBlock Name="tbR4K21"/>
-                            <TextBlock Name="tbD4K21"/>
-                            <TextBlock Name="tbReceipts21"/>
-                            <TextBlock Name="tbDisposals21"/>
-                            <TextBlock Name="tbDisposalsResult"/>
-                            <TextBlock />
-                            <TextBlock Name="tbB1K22"/>
-                            <TextBlock Name="tbD1K22"/>
-                            <TextBlock Name="tbB2K22"/>
-                            <TextBlock Name="tbR2K22"/>
-                            <TextBlock />
-                            <TextBlock Name="tbB23"/>
-                            <TextBlock Name="tbR1K23"/>
-                            
-                           
+                            <DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentOne}"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalCountOne}"/>
+                                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalCostOne}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocialOne}"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialOne}"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianOne}"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalOne}"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceOne}"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtOne}"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedOne}"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicOne}"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichOne}"/>
+                                    <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesOne}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </StackPanel>
 
                     </Grid>
@@ -389,23 +364,7 @@
                         <Button Grid.Row="5" Name="btnResultThree" Content="Сформировать итоги" HorizontalAlignment="Left" Style="{DynamicResource Button}" Click="btnResultThree_Click"/>
 
                         <StackPanel Grid.Row="6" Name="spResThree" Visibility="Collapsed">
-                            <DataGrid Name="dgResultsThree" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Движение фонда" Width="Auto"/>
-                                    <DataGridTextColumn Header="Общее кол-во"/>
-                                    <DataGridTextColumn Header="Общая стоимость"/>
-                                    <DataGridTextColumn Header="Естественные науки (2)"/>
-                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)"/>
-                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)"/>
-                                    <DataGridTextColumn Header="Методическая литература (74)"/>
-                                    <DataGridTextColumn Header="Справочная литература (9)"/>
-                                    <DataGridTextColumn Header="Художественная литература (84)"/>
-                                    <DataGridTextColumn Header="Печатные"/>
-                                    <DataGridTextColumn Header="Электронные"/>
-                                    <DataGridTextColumn Header="Периодические издания"/>
-                                    <DataGridTextColumn Header="Примечания" Width="Auto"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                            
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>

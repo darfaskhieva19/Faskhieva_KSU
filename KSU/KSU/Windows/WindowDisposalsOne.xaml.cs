@@ -28,7 +28,8 @@ namespace KSU
             InitializeComponent();
             listFild();
 
-            foreach (Contents Cn in lbContent.Items)
+            //Очищаем листы
+            foreach (Contents Cn in lbContent.Items) 
             {
                 Cn.QM = 0;
             }
