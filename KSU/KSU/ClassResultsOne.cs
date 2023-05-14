@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows;
 using System.Net.NetworkInformation;
+using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace KSU
 {
@@ -766,6 +768,9 @@ namespace KSU
 
             //Состоит 01.01.2024
 
+            
+
+            
 
 
             // В конструкторе заполняем список данных
