@@ -22,6 +22,7 @@ namespace KSU
         public WindowAddSourceOfReceipts()
         {
             InitializeComponent();
+            tbSourceOfReceipt.Focus();
         }
 
         private void btnCanel_Click(object sender, RoutedEventArgs e)
