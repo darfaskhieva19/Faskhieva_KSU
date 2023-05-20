@@ -15,7 +15,9 @@ namespace KSU
     public class ClassResultsOne
     {
         public List<Results> DataList { get; }
-
+        /// <summary>
+        /// Для подсчетов итогов по 1 корпусу
+        /// </summary>
         public ClassResultsOne()
         {
             int _countBegining = 42655, _cost = 0, _natural = 6281, _social = 3304, _human = 26145, _metodical = 21, _reference = 218, _art = 6686, _print = 42655, _electr = 0, _period = 0;

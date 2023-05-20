@@ -468,19 +468,19 @@
                         <StackPanel Grid.Row="6" Name="spResults" Visibility="Collapsed">
                             <DataGrid Name="dgTotalResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Движение фонда" Width="Auto"/>
-                                    <DataGridTextColumn Header="Общее кол-во"/>
-                                    <DataGridTextColumn Header="Общая стоимость"/>
-                                    <DataGridTextColumn Header="Естественные науки (2)"/>
-                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)"/>
-                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)"/>
-                                    <DataGridTextColumn Header="Методическая литература (74)"/>
-                                    <DataGridTextColumn Header="Справочная литература (9)"/>
-                                    <DataGridTextColumn Header="Художественная литература (84)"/>
-                                    <DataGridTextColumn Header="Печатные"/>
-                                    <DataGridTextColumn Header="Электронные"/>
-                                    <DataGridTextColumn Header="Периодические издания"/>
-                                    <DataGridTextColumn Header="Примечания" Width="Auto"/>
+                                    <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentTotal}"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalCount}"/>
+                                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalCost}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocialTotal}"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialTotal}"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianTotal}"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalTotal}"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceTotal}"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtTotal}"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedTotal}"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicTotal}"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichTotal}"/>
+                                    <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesTotal}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>

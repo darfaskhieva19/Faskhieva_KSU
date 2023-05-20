@@ -25,3 +25,9 @@ C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\obj\Debug\UnitTestP
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\obj\Debug\UnitTestProject.csproj.CopyComplete
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\obj\Debug\UnitTestProject.dll
 C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\obj\Debug\UnitTestProject.pdb
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\bin\Debug\EPPlus.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\bin\Debug\EPPlus.xml
+C:\Users\User\source\repos\Faskhieva_KSU\KSU\UnitTestProject\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
