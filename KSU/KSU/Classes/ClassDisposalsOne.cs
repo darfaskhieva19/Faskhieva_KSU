@@ -339,12 +339,5 @@ namespace KSU
                 return str;
             }
         }
-        //public SolidColorBrush Colors
-        //{
-        //    get
-        //    {
-
-        //    }
-        //}
     }
 }

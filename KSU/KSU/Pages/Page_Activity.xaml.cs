@@ -18,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using static KSU.ClassResultThree;
 using static KSU.ClassResultTwo;
+using static KSU.ClassTotalResultDisposals;
 using static KSU.ClassTotalResults;
 using static OfficeOpenXml.ExcelErrorValue;
 
@@ -66,7 +67,12 @@ namespace KSU
 
             // Все корпуса
             dgReceiptResult.ItemsSource = DataBase.Base.Receipts.OrderBy(x => x.Date).ToList();
-            dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.OrderBy(x => x.Date).ToList();
+            //dgDisposalsResults.ItemsSource = DataBase.Base.Disposals.OrderBy(x => x.Date).ToList();
+
+            //Вывод Выбытие общие итоги
+            ClassTotalResultDisposals resultDisposals = new ClassTotalResultDisposals();
+            ObservableCollection<TotalResultDisposals> disposals = new ObservableCollection<TotalResultDisposals>(resultDisposals.DataList);
+            dgDisposalsResults.ItemsSource = disposals.OrderBy(x => x.DateDisposals);
 
             // Создаем экземпляр класса, который содержит список объектов, которые будут отображаться в DataGrid
             ClassTotalResults dataResult = new ClassTotalResults();

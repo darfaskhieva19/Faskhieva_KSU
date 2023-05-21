@@ -105,7 +105,7 @@
     <Compile Include="Classes\ClassResultTwo.cs" />
     <Compile Include="Classes\ClassTotalResultDisposals.cs" />
     <Compile Include="Classes\ClassTotalResultReceipts.cs" />
-    <Compile Include="ClassTotalResults.cs" />
+    <Compile Include="Classes\ClassTotalResults.cs" />
     <Compile Include="Contents.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
