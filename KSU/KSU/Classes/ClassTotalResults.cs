@@ -4,7 +4,12 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows;
 using static KSU.ClassResultThree;
+using static KSU.ClassTotalResultDisposals;
+using System.Collections.ObjectModel;
+using static KSU.ClassTotalResultReceipts;
 
 namespace KSU
 {
@@ -668,7 +673,7 @@ namespace KSU
             string titleDis2022 = "Выбыло за " + _year22 + " г.";
             int totCount2022 = 0, nat2022 = 0, soc2022 = 0, hum2022 = 0, met2022 = 0, refs2022 = 0, art2022 = 0, prt2022 = 0, el2022 = 0, per2022 = 0;
             double cost2022 = 0;
-            var _it2022 = DataBase.Base.Disposals.Where(x => x.Date >= startDate2021 && x.Date <= endDate2021);
+            var _it2022 = DataBase.Base.Disposals.Where(x => x.Date >= startDate2022 && x.Date <= endDate2022);
             foreach (var item in _it2022)
             {
                 totCount2022 = totCount22 + totCount22Q2;
@@ -739,14 +744,628 @@ namespace KSU
             int _count23Q2 = _count23 + _totCount23, _natural23Q2 = _natural23 + _nat23, _social23Q2 = _social23 + _soc23, _human23Q2 = _human23 + _hum23, _metodical23Q2 = _metodical23 + _met23, _reference23Q2 = _reference23 + _ref23, _art23Q2 = _art23 + _arts23, _print23Q2 = _print23 + _prt23, _electr23Q2 = _electr23 + _el23, _period23Q2 = _period23 + _per23;
             double _cost23Q2 = 0;
 
+            string _titl23Q2 = "Поступило за 2 кв. " + _year23 + " г.";
+            var _item23Q2 = DataBase.Base.Receipts.Where(x => x.Date >= Aprl && x.Date <= Jun);
+            int _totCount23Q2 = 0, _nat23Q2 = 0, _soc23Q2 = 0, _hum23Q2 = 0, _met23Q2 = 0, _ref23Q2 = 0, _arts23Q2 = 0, _prt23Q2 = 0, _el23Q2 = 0, _per23Q2 = 0;
+            double _totCost23Q2 = 0;
+            foreach (var item in _item23Q2)
+            {
+                _totCount23Q2 += item.TotalInstances;
+                _totCost23Q2 += item.Cost;
 
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts23Q2 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt23Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el23Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per23Q2 += (int)itemView.Counts; }
+                }
+            }
+            string title23Q2 = "Выбыло за 2 кв. " + _year23 + " г.";
+            var _it23Q2 = DataBase.Base.Disposals.Where(x => x.Date >= Aprl && x.Date <= Jun);
+            int totCount23Q2 = 0, nat23Q2 = 0, soc23Q2 = 0, hum23Q2 = 0, met23Q2 = 0, refs23Q2 = 0, art23Q2 = 0, prt23Q2 = 0, el23Q2 = 0, per23Q2 = 0;
+            double cost23Q2 = 0;
+            foreach (var item in _it23Q2)
+            {
+                totCount23Q2 += item.TotalNumber;
+                cost23Q2 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs23Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art23Q2 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt23Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el23Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per23Q2 += (int)itemView.Counts; }
+                }
+            }
+            string _title23Q3 = "Состоит на 3 кв. 01.01." + _year23 + " г.";
+            int _count23Q3 = _count23Q2 + _totCount23Q2 - totCount23Q2, _natural23Q3 = _natural23Q2 + _nat23Q2 - nat23Q2, _social23Q3 = _social23Q2 + _soc23Q2 - soc23Q2, _human23Q3 = _human23Q2 + _hum23Q2 - hum23Q2, _metodical23Q3 = _metodical23Q2 + _met23Q2 - met23Q2, _reference23Q3 = _reference23Q2 + _ref23Q2 - refs23Q2, _art23Q3 = _art23Q2 + _arts23Q2 - art23Q2, _print23Q3 = _print23Q2 + _prt23Q2 - prt23Q2, _electr23Q3 = _electr23Q2 + _el23Q2 - el23Q2, _period23Q3 = _period23Q2 + _per23Q2 - per23Q2;
+            double _cost23Q3 = 0;
+            string _titl23Q3 = "Поступило за 3 кв. " + _year23 + " г.";
+            var _item23Q3 = DataBase.Base.Receipts.Where(x => x.Date >= Jul && x.Date <= Septem);
+            int _totCount23Q3 = 0, _nat23Q3 = 0, _soc23Q3 = 0, _hum23Q3 = 0, _met23Q3 = 0, _ref23Q3 = 0, _arts23Q3 = 0, _prt23Q3 = 0, _el23Q3 = 0, _per23Q3 = 0;
+            double _totCost23Q3 = 0;
+            foreach (var item in _item23Q3)
+            {
+                _totCount23Q3 += item.TotalInstances;
+                _totCost23Q3 += item.Cost;
 
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts23Q3 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt23Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el23Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per23Q3 += (int)itemView.Counts; }
+                }
+            }
+            string title23Q3 = "Выбыло за 3 кв. " + _year23 + " г.";
+            var _it23Q3 = DataBase.Base.Disposals.Where(x => x.Date >= Jul && x.Date <= Septem);
+            int totCount23Q3 = 0, nat23Q3 = 0, soc23Q3 = 0, hum23Q3 = 0, met23Q3 = 0, refs23Q3 = 0, art23Q3 = 0, prt23Q3 = 0, el23Q3 = 0, per23Q3 = 0;
+            double cost23Q3 = 0;
+            foreach (var item in _it23Q3)
+            {
+                totCount23Q3 += item.TotalNumber;
+                cost23Q3 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs23Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art23Q3 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt23Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el23Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per23Q3 += (int)itemView.Counts; }
+                }
+            }
+            string _title23Q4 = "Состоит на 4 кв. 01.01." + _year23 + " г.";
+            int _count23Q4 = _count23Q3 + _totCount23Q3 - totCount23Q3, _natural23Q4 = _natural23Q3 + _nat23Q3 - nat23Q3, _social23Q4 = _social23Q3 + _soc23Q3 - soc23Q3, _human23Q4 = _human23Q3 + _hum23Q3 - hum23Q3, _metodical23Q4 = _metodical23Q3 + _met23Q3 - met23Q3, _reference23Q4 = _reference23Q3 + _ref23Q3 - refs23Q3, _art23Q4 = _art23Q3 + _arts23Q3 - art23Q3, _print23Q4 = _print23Q3 + _prt23Q3 - prt23Q3, _electr23Q4 = _electr23Q3 + _el23Q3 - el23Q3, _period23Q4 = _period23Q3 + _per23Q3 - per23Q3;
+            double _cost23Q4 = 0;
+            string _titl23Q4 = "Поступило за 4 кв. " + _year23 + " г.";
+            var _item23Q4 = DataBase.Base.Receipts.Where(x => x.Date >= Octob && x.Date <= Decem);
+            int _totCount23Q4 = 0, _nat23Q4 = 0, _soc23Q4 = 0, _hum23Q4 = 0, _met23Q4 = 0, _ref23Q4 = 0, _arts23Q4 = 0, _prt23Q4 = 0, _el23Q4 = 0, _per23Q4 = 0;
+            double _totCost23Q4 = 0;
+            foreach (var item in _item23Q4)
+            {
+                _totCount23Q4 += item.TotalInstances;
+                _totCost23Q4 += item.Cost;
 
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts23Q4 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt23Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el23Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per23Q4 += (int)itemView.Counts; }
+                }
+            }
+            string title23Q4 = "Выбыло за 4 кв. " + _year23 + " г.";
+            var _it23Q4 = DataBase.Base.Disposals.Where(x => x.Date >= Octob && x.Date <= Decem);
+            int totCount23Q4 = 0, nat23Q4 = 0, soc23Q4 = 0, hum23Q4 = 0, met23Q4 = 0, refs23Q4 = 0, art23Q4 = 0, prt23Q4 = 0, el23Q4 = 0, per23Q4 = 0;
+            double cost23Q4 = 0;
+            foreach (var item in _it23Q4)
+            {
+                totCount23Q4 += item.TotalNumber;
+                cost23Q4 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc23Q4 = (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs23Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art23Q4 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt23Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el23Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per23Q4 += (int)itemView.Counts; }
+                }
+            }
+            string title2023 = "Итого поступило за " + _year23 + " г.";
+            DateTime startDate2023 = new DateTime(_year23, 1, 1);
+            DateTime endDate2023 = new DateTime(_year23, 12, 31);
+            var Items2023 = DataBase.Base.Receipts.Where(x => x.Date >= startDate2023 && x.Date <= endDate2023);
+            int _totalCount2023 = 0, _natural2023 = 0, _social2023 = 0, _human2023 = 0, _metodical2023 = 0, _reference2023 = 0, _art2023 = 0, _print2023 = 0, _electr2023 = 0, _period2023 = 0;
+            double _totalCost2023 = 0;
+            foreach (var item in Items2023)
+            {
+                _totalCount2023 = _totCount23 + _totCount23Q2 + _totCount23Q3 + _totCount23Q4;
+                _totalCost2023 = _totCost23 + _totCost23Q2 + _totCost23Q3 + _totCost23Q4;
+                _natural2023 = _nat23 + _nat23Q2 + _nat23Q3 + _nat23Q4;
+                _social2023 = _soc23 + _soc23Q2 + _soc23Q3 + _soc23Q4;
+                _human2023 = _hum23 + _hum23Q2 + _hum23Q3 + _hum23Q4;
+                _metodical2023 = _met23 + _met23Q2 + _met23Q3 + _met23Q4;
+                _reference2023 = _ref23 + _ref23Q2 + _ref23Q3 + _ref23Q4;
+                _art2023 = _arts23 + _arts23Q2 + _arts23Q3 + _arts23Q4;
+                _print2023 = _prt23 + _prt23Q2 + _prt23Q3 + _prt23Q4;
+                _electr2023 = _el23 + _el23Q2 + _el23Q3 + _el23Q4;
+                _period2023 = _per23 + _per23Q2 + _per23Q3 + _per23Q4;
+            }
+            string titleDis2023 = "Выбыло за " + _year23 + " г.";
+            int totCount2023 = 0, nat2023 = 0, soc2023 = 0, hum2023 = 0, met2023 = 0, refs2023 = 0, art2023 = 0, prt2023 = 0, el2023 = 0, per2023 = 0;
+            double cost2023 = 0;            
+            var _it2023 = DataBase.Base.Disposals.Where(x => x.Date >= startDate2023 && x.Date <= endDate2023);
+            foreach (var item in _it2023)
+            {
+                totCount2023 = totCount23Q2 + totCount23Q3 + totCount23Q4;
+                cost2023 = cost23Q2 + cost23Q3 + cost23Q4;
+                nat2023 = nat23Q2 + nat23Q3 + nat23Q4;
+                soc2023 = soc23Q2 + soc23Q3 + soc23Q4;
+                hum2023 = hum23Q2 + hum23Q3 + hum23Q4;
+                met2023 = met23Q2 + met23Q3 + met23Q4;
+                refs2023 = refs23Q2 + refs23Q3 + refs23Q4;
+                art2023 = art23Q2 + art23Q3 + art23Q4;
+                prt2023 = prt23Q2 + prt23Q3 + prt23Q4;
+                el2023 = el23Q2 + el23Q3 + el23Q4;
+                per2023 = per23Q2 + per23Q3 + per23Q4;
+            }
 
+            int _year24 = 2024;
+            // Диапазон первого квартала
+            DateTime Jan = new DateTime(_year24, 1, 1);
+            DateTime Mar = new DateTime(_year24, 3, 31);
+            // Диапазон второго квартала
+            DateTime Apr = new DateTime(_year24, 4, 1);
+            DateTime Jn = new DateTime(_year24, 6, 30);
+            // Диапазон третьего квартала
+            DateTime Jl = new DateTime(_year24, 7, 1);
+            DateTime Sept = new DateTime(_year24, 9, 30);
+            // Диапазон четвертого квартала
+            DateTime Oct = new DateTime(_year24, 10, 1);
+            DateTime Dec = new DateTime(_year24, 12, 31);
+            string _title24 = "Состоит на 01.01." + _year24 + " г.";
+            int _count24 = _count23Q4 + _totCount23Q4 - totCount23Q4, _natural24 = _natural23Q4 + _nat23Q4 - nat23Q4, _social24 = _social23Q4 + _soc23Q4 - soc23Q4, _human24 = _human23Q4 + _hum23Q4 - hum23Q4, _metodical24 = _metodical23Q4 + _met23Q4 - met23Q4, _reference24 = _reference23Q4 + _ref23Q4 - refs23Q4, _art24 = _art23Q4 + _arts23Q4 - art23Q4, _print24 = _print23Q4 + _prt23Q4 - prt23Q4, _electr24 = _electr23Q4 + _el23Q4 - el23Q4, _period24 = _period23Q4 + _per23Q4 - per23Q4;
+            double _cost24 = 0;
+            string _titl24 = "Поступило за 1 кв. " + _year24 + " г.";
+            var _item24 = DataBase.Base.Receipts.Where(x => x.Date >= Jan && x.Date <= Mar);
+            int _totCount24 = 0, _nat24 = 0, _soc24 = 0, _hum24 = 0, _met24 = 0, _ref24 = 0, _arts24 = 0, _prt24 = 0, _el24 = 0, _per24 = 0;
+            double _totCost24 = 0;
+            foreach (var item in _item24)
+            {
+                _totCount24 += item.TotalInstances;
+                _totCost24 += item.Cost;
 
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts24 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt24 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el24 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per24 += (int)itemView.Counts; }
+                }
+            }
+            string title24 = "Выбыло за 1 кв. " + _year24 + " г.";
+            var _it24 = DataBase.Base.Disposals.Where(x => x.Date >= Jan && x.Date <= Mar);
+            int totCount24 = 0, nat24 = 0, soc24 = 0, hum24 = 0, met24 = 0, refs24 = 0, art24 = 0, prt24 = 0, el24 = 0, per24 = 0;
+            double cost24 = 0;
+            foreach (var item in _it24)
+            {
+                totCount24 += item.TotalNumber;
+                cost24 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs24 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art24 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt24 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el24 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per24 += (int)itemView.Counts; }
+                }
+            }
+            string _title24Q2 = "Состоит на 2 кв. 01.01." + _year24 + " г.";
+            int _count24Q2 = _count24 + _totCount24 - totCount24, _natural24Q2 = _natural24 + _nat24 - nat24, _social24Q2 = _social24 + _soc24 - soc24, _human24Q2 = _human24 + _hum24 - hum24, _metodical24Q2 = _metodical24 + _met24 - met24, _reference24Q2 = _reference24 + _ref24 - refs24, _art24Q2 = _art24 + _arts24 - art24, _print24Q2 = _print24 + _prt24 - prt24, _electr24Q2 = _electr24 + _el24 - el24, _period24Q2 = _period24 + _per24 - per24;
+            double _cost24Q2 = 0;
 
+            string _titl24Q2 = "Поступило за 2 кв. " + _year23 + " г.";
+            var _item24Q2 = DataBase.Base.Receipts.Where(x => x.Date >= Apr && x.Date <= Jn);
+            int _totCount24Q2 = 0, _nat24Q2 = 0, _soc24Q2 = 0, _hum24Q2 = 0, _met24Q2 = 0, _ref24Q2 = 0, _arts24Q2 = 0, _prt24Q2 = 0, _el24Q2 = 0, _per24Q2 = 0;
+            double _totCost24Q2 = 0;
+            foreach (var item in _item24Q2)
+            {
+                _totCount24Q2 += item.TotalInstances;
+                _totCost24Q2 += item.Cost;
 
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts24Q2 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt24Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el24Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per24Q2 += (int)itemView.Counts; }
+                }
+            }
+            string title24Q2 = "Выбыло за 2 кв. " + _year24 + " г.";
+            var _it24Q2 = DataBase.Base.Disposals.Where(x => x.Date >= Apr && x.Date <= Jn);
+            int totCount24Q2 = 0, nat24Q2 = 0, soc24Q2 = 0, hum24Q2 = 0, met24Q2 = 0, refs24Q2 = 0, art24Q2 = 0, prt24Q2 = 0, el24Q2 = 0, per24Q2 = 0;
+            double cost24Q2 = 0;
+            foreach (var item in _it24Q2)
+            {
+                totCount24Q2 += item.TotalNumber;
+                cost24Q2 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs24Q2 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art24Q2 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt24Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el24Q2 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per24Q2 += (int)itemView.Counts; }
+                }
+            }
+            string _title24Q3 = "Состоит на 3 кв. 01.01." + _year24 + " г.";
+            int _count24Q3 = _count24Q2 + _totCount24Q2 - totCount24Q2, _natural24Q3 = _natural24Q2 + _nat24Q2 - nat24Q2, _social24Q3 = _social24Q2 + _soc23Q2 - soc23Q2, _human24Q3 = _human24Q2 + _hum24Q2 - hum24Q2, _metodical24Q3 = _metodical24Q2 + _met24Q2 - met24Q2, _reference24Q3 = _reference24Q2 + _ref24Q2 - refs24Q2, _art24Q3 = _art24Q2 + _arts24Q2 - art24Q2, _print24Q3 = _print24Q2 + _prt24Q2 - prt24Q2, _electr24Q3 = _electr24Q2 + _el24Q2 - el24Q2, _period24Q3 = _period24Q2 + _per24Q2 - per24Q2;
+            double _cost24Q3 = 0;
+            string _titl24Q3 = "Поступило за 3 кв. " + _year24 + " г.";
+            var _item24Q3 = DataBase.Base.Receipts.Where(x => x.Date >= Jl && x.Date <= Sept);
+            int _totCount24Q3 = 0, _nat24Q3 = 0, _soc24Q3 = 0, _hum24Q3 = 0, _met24Q3 = 0, _ref24Q3 = 0, _arts24Q3 = 0, _prt24Q3 = 0, _el24Q3 = 0, _per24Q3 = 0;
+            double _totCost24Q3 = 0;
+            foreach (var item in _item24Q3)
+            {
+                _totCount24Q3 += item.TotalInstances;
+                _totCost24Q3 += item.Cost;
 
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts24Q3 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt24Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el24Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per24Q3 += (int)itemView.Counts; }
+                }
+            }
+            string title24Q3 = "Выбыло за 3 кв. " + _year24 + " г.";
+            var _it24Q3 = DataBase.Base.Disposals.Where(x => x.Date >= Jl && x.Date <= Sept);
+            int totCount24Q3 = 0, nat24Q3 = 0, soc24Q3 = 0, hum24Q3 = 0, met24Q3 = 0, refs24Q3 = 0, art24Q3 = 0, prt24Q3 = 0, el24Q3 = 0, per24Q3 = 0;
+            double cost24Q3 = 0;
+            foreach (var item in _it24Q3)
+            {
+                totCount24Q3 += item.TotalNumber;
+                cost24Q3 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs24Q3 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art24Q3 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt24Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el24Q3 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per24Q3 += (int)itemView.Counts; }
+                }
+            }
+            string _title24Q4 = "Состоит на 4 кв. 01.01." + _year24 + " г.";
+            int _count24Q4 = _count24Q3 + _totCount24Q3 - totCount24Q3, _natural24Q4 = _natural24Q3 + _nat24Q3 - nat24Q3, _social24Q4 = _social24Q3 + _soc24Q3 - soc24Q3, _human24Q4 = _human24Q3 + _hum24Q3 - hum24Q3, _metodical24Q4 = _metodical24Q3 + _met24Q3 - met24Q3, _reference24Q4 = _reference24Q3 + _ref24Q3 - refs24Q3, _art24Q4 = _art24Q3 + _arts24Q3 - art24Q3, _print24Q4 = _print24Q3 + _prt24Q3 - prt24Q3, _electr24Q4 = _electr24Q3 + _el24Q3 - el24Q3, _period24Q4 = _period24Q3 + _per24Q3 - per24Q3;
+            double _cost24Q4 = 0;
+            string _titl24Q4 = "Поступило за 4 кв. " + _year23 + " г.";
+            var _item24Q4 = DataBase.Base.Receipts.Where(x => x.Date >= Oct && x.Date <= Dec);
+            int _totCount24Q4 = 0, _nat24Q4 = 0, _soc24Q4 = 0, _hum24Q4 = 0, _met24Q4 = 0, _ref24Q4 = 0, _arts24Q4 = 0, _prt24Q4 = 0, _el24Q4 = 0, _per24Q4 = 0;
+            double _totCost24Q4 = 0;
+            foreach (var item in _item24Q4)
+            {
+                _totCount24Q4 += item.TotalInstances;
+                _totCost24Q4 += item.Cost;
+
+                var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemContent in contentsReceipts)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { _nat24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { _soc24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { _hum24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { _met24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { _ref24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { _arts24Q4 += (int)itemContent.Counts; }
+                }
+                var viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => x.IdReceipts == item.Id);
+                foreach (var itemView in viewsReceipts)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { _prt24Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { _el24Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { _per24Q4 += (int)itemView.Counts; }
+                }
+            }
+            string title24Q4 = "Выбыло за 4 кв. " + _year24 + " г.";
+            var _it24Q4 = DataBase.Base.Disposals.Where(x => x.Date >= Oct && x.Date <= Dec);
+            int totCount24Q4 = 0, nat24Q4 = 0, soc24Q4 = 0, hum24Q4 = 0, met24Q4 = 0, refs24Q4 = 0, art24Q4 = 0, prt24Q4 = 0, el24Q4 = 0, per24Q4 = 0;
+            double cost24Q4 = 0;
+            foreach (var item in _it24Q4)
+            {
+                totCount24Q4 += item.TotalNumber;
+                cost24Q4 += item.Cost;
+                var contentsDisposals = DataBase.Base.ContentsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemContent in contentsDisposals)
+                {
+                    if (itemContent.IdContents == contentId) // естественные науки
+                    { nat24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdTwo) // технические науки
+                    { soc24Q4 = (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdThree) //Гуманитарные науки
+                    { hum24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFour) //Методическая литература
+                    { met24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdFive) //Справочная литература
+                    { refs24Q4 += (int)itemContent.Counts; }
+                    if (itemContent.IdContents == contentIdSix) //Художественная литература
+                    { art24Q4 += (int)itemContent.Counts; }
+                }
+                var viewsDisposals = DataBase.Base.ViewsDisposals.Where(x => x.IdDisposals == item.Id);
+                foreach (var itemView in viewsDisposals)
+                {
+                    if (itemView.IdViews == viewId) //Печатный
+                    { prt24Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdTwo) //Электронный
+                    { el24Q4 += (int)itemView.Counts; }
+                    if (itemView.IdViews == viewIdThree)//Периодические издания
+                    { per24Q4 += (int)itemView.Counts; }
+                }
+            }
+            string title2024 = "Итого поступило за " + _year24 + " г.";
+            DateTime startDate2024 = new DateTime(_year24, 1, 1);
+            DateTime endDate2024 = new DateTime(_year24, 12, 31);
+            var Items2024 = DataBase.Base.Receipts.Where(x => x.Date >= startDate2023 && x.Date <= endDate2023);
+            int _totalCount2024 = 0, _natural2024 = 0, _social2024 = 0, _human2024 = 0, _metodical2024 = 0, _reference2024 = 0, _art2024 = 0, _print2024 = 0, _electr2024 = 0, _period2024 = 0;
+            double _totalCost2024 = 0;
+            foreach (var item in Items2024)
+            {
+                _totalCount2024 = _totCount24 + _totCount24Q2 + _totCount24Q3 + _totCount24Q4;
+                _totalCost2024 = _totCost24 + _totCost24Q2 + _totCost24Q3 + _totCost24Q4;
+                _natural2024 = _nat24 + _nat24Q2 + _nat24Q3 + _nat24Q4;
+                _social2024 = _soc24 + _soc24Q2 + _soc24Q3 + _soc24Q4;
+                _human2024 = _hum24 + _hum24Q2 + _hum24Q3 + _hum24Q4;
+                _metodical2024 = _met24 + _met24Q2 + _met24Q3 + _met24Q4;
+                _reference2024 = _ref24 + _ref24Q2 + _ref24Q3 + _ref24Q4;
+                _art2024 = _arts24 + _arts24Q2 + _arts24Q3 + _arts24Q4;
+                _print2024 = _prt24 + _prt24Q2 + _prt24Q3 + _prt24Q4;
+                _electr2024 = _el24 + _el24Q2 + _el24Q3 + _el24Q4;
+                _period2024 = _per24 + _per24Q2 + _per24Q3 + _per24Q4;
+            }
+            string titleDis2024 = "Выбыло за " + _year24 + " г.";
+            int totCount2024 = 0, nat2024 = 0, soc2024 = 0, hum2024 = 0, met2024 = 0, refs2024 = 0, art2024 = 0, prt2024 = 0, el2024 = 0, per2024 = 0;
+            double cost2024 = 0;
+            var _it2024 = DataBase.Base.Disposals.Where(x => x.Date >= startDate2024 && x.Date <= endDate2024);
+            foreach (var item in _it2024)
+            {
+                totCount2024 = totCount24 + totCount24Q2 + totCount24Q3 + totCount24Q4;
+                cost2024 = cost24 + cost24Q2 + cost24Q3 + cost24Q4;
+                nat2024 = nat24 + nat24Q2 + nat24Q3 + nat24Q4;
+                soc2024 = soc24 + soc24Q2 + soc24Q3 + soc24Q4;
+                hum2024 = hum24 + hum24Q2 + hum24Q3 + hum24Q4;
+                met2024 = met24 + met24Q2 + met24Q3 + met24Q4;
+                refs2024 = refs24 + refs24Q2 + refs24Q3 + refs24Q4;
+                art2024 = art24 + art24Q2 + art24Q3 + art24Q4;
+                prt2024 = prt24 + prt24Q2 + prt24Q3 + prt24Q4;
+                el2024 = el24 + el24Q2 + el24Q3 + el24Q4;
+                per2024 = per24 + per24Q2 + per24Q3 + per24Q4;
+            }
+            int _year25 = 2025;
+            // Диапазон первого квартала
+            DateTime Jan25 = new DateTime(_year24, 1, 1);
+            DateTime Mar25 = new DateTime(_year24, 3, 31);
+            // Диапазон второго квартала
+            DateTime Apr25 = new DateTime(_year24, 4, 1);
+            DateTime Jn25 = new DateTime(_year24, 6, 30);
+            // Диапазон третьего квартала
+            DateTime Jl25 = new DateTime(_year24, 7, 1);
+            DateTime Sept25 = new DateTime(_year24, 9, 30);
+            // Диапазон четвертого квартала
+            DateTime Oct25 = new DateTime(_year24, 10, 1);
+            DateTime Dec52 = new DateTime(_year24, 12, 31);
+            string _title25 = "Состоит на 01.01." + _year25 + " г.";
+            int _count25 = _count24Q4 + _totCount24Q4 - totCount24Q4, _natural25 = _natural24Q4 + _nat24Q4 - nat24Q4, _social25 = _social24Q4 + _soc24Q4 - soc24Q4, _human25 = _human24Q4 + _hum24Q4 - hum24Q4, _metodical25 = _metodical24Q4 + _met24Q4 - met24Q4, _reference25 = _reference24Q4 + _ref24Q4 - refs24Q4, _art25 = _art24Q4 + _arts24Q4 - art24Q4, _print25= _print24Q4 + _prt24Q4 - prt24Q4, _electr25 = _electr24Q4 + _el24Q4 - el24Q4, _period25 = _period24Q4 + _per24Q4 - per24Q4;
+            double _cost25 = 0;
 
 
 
@@ -791,11 +1410,80 @@ namespace KSU
             DataList.Add(new TotalResults() { FundMomentTotal = _titl23, TotalCount = _totCount23, TotalCost = _totCost23, NaturalSocialTotal = _nat23, SocialTotal = _soc23, HumanitarianTotal = _hum23, MetodicalTotal = _met23, ReferenceTotal = _ref23, ArtTotal = _arts23, PrentedTotal = _prt23, ElectronicTotal = _el23, PeriodichTotal = _per23, NotesTotal = "" });
             DataList.Add(new TotalResults() { FundMomentTotal = _title23Q2, TotalCount = _count23Q2, TotalCost = _cost23Q2, NaturalSocialTotal = _natural23Q2, SocialTotal = _social23Q2, HumanitarianTotal = _human23Q2, MetodicalTotal = _metodical23Q2, ReferenceTotal = _reference23Q2, ArtTotal = _art23Q2, PrentedTotal = _print23Q2, ElectronicTotal = _electr23Q2, PeriodichTotal = _period23Q2, NotesTotal = "" });
 
+            // Отображаем DataGrid только если убедились, что есть данные в других таблицах
+            //if (AreOtherTablesPopulated())
+            //{
+            //2 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q2, TotalCount = _totCount23Q2, TotalCost = _totCost23Q2, NaturalSocialTotal = _nat23Q2, SocialTotal = _soc23Q2, HumanitarianTotal = _hum23Q2, MetodicalTotal = _met23Q2, ReferenceTotal = _ref23Q2, ArtTotal = _arts23Q2, PrentedTotal = _prt23Q2, ElectronicTotal = _el23Q2, PeriodichTotal = _per23Q2, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title23Q2, TotalCount = totCount23Q2, TotalCost = cost23Q2, NaturalSocialTotal = nat23Q2, SocialTotal = soc23Q2, HumanitarianTotal = hum23Q2, MetodicalTotal = met23Q2, ReferenceTotal = refs23Q2, ArtTotal = art23Q2, PrentedTotal = prt23Q2, ElectronicTotal = el23Q2, PeriodichTotal = per23Q2, NotesTotal = "" });
+            //3 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _title23Q3, TotalCount = _count23Q3, TotalCost = _cost23Q3, NaturalSocialTotal = _natural23Q3, SocialTotal = _social23Q3, HumanitarianTotal = _human23Q3, MetodicalTotal = _metodical23Q3, ReferenceTotal = _reference23Q3, ArtTotal = _art23Q3, PrentedTotal = _print23Q3, ElectronicTotal = _electr23Q3, PeriodichTotal = _period23Q3, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q3, TotalCount = _totCount23Q3, TotalCost = _totCost23Q3, NaturalSocialTotal = _nat23Q3, SocialTotal = _soc23Q3, HumanitarianTotal = _hum23Q3, MetodicalTotal = _met23Q3, ReferenceTotal = _ref23Q3, ArtTotal = _arts23Q3, PrentedTotal = _prt23Q3, ElectronicTotal = _el23Q3, PeriodichTotal = _per23Q3, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title23Q3, TotalCount = totCount23Q3, TotalCost = cost23Q3, NaturalSocialTotal = nat23Q3, SocialTotal = soc23Q3, HumanitarianTotal = hum23Q3, MetodicalTotal = met23Q3, ReferenceTotal = refs23Q3, ArtTotal = art23Q3, PrentedTotal = prt23Q3, ElectronicTotal = el23Q3, PeriodichTotal = per23Q3, NotesTotal = "" });
+            //4 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _title23Q4, TotalCount = _count23Q4, TotalCost = _cost23Q4, NaturalSocialTotal = _natural23Q4, SocialTotal = _social23Q4, HumanitarianTotal = _human23Q4, MetodicalTotal = _metodical23Q4, ReferenceTotal = _reference23Q4, ArtTotal = _art23Q4, PrentedTotal = _print23Q4, ElectronicTotal = _electr23Q4, PeriodichTotal = _period23Q4, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q4, TotalCount = _totCount23Q4, TotalCost = _totCost23Q4, NaturalSocialTotal = _nat23Q4, SocialTotal = _soc23Q4, HumanitarianTotal = _hum23Q4, MetodicalTotal = _met23Q4, ReferenceTotal = _ref23Q4, ArtTotal = _arts23Q4, PrentedTotal = _prt23Q4, ElectronicTotal = _el23Q4, PeriodichTotal = _per23Q4, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title23Q4, TotalCount = totCount23Q4, TotalCost = cost23Q4, NaturalSocialTotal = nat23Q4, SocialTotal = soc23Q4, HumanitarianTotal = hum23Q4, MetodicalTotal = met23Q4, ReferenceTotal = refs23Q4, ArtTotal = art23Q4, PrentedTotal = prt23Q4, ElectronicTotal = el23Q4, PeriodichTotal = per23Q4, NotesTotal = "" });
+            //Итоги
+            DataList.Add(new TotalResults() { FundMomentTotal = title2023, TotalCount = _totalCount2023, TotalCost = _totalCost2023, NaturalSocialTotal = _natural2023, SocialTotal = _social2023, HumanitarianTotal = _human2023, MetodicalTotal = _metodical2023, ReferenceTotal = _reference2023, ArtTotal = _art2023, PrentedTotal = _print2023, ElectronicTotal = _electr2023, PeriodichTotal = _period2023, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = titleDis2023, TotalCount = totCount2023, TotalCost = cost2023, NaturalSocialTotal = nat2023, SocialTotal = soc2023, HumanitarianTotal = hum2023, MetodicalTotal = met2023, ReferenceTotal = refs2023, ArtTotal = art2023, PrentedTotal = prt2023, ElectronicTotal = el2023, PeriodichTotal = per2023, NotesTotal = "" });
+            //2024
+            DataList.Add(new TotalResults() { FundMomentTotal = _title24, TotalCount = _count24, TotalCost = _cost24, NaturalSocialTotal = _natural24, SocialTotal = _social24, HumanitarianTotal = _human24, MetodicalTotal = _metodical24, ReferenceTotal = _reference24, ArtTotal = _art24, PrentedTotal = _print24, ElectronicTotal = _electr24, PeriodichTotal = _period24, NotesTotal = "" });
+            //1 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl24, TotalCount = _totCount24, TotalCost = _totCost24, NaturalSocialTotal = _nat24, SocialTotal = _soc24, HumanitarianTotal = _hum24, MetodicalTotal = _met24, ReferenceTotal = _ref24, ArtTotal = _art24, PrentedTotal = _prt24, ElectronicTotal = _el24, PeriodichTotal = _per24, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title24, TotalCount = totCount24, TotalCost = cost24, NaturalSocialTotal = nat24, SocialTotal = soc24, HumanitarianTotal = hum24, MetodicalTotal = met24, ReferenceTotal = refs24, ArtTotal = art24, PrentedTotal = prt24, ElectronicTotal = el24, PeriodichTotal = per24, NotesTotal = "" });
+            //2 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _title24Q2, TotalCount = _count24Q2, TotalCost = _cost24Q2, NaturalSocialTotal = _natural24Q2, SocialTotal = _social24Q2, HumanitarianTotal = _human24Q2, MetodicalTotal = _metodical24Q2, ReferenceTotal = _reference24Q2, ArtTotal = _art24Q2, PrentedTotal = _print24Q2, ElectronicTotal = _electr24Q2, PeriodichTotal = _period24Q2, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl24Q2, TotalCount = _totCount24Q2, TotalCost = _totCost24Q2, NaturalSocialTotal = _nat24Q2, SocialTotal = _soc24Q2, HumanitarianTotal = _hum24Q2, MetodicalTotal = _met24Q2, ReferenceTotal = _ref24Q2, ArtTotal = _arts24Q2, PrentedTotal = _prt24Q2, ElectronicTotal = _el24Q2, PeriodichTotal = _per24Q2, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title24Q2, TotalCount = totCount24Q2, TotalCost = cost24Q2, NaturalSocialTotal = nat24Q2, SocialTotal = soc24Q2, HumanitarianTotal = hum24Q2, MetodicalTotal = met24Q2, ReferenceTotal = refs24Q2, ArtTotal = art24Q2, PrentedTotal = prt24Q2, ElectronicTotal = el24Q2, PeriodichTotal = per24Q2, NotesTotal = "" });
+            //3 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _title24Q3, TotalCount = _count24Q3, TotalCost = _cost24Q3, NaturalSocialTotal = _natural24Q3, SocialTotal = _social24Q3, HumanitarianTotal = _human24Q3, MetodicalTotal = _metodical24Q3, ReferenceTotal = _reference24Q3, ArtTotal = _art24Q3, PrentedTotal = _print24Q3, ElectronicTotal = _electr24Q3, PeriodichTotal = _period24Q3, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl24Q3, TotalCount = _totCount24Q3, TotalCost = _totCost24Q3, NaturalSocialTotal = _nat24Q3, SocialTotal = _soc24Q3, HumanitarianTotal = _hum24Q3, MetodicalTotal = _met24Q3, ReferenceTotal = _ref24Q3, ArtTotal = _arts24Q3, PrentedTotal = _prt24Q3, ElectronicTotal = _el24Q3, PeriodichTotal = _per24Q3, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title24Q3, TotalCount = totCount24Q3, TotalCost = cost24Q3, NaturalSocialTotal = nat24Q3, SocialTotal = soc24Q3, HumanitarianTotal = hum24Q3, MetodicalTotal = met24Q3, ReferenceTotal = refs24Q3, ArtTotal = art24Q3, PrentedTotal = prt24Q3, ElectronicTotal = el24Q3, PeriodichTotal = per24Q3, NotesTotal = "" });
+            //4 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _title24Q4, TotalCount = _count24Q4, TotalCost = _cost24Q4, NaturalSocialTotal = _natural24Q4, SocialTotal = _social24Q4, HumanitarianTotal = _human24Q4, MetodicalTotal = _metodical24Q4, ReferenceTotal = _reference24Q4, ArtTotal = _art24Q4, PrentedTotal = _print24Q4, ElectronicTotal = _electr24Q4, PeriodichTotal = _period24Q4, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl24Q4, TotalCount = _totCount24Q4, TotalCost = _totCost24Q4, NaturalSocialTotal = _nat24Q4, SocialTotal = _soc24Q4, HumanitarianTotal = _hum24Q4, MetodicalTotal = _met24Q4, ReferenceTotal = _ref24Q4, ArtTotal = _arts24Q4, PrentedTotal = _prt24Q4, ElectronicTotal = _el24Q4, PeriodichTotal = _per24Q4, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title24Q4, TotalCount = totCount24Q4, TotalCost = cost24Q4, NaturalSocialTotal = nat24Q4, SocialTotal = soc24Q4, HumanitarianTotal = hum24Q4, MetodicalTotal = met24Q4, ReferenceTotal = refs24Q4, ArtTotal = art24Q4, PrentedTotal = prt24Q4, ElectronicTotal = el24Q4, PeriodichTotal = per24Q4, NotesTotal = "" });
+            //Итоги
+            DataList.Add(new TotalResults() { FundMomentTotal = title2024, TotalCount = _totalCount2024, TotalCost = _totalCost2024, NaturalSocialTotal = _natural2024, SocialTotal = _social2024, HumanitarianTotal = _human2024, MetodicalTotal = _metodical2024, ReferenceTotal = _reference2024, ArtTotal = _art2024, PrentedTotal = _print2024, ElectronicTotal = _electr2024, PeriodichTotal = _period2024, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = titleDis2024, TotalCount = totCount2024, TotalCost = cost2024, NaturalSocialTotal = nat2024, SocialTotal = soc2024, HumanitarianTotal = hum2024, MetodicalTotal = met2024, ReferenceTotal = refs2024, ArtTotal = art2024, PrentedTotal = prt2024, ElectronicTotal = el2024, PeriodichTotal = per2024, NotesTotal = "" });
+            //2025
+            DataList.Add(new TotalResults() { FundMomentTotal = _title25, TotalCount = _count25, TotalCost = _cost25, NaturalSocialTotal = _natural25, SocialTotal = _social25, HumanitarianTotal = _human25, MetodicalTotal = _metodical25, ReferenceTotal = _reference25, ArtTotal = _art25, PrentedTotal = _print25, ElectronicTotal = _electr25, PeriodichTotal = _period25, NotesTotal = "" });
+            //1 кв.
+
+            //2 кв.
+
+            //3 кв.
+
+            //4 кв.
+
+            //Итоги
+
+            //2026
+            //DataList.Add(new TotalResults() { FundMomentTotal = _title26, TotalCount = _count26, TotalCost = _cost26, NaturalSocialTotal = _natural26, SocialTotal = _social26, HumanitarianTotal = _human26, MetodicalTotal = _metodical26, ReferenceTotal = _reference26, ArtTotal = _art26, PrentedTotal = _print26, ElectronicTotal = _electr26, PeriodichTotal = _period26, NotesTotal = "" });
 
 
 
 
+            //}
+        }
+        /// <summary>
+        /// Проверяем наличие данных в других таблицах
+        /// </summary>
+        /// <returns></returns>
+        private bool AreOtherTablesPopulated()
+        {
+            ClassTotalResultDisposals resultDisposals = new ClassTotalResultDisposals();
+            ObservableCollection<TotalResultDisposals> disposals = new ObservableCollection<TotalResultDisposals>(resultDisposals.DataList);
 
-        }         
+            ClassTotalResultReceipts resultReceipts = new ClassTotalResultReceipts();
+            ObservableCollection<TotalResultReceipts> receipts = new ObservableCollection<TotalResultReceipts>(resultReceipts.DataList);
+
+            if (disposals.Count > 0 && receipts.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace KSU
             public string Place { get; set; }
         }
         public List<TotalResultDisposals> DataList { get; }
-
+       
         public ClassTotalResultDisposals()
         {
             // идентификатор книг по содержанию, количество которой нужно подсчитать
@@ -41,8 +41,8 @@ namespace KSU
             //индентификатор книг по причине выбытия, количество которой нужно посчитать
             int reasonId = 1, reasonIdTwo = 2, reasonIdThree = 3, reasonIdFour = 4;
 
-            string placetitle = "ООО «Исток 52»";
             string dateTitle = "21.10.2019";
+            string placetitle = "ООО «Исток 52»";
             DateTime date = new DateTime(2019, 10, 21); // задаем нужную дату
             var _it = DataBase.Base.Disposals.Where(x => x.Date >= date && x.Date <= date); // выбираем все записи на данную дату
             int totCount = 0, nat = 0, soc = 0, hum = 0, met = 0, refs = 0, art = 0, prt = 0, el = 0, per = 0, dil = 0, obs = 0, def = 0, loss = 0;
@@ -92,7 +92,6 @@ namespace KSU
                     { loss += (int)reasonView.Counts; } // Утрата
                 }
             }
-
 
 
             DataList = new List<TotalResultDisposals>();

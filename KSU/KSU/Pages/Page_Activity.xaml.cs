@@ -20,7 +20,6 @@ using static KSU.ClassResultThree;
 using static KSU.ClassResultTwo;
 using static KSU.ClassTotalResultDisposals;
 using static KSU.ClassTotalResults;
-using static OfficeOpenXml.ExcelErrorValue;
 
 namespace KSU
 {
@@ -46,7 +45,6 @@ namespace KSU
             // 2 Корпус
             dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 2).ToList();
             dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
-
             // Создаем экземпляр класса
             ClassResultTwo dataTwo = new ClassResultTwo();
             // Создаем экземпляр ObservableCollection на основе списка объектов в классе MyDataClass
@@ -54,16 +52,17 @@ namespace KSU
             // Устанавливаем источник данных для DataGrid
             dgResultsTwo.ItemsSource = dataItemsTwo;
 
+
             // 3 Корпус
             dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
             dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
-
             // Создаем экземпляр класса
             ClassResultThree dataThree = new ClassResultThree();
             // Создаем экземпляр ObservableCollection на основе списка объектов в классе MyDataClass
             ObservableCollection<ResultsThree> dataItemsThree = new ObservableCollection<ResultsThree>(dataThree.DataList);
             // Устанавливаем источник данных для DataGrid
             dgResultsThree.ItemsSource = dataItemsThree;
+
 
             // Все корпуса
             dgReceiptResult.ItemsSource = DataBase.Base.Receipts.OrderBy(x => x.Date).ToList();
@@ -73,7 +72,6 @@ namespace KSU
             ClassTotalResultDisposals resultDisposals = new ClassTotalResultDisposals();
             ObservableCollection<TotalResultDisposals> disposals = new ObservableCollection<TotalResultDisposals>(resultDisposals.DataList);
             dgDisposalsResults.ItemsSource = disposals.OrderBy(x => x.DateDisposals);
-
             // Создаем экземпляр класса, который содержит список объектов, которые будут отображаться в DataGrid
             ClassTotalResults dataResult = new ClassTotalResults();
             // Создаем экземпляр ObservableCollection на основе списка объектов
@@ -630,109 +628,157 @@ namespace KSU
 
         private void tbExportResults_MouseDown(object sender, MouseButtonEventArgs e) // Экспорт данных по всем корпусам
         {
-            //ExcelPackage.LicenseContext = LicenseContext.NonCommercial;  // Убедитесь, что вы используете бесплатную лицензию
-            //using (ExcelPackage excelPackage = new ExcelPackage())
-            //{
-            //    ExcelWorksheet sheet1 = excelPackage.Workbook.Worksheets.Add("Поступление");
-            //    ExcelWorksheet sheet2 = excelPackage.Workbook.Worksheets.Add("Выбытие");
-            //    ExcelWorksheet sheet3 = excelPackage.Workbook.Worksheets.Add("Итоги");
+            ClassTotalResultDisposals resultDisposals = new ClassTotalResultDisposals();
+            ObservableCollection<TotalResultDisposals> disposals = new ObservableCollection<TotalResultDisposals>(resultDisposals.DataList);
+            dgDisposalsResults.ItemsSource = disposals.OrderBy(x => x.DateDisposals);
+            
+            // Создаем экземпляр класса, который содержит список объектов, которые будут отображаться в DataGrid
+            ClassTotalResults dataResult = new ClassTotalResults();
+            // Создаем экземпляр ObservableCollection на основе списка объектов
+            ObservableCollection<TotalResults> dataItemsTotal = new ObservableCollection<TotalResults>(dataResult.DataList);
+            // Устанавливаем источник данных для DataGrid
+            dgTotalResults.ItemsSource = dataItemsTotal;
 
-            //    // запись заголовков и данных первого DataGrid
-            //    for (int i = 0; i < dgReceiptResult.Columns.Count; i++)
-            //    {
-            //        var columnHeader = dgReceiptResult.Columns[i].Header.ToString();
-            //        sheet1.Cells[1, i + 1].Value = columnHeader;
-            //        sheet1.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
-            //        sheet1.Cells.Style.Font.Size = 11; //размер шрифта                    
-            //        sheet1.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-            //        sheet1.Cells[1, i + 1].Style.WrapText = true;
-            //        // Выравнивание по центру
-            //        sheet1.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            //        sheet1.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-            //        sheet1.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-            //    }
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;  // Убедитесь, что вы используете бесплатную лицензию
+            using (ExcelPackage excelPackage = new ExcelPackage())
+            {
+                ExcelWorksheet sheet1 = excelPackage.Workbook.Worksheets.Add("Поступление");
+                ExcelWorksheet sheet2 = excelPackage.Workbook.Worksheets.Add("Выбытие");
+                ExcelWorksheet sheet3 = excelPackage.Workbook.Worksheets.Add("Итоги");
 
-            //    for (int i = 0; i < dgReceiptResult.Items.Count; i++)
-            //    {
-            //        for (int j = 0; j < dgReceiptResult.Columns.Count; j++)
-            //        {
-            //            var value = dgReceiptResult.Columns[j].GetCellContent(dgReceiptResult.Items[i]) as TextBlock;
-            //            if (value != null)
-            //            {
-            //                sheet1.Cells[i + 2, j + 1].Value = value.Text;
-            //                sheet1.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-            //                sheet1.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-            //            }
-            //        }
-            //    }
 
-            //    // запись заголовков и данных второго DataGrid
-            //    for (int i = 0; i < dgDisposalsResults.Columns.Count; i++)
-            //    {
-            //        var columnHeader = dgDisposalsResults.Columns[i].Header.ToString();
-            //        sheet2.Cells[1, i + 1].Value = columnHeader;
-            //        sheet2.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
-            //        sheet2.Cells.Style.Font.Size = 11; //размер шрифта                    
-            //        sheet2.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-            //        sheet2.Cells[1, i + 1].Style.WrapText = true;
-            //        // Выравнивание по центру
-            //        sheet2.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            //        sheet2.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-            //        sheet2.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-            //    }
+                // запись заголовков и данных третьего DataGrid
+                for (int i = 0; i < dgTotalResults.Columns.Count; i++)
+                {
+                    var columnHeader = dgTotalResults.Columns[i].Header.ToString();
+                    sheet3.Cells[1, i + 1].Value = columnHeader;
+                    sheet3.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
+                    sheet3.Cells.Style.Font.Size = 11; //размер шрифта                    
+                    sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                    sheet3.Cells[1, i + 1].Style.WrapText = true;
+                    // Выравнивание по центру
+                    sheet3.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    sheet3.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                }
+                // Добавление данных в таблицу
+                for (int i = 0; i < dataItemsTotal.Count; i++)
+                {
+                    sheet3.Cells[i + 2, 1].Value = dataItemsTotal[i].FundMomentTotal;
+                    sheet3.Cells[i + 2, 2].Value = dataItemsTotal[i].TotalCount;
+                    sheet3.Cells[i + 2, 3].Value = dataItemsTotal[i].TotalCost;
+                    sheet3.Cells[i + 2, 4].Value = dataItemsTotal[i].NaturalSocialTotal;
+                    sheet3.Cells[i + 2, 5].Value = dataItemsTotal[i].SocialTotal;
+                    sheet3.Cells[i + 2, 6].Value = dataItemsTotal[i].HumanitarianTotal;
+                    sheet3.Cells[i + 2, 7].Value = dataItemsTotal[i].MetodicalTotal;
+                    sheet3.Cells[i + 2, 8].Value = dataItemsTotal[i].ReferenceTotal;
+                    sheet3.Cells[i + 2, 9].Value = dataItemsTotal[i].ArtTotal;
+                    sheet3.Cells[i + 2, 10].Value = dataItemsTotal[i].PrentedTotal;
+                    sheet3.Cells[i + 2, 11].Value = dataItemsTotal[i].ElectronicTotal;
+                    sheet3.Cells[i + 2, 12].Value = dataItemsTotal[i].PeriodichTotal;
+                    sheet3.Cells[i + 2, 13].Value = dataItemsTotal[i].NotesTotal;
 
-            //    for (int i = 0; i < dgDisposalsResults.Items.Count; i++)
-            //    {
-            //        for (int j = 0; j < dgDisposalsResults.Columns.Count; j++)
-            //        {
-            //            var value = dgDisposalsResults.Columns[j].GetCellContent(dgDisposalsResults.Items[i]) as TextBlock;
-            //            if (value != null)
-            //            {
-            //                sheet2.Cells[i + 2, j + 1].Value = value.Text;
-            //                sheet2.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-            //                sheet2.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-            //            }
-            //        }
-            //    }
+                    sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                    sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                }
 
-            //    // запись заголовков и данных третьего DataGrid
-            //    for (int i = 0; i < dgTotalResults.Columns.Count; i++)
-            //    {
-            //        var columnHeader = dgTotalResults.Columns[i].Header.ToString();
-            //        sheet3.Cells[1, i + 1].Value = columnHeader;
-            //        sheet3.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
-            //        sheet3.Cells.Style.Font.Size = 11; //размер шрифта                    
-            //        sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-            //        sheet3.Cells[1, i + 1].Style.WrapText = true;
-            //        // Выравнивание по центру
-            //        sheet3.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            //        sheet3.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
-            //        sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-            //    }
-            //    for (int i = 0; i < dgTotalResults.Items.Count; i++)
-            //    {
-            //        for (int j = 0; j < dgTotalResults.Columns.Count; j++)
-            //        {
-            //            var value = dgTotalResults.Columns[j].GetCellContent(dgTotalResults.Items[i]) as TextBlock;
-            //            if (value != null)
-            //            {
-            //                sheet3.Cells[i + 2, j + 1].Value = value.Text;
-            //                sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
-            //                sheet3.Cells[i + 2, j + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
-            //            }
-            //        }
-            //    }
-            //    // Сохраните созданный Excel-файл
-            //    SaveFileDialog saveFileDialog = new SaveFileDialog();
-            //    saveFileDialog.FileName = "КСУ библитечного фонда"; // Имя по умолчанию
-            //    saveFileDialog.Filter = "Excel file (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-            //    if (saveFileDialog.ShowDialog() == true)
-            //    {
-            //        var file = new FileInfo(saveFileDialog.FileName);
-            //        excelPackage.SaveAs(file);
-            //    }
-            //    MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-            //}
+
+                //// запись заголовков и данных первого DataGrid
+                //for (int i = 0; i < dgReceiptResult.Columns.Count; i++)
+                //{
+                //    var columnHeader = dgReceiptResult.Columns[i].Header.ToString();
+                //    sheet1.Cells[1, i + 1].Value = columnHeader;
+                //    sheet1.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
+                //    sheet1.Cells.Style.Font.Size = 11; //размер шрифта                    
+                //    sheet1.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                //    sheet1.Cells[1, i + 1].Style.WrapText = true;
+                //    // Выравнивание по центру
+                //    sheet1.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                //    sheet1.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                //    sheet1.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                //}
+
+                //for (int i = 0; i < dgReceiptResult.Items.Count; i++)
+                //{
+                //    for (int j = 0; j < dgReceiptResult.Columns.Count; j++)
+                //    {
+                //        var value = dgReceiptResult.Columns[j].GetCellContent(dgReceiptResult.Items[i]) as TextBlock;
+                //        if (value != null)
+                //        {
+                //            sheet1.Cells[i + 2, j + 1].Value = value.Text;
+                //            sheet1.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                //            sheet1.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                //        }
+                //    }
+                //}
+
+                //// запись заголовков и данных второго DataGrid
+                //for (int i = 0; i < dgDisposalsResults.Columns.Count; i++)
+                //{
+                //    var columnHeader = dgDisposalsResults.Columns[i].Header.ToString();
+                //    sheet2.Cells[1, i + 1].Value = columnHeader;
+                //    sheet2.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
+                //    sheet2.Cells.Style.Font.Size = 11; //размер шрифта                    
+                //    sheet2.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                //    sheet2.Cells[1, i + 1].Style.WrapText = true;
+                //    // Выравнивание по центру
+                //    sheet2.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                //    sheet2.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                //    sheet2.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                //}
+
+                //for (int i = 0; i < dgDisposalsResults.Items.Count; i++)
+                //{
+                //    for (int j = 0; j < dgDisposalsResults.Columns.Count; j++)
+                //    {
+                //        var value = dgDisposalsResults.Columns[j].GetCellContent(dgDisposalsResults.Items[i]) as TextBlock;
+                //        if (value != null)
+                //        {
+                //            sheet2.Cells[i + 2, j + 1].Value = value.Text;
+                //            sheet2.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                //            sheet2.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                //        }
+                //    }
+                //}
+
+                //// запись заголовков и данных третьего DataGrid
+                //for (int i = 0; i < dgTotalResults.Columns.Count; i++)
+                //{
+                //    var columnHeader = dgTotalResults.Columns[i].Header.ToString();
+                //    sheet3.Cells[1, i + 1].Value = columnHeader;
+                //    sheet3.Cells[1, i + 1].Style.Font.Bold = true; // делаем шрифт жирным
+                //    sheet3.Cells.Style.Font.Size = 11; //размер шрифта                    
+                //    sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                //    sheet3.Cells[1, i + 1].Style.WrapText = true;
+                //    // Выравнивание по центру
+                //    sheet3.Cells[1, i + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                //    sheet3.Cells[1, i + 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                //    sheet3.Cells[1, i + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                //}
+                //for (int i = 0; i < dgTotalResults.Items.Count; i++)
+                //{
+                //    for (int j = 0; j < dgTotalResults.Columns.Count; j++)
+                //    {
+                //        var value = dgTotalResults.Columns[j].GetCellContent(dgTotalResults.Items[i]) as TextBlock;
+                //        if (value != null)
+                //        {
+                //            sheet3.Cells[i + 2, j + 1].Value = value.Text;
+                //            sheet3.Cells.AutoFitColumns(); // Автоматически изменяем ширину столбцов на основе содержимого каждой ячейки
+                //            sheet3.Cells[i + 2, j + 1].Style.Font.Name = "Times New Roman"; // задаем имя шрифта
+                //        }
+                //    }
+                //}
+                // Сохраните созданный Excel-файл
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "КСУ библитечного фонда"; // Имя по умолчанию
+                saveFileDialog.Filter = "Excel file (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    var file = new FileInfo(saveFileDialog.FileName);
+                    excelPackage.SaveAs(file);
+                    MessageBox.Show("Успешное сохранение файла!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
 
         private void tbExportThree_MouseDown(object sender, MouseButtonEventArgs e) // Экспорт данных по 3 корпусу
