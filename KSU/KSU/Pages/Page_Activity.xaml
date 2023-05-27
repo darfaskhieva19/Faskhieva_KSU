@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <TabControl Grid.Row="1">
-            <TabItem Header="I корпус" VerticalAlignment="Center">
+            <TabItem x:Name="OneTab" Header="I корпус" VerticalAlignment="Center">
                 <ScrollViewer>
                     <Grid Style="{DynamicResource ThemeGrid}">
 
@@ -45,7 +45,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Button Name="btnAdd" Grid.Column="0" Content="Добавить запись" Click="btnAdd_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                                 <Button Name="btnDeleteDisposals" Grid.Column="1" Content="Удалить" Click="btnDeleteDisposals_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
-                            </Grid>                           
+                            </Grid>
                         </Grid>
 
                         <StackPanel Grid.Row="4">
@@ -68,7 +68,7 @@
                                     <DataGridTextColumn Header="Устарелость" Binding="{Binding obsolescence}"/>
                                     <DataGridTextColumn Header="Дефектность" Binding="{Binding defectiveness}"/>
                                     <DataGridTextColumn Header="Утрата" Binding="{Binding loss}"/>
-                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="Auto"/>                                   
+                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="Auto"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
@@ -86,7 +86,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Button Name="btnNewAdd" Grid.Column="0" Content="Добавить запись" Click="btnNewAdd_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                                 <Button Name="btnDeleteReceipts" Grid.Column="1" Content="Удалить" Click="btnDeleteReceipts_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
-                            </Grid>                          
+                            </Grid>
                         </Grid>
 
                         <StackPanel Grid.Row="2">
@@ -116,7 +116,7 @@
 
                         <Button Grid.Row="5" Name="btnResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnResult_Click"/>
 
-                        <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed" Background="White">
+                        <StackPanel Grid.Row="6" Name="spRes" Visibility="Collapsed" Background="White" IsVisibleChanged="spRes_IsVisibleChanged">
                             <DataGrid Name="dgResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentOne}"/>
@@ -168,7 +168,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Button Name="btnNAdd" Grid.Column="0" Content="Добавить запись" Click="btnNAdd_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
                                 <Button Name="btnDeleteReceiptsTwo" Grid.Column="1" Content="Удалить" Click="btnDeleteReceiptsTwo_Click" Style="{DynamicResource Button}" HorizontalAlignment="Right"/>
-                            </Grid>                          
+                            </Grid>
                         </Grid>
 
                         <StackPanel Grid.Row="2">
@@ -239,26 +239,26 @@
 
                         <Button Grid.Row="5" Name="btnResultTwo" Content="Сформировать итоги" Click="btnResultTwo_Click" HorizontalAlignment="Left" Style="{DynamicResource Button}"/>
 
-                        <StackPanel Grid.Row="6" Name="spResultTwo" Visibility="Collapsed" Background="White">
+                        <StackPanel Grid.Row="6" Name="spResultTwo" Visibility="Collapsed" Background="White" IsVisibleChanged="spResultTwo_IsVisibleChanged">
                             <DataGrid Name="dgResultsTwo" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentTwo}"/>
-                                        <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalCountTwo}"/>
-                                        <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalCostTwo}"/>
-                                        <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocialTwo}"/>
-                                        <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialTwo}"/>
-                                        <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianTwo}"/>
-                                        <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalTwo}"/>
-                                        <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceTwo}"/>
-                                        <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtTwo}"/>
-                                        <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedTwo}"/>
-                                        <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicTwo}"/>
-                                        <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichTwo}"/>
+                                    <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalCountTwo}"/>
+                                    <DataGridTextColumn Header="Общая стоимость" Binding="{Binding TotalCostTwo}"/>
+                                    <DataGridTextColumn Header="Естественные науки (2)" Binding="{Binding NaturalSocialTwo}"/>
+                                    <DataGridTextColumn Header="Технические науки, сельское и лесное хоз-во, медицинские науки (3,4,5)" Binding="{Binding SocialTwo}"/>
+                                    <DataGridTextColumn Header="Общественные, гуманитарные науки (6/8)" Binding="{Binding HumanitarianTwo}"/>
+                                    <DataGridTextColumn Header="Методическая литература (74)" Binding="{Binding MetodicalTwo}"/>
+                                    <DataGridTextColumn Header="Справочная литература (9)" Binding="{Binding ReferenceTwo}"/>
+                                    <DataGridTextColumn Header="Художественная литература (84)" Binding="{Binding ArtTwo}"/>
+                                    <DataGridTextColumn Header="Печатные" Binding="{Binding PrentedTwo}"/>
+                                    <DataGridTextColumn Header="Электронные" Binding="{Binding ElecronicTwo}"/>
+                                    <DataGridTextColumn Header="Периодические издания" Binding="{Binding PeriodichTwo}"/>
                                     <DataGridTextColumn Header="Примечания" Width="Auto" Binding="{Binding NotesTwo}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
-                        
+
                     </Grid>
                 </ScrollViewer>
             </TabItem>
@@ -361,7 +361,7 @@
 
                         <Button Grid.Row="5" Name="btnResultThree" Content="Сформировать итоги" HorizontalAlignment="Left" Style="{DynamicResource Button}" Click="btnResultThree_Click"/>
 
-                        <StackPanel Grid.Row="6" Name="spResThree" Visibility="Collapsed">
+                        <StackPanel Grid.Row="6" Name="spResThree" Visibility="Collapsed" IsVisibleChanged="spResThree_IsVisibleChanged">
                             <DataGrid Name="dgResultsThree" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentThree}"/>
@@ -465,7 +465,7 @@
 
                         <Button Grid.Row="5" Name="btnTotalResult" Content="Сформировать итоги" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource Button}" Click="btnTotalResult_Click"/>
 
-                        <StackPanel Grid.Row="6" Name="spResults" Visibility="Collapsed">
+                        <StackPanel Grid.Row="6" Name="spResults" Visibility="Collapsed" IsVisibleChanged="spResults_IsVisibleChanged">
                             <DataGrid Name="dgTotalResults" IsReadOnly="True" ColumnWidth="*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Движение фонда" Width="Auto" Binding="{Binding FundMomentTotal}"/>

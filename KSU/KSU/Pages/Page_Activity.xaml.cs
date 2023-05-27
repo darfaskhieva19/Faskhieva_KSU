@@ -164,6 +164,7 @@ namespace KSU
             WindowReceiptsOne.index = 1;
             addReceipts.ShowDialog();
             dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 1).ToList();
+           
         }
 
         private void dgReceipt_MouseDoubleClick(object sender, MouseButtonEventArgs e) // 1 корпус Поступление редактирование
@@ -185,6 +186,7 @@ namespace KSU
                     WindowReceiptsOne.index = 1;
                     windowReceipts.ShowDialog();
                     dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
+                    
                 }
             }
             catch
@@ -211,7 +213,7 @@ namespace KSU
                     WindowDisposalsOne windowDisposals = new WindowDisposalsOne(disposal);
                     WindowDisposalsOne.index = 1;
                     windowDisposals.ShowDialog();
-                    dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
+                    dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();                   
                 }
             }
             catch
@@ -362,17 +364,18 @@ namespace KSU
 
         private void btnResult_Click(object sender, RoutedEventArgs e) // Формирование итогов 1 корпус
         {
-            spRes.Visibility = Visibility.Visible;
+            spRes.Visibility = Visibility.Visible;           
         }
 
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус
         {
-            spResultTwo.Visibility = Visibility.Visible;            
+            spResultTwo.Visibility = Visibility.Visible;
         }
 
         private void btnResultThree_Click(object sender, RoutedEventArgs e) // Формирование итогов 3 корпус
         {
-            spResThree.Visibility = Visibility.Visible;            
+            spResThree.Visibility = Visibility.Visible;
+
         }
 
         private void btnTotalResult_Click(object sender, RoutedEventArgs e) // Формирование итогов всех 3 корпусов
@@ -1023,6 +1026,92 @@ namespace KSU
             }
         }
 
-        
+        private void spRes_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) //Срытие панели при переходе на другую вкладку 1 корпус
+        {
+            if ((bool)e.NewValue == true)
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Показать StackPanel в TabItem, который выбран
+                    spRes.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Скрыть StackPanel в TabItem, который уже не выбран
+                    spRes.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void spResultTwo_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue == true)
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Показать StackPanel в TabItem, который выбран
+                    spResultTwo.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Скрыть StackPanel в TabItem, который уже не выбран
+                    spResultTwo.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void spResThree_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue == true)
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Показать StackPanel в TabItem, который выбран
+                    spResThree.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Скрыть StackPanel в TabItem, который уже не выбран
+                    spResThree.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        private void spResults_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue == true)
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Показать StackPanel в TabItem, который выбран
+                    spResults.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                var stackPanel = sender as StackPanel;
+                if (stackPanel != null)
+                {
+                    // Скрыть StackPanel в TabItem, который уже не выбран
+                    spResults.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
     }
 }

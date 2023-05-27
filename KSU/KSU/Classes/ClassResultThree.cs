@@ -559,7 +559,14 @@ namespace KSU
                     if (itemView.IdViews == viewIdThree)//Периодические издания
                     { periodDis22 += (int)itemView.Counts; }
                 }
-            }           
+            } 
+            //Состоит на 3-4 кв.
+
+            //Итого поступило
+
+            //Выбыло
+
+
             //Состоит на 2023
             int _year23 = 2023;
 
