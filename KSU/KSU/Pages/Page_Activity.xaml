@@ -441,7 +441,7 @@
                         <StackPanel Grid.Row="4" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <DataGrid Name="dgDisposalsResults" IsReadOnly="True" ColumnWidth="1.2*" RowHeight="20" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Disabled" CanUserReorderColumns="False">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding DateDisposals}" Width="Auto"/>
+                                    <DataGridTextColumn Header="Дата записи" Binding="{Binding dateDisp}" Width="Auto"/>
                                     <DataGridTextColumn Header="№ акта" Binding="{Binding ActNumber}" Width="*"/>
                                     <DataGridTextColumn Header="Общее кол-во" Binding="{Binding TotalNumber}"/>
                                     <DataGridTextColumn Header="На сумму" Binding="{Binding Cost}" Width="Auto"/>
@@ -454,11 +454,11 @@
                                     <DataGridTextColumn Header="Печатные" Binding="{Binding printed}"/>
                                     <DataGridTextColumn Header="Электронные" Binding="{Binding Electronic}"/>
                                     <DataGridTextColumn Header="Периодические издания" Binding="{Binding Period}"/>
-                                    <DataGridTextColumn Header="Ветхость" Binding="{Binding Dilapidation}"/>
-                                    <DataGridTextColumn Header="Устарелость" Binding="{Binding Obsolescence}"/>
-                                    <DataGridTextColumn Header="Дефектность" Binding="{Binding Defectiveness}"/>
-                                    <DataGridTextColumn Header="Утрата" Binding="{Binding Loss}"/>
-                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Place}" Width="Auto"/>
+                                    <DataGridTextColumn Header="Ветхость" Binding="{Binding causes}"/>
+                                    <DataGridTextColumn Header="Устарелость" Binding="{Binding obsolescence}"/>
+                                    <DataGridTextColumn Header="Дефектность" Binding="{Binding defectiveness}"/>
+                                    <DataGridTextColumn Header="Утрата" Binding="{Binding loss}"/>
+                                    <DataGridTextColumn Header="Место выбытия" Binding="{Binding Places}" Width="Auto"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
