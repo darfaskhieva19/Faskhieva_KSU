@@ -402,7 +402,6 @@ namespace KSU
             dgTotalResults.ItemsSource = dataItemsTotal;
         }
 
-
         private void tbExport_MouseDown(object sender, MouseButtonEventArgs e) // Экспорт данных по 1 корпусу
         {
             try
@@ -928,7 +927,7 @@ namespace KSU
                     DataBase.Base.SaveChanges();
 
                     // Обновляем содержимое DataGrid
-                    dgDisposals.ItemsSource = DataBase.Base.Disposals.ToList();
+                    dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
                 }
             }
         }
@@ -948,7 +947,7 @@ namespace KSU
                     DataBase.Base.SaveChanges();
 
                     // Обновляем содержимое DataGrid
-                    dgReceipt.ItemsSource = DataBase.Base.Receipts.ToList();
+                    dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
                 }
             }
         }
@@ -966,9 +965,10 @@ namespace KSU
                     // Удаляем элемент из источника данных
                     DataBase.Base.Receipts.Remove(selectedItem);
                     DataBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное удаление!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Обновляем содержимое DataGrid
-                    dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.ToList();
+                    dgReceiptTwo.ItemsSource = DataBase.Base.Receipts.Where(z=>z.IdEnclosures == 2).ToList();
                 }
             }
         }
@@ -988,7 +988,7 @@ namespace KSU
                     DataBase.Base.SaveChanges();
 
                     // Обновляем содержимое DataGrid
-                    dgReceiptThree.ItemsSource = DataBase.Base.Receipts.ToList();
+                    dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
                 }
             }
         }
@@ -1008,7 +1008,7 @@ namespace KSU
                     DataBase.Base.SaveChanges();
 
                     // Обновляем содержимое DataGrid
-                    dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.ToList();
+                    dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
                 }
             }
         }
@@ -1028,7 +1028,7 @@ namespace KSU
                     DataBase.Base.SaveChanges();
 
                     // Обновляем содержимое DataGrid
-                    dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.ToList();
+                    dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
                 }
             }
         }
