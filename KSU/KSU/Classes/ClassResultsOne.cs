@@ -20,25 +20,6 @@ namespace KSU
         public List<Results> DataList { get; }
 
         /// <summary>
-        /// Проверяем наличие данных в других таблицах
-        /// </summary>
-        /// <returns></returns>
-        private bool AreOtherTablesPopulated()
-        {
-            List<Receipts> receiptsList = DataBase.Base.Receipts.Where(x=>x.IdEnclosures == 1).ToList();
-            ObservableCollection<Receipts> receipts = new ObservableCollection<Receipts>(receiptsList);
-
-            List<Disposals> disposalsList = DataBase.Base.Disposals.Where(x => x.IdEnclosures == 1).ToList();
-            ObservableCollection<Disposals> disposals = new ObservableCollection<Disposals>(disposalsList);
-
-            if (disposals.Count > 0 && receipts.Count > 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        /// <summary>
         /// Для подсчетов итогов по 1 корпусу
         /// </summary>
         public ClassResultsOne()
@@ -1425,8 +1406,7 @@ namespace KSU
             DataList.Add(new Results() { FundMomentOne = "Состоит на 01.01.2023 г.", TotalCountOne = _countBeginingYear23, TotalCostOne = _costYear23, NaturalSocialOne = _naturalYear23, SocialOne = _socialYear23, HumanitarianOne = _humanYear23, MetodicalOne = _metodicalYear23, ReferenceOne = _referenceYear23, ArtOne = _artYear23, PrentedOne = _printYear23, ElectronicOne = _electrYear23, PeriodichOne = _periodYear23, NotesOne = "" });
             DataList.Add(new Results() { FundMomentOne = "Поступило за 1 кв. 2023 г.", TotalCountOne = totalCount23Q1, TotalCostOne = totalCost23Q1, NaturalSocialOne = natural23Q1, SocialOne = social23Q1, HumanitarianOne = human23Q1, MetodicalOne = metodical23Q1, ReferenceOne = reference23Q1, ArtOne = art23Q1, PrentedOne = print23Q1, ElectronicOne = electr23Q1, PeriodichOne = period23Q1, NotesOne = "" });
             DataList.Add(new Results() { FundMomentOne = "Состоит на 2 кв. 2023 г.", TotalCountOne = _countBeginingYear23Q2, TotalCostOne = _costYear23Q2, NaturalSocialOne = _naturalYear23Q2, SocialOne = _socialYear23Q2, HumanitarianOne = _humanYear23Q2, MetodicalOne = _metodicalYear23Q2, ReferenceOne = _referenceYear23Q2, ArtOne = _artYear23Q2, PrentedOne = _printYear23Q2, ElectronicOne = _electrYear23Q2, PeriodichOne = _periodYear23Q2, NotesOne = "" });
-            if (AreOtherTablesPopulated())
-            {
+            
                 //2 кв.
                 DataList.Add(new Results() { FundMomentOne = _titl23Q2, TotalCountOne = _totCount23Q2, TotalCostOne = _totCost23Q2, NaturalSocialOne = _nat23Q2, SocialOne = _soc23Q2, HumanitarianOne = _hum23Q2, MetodicalOne = _met23Q2, ReferenceOne = _ref23Q2, ArtOne = _arts23Q2, PrentedOne = _prt23Q2, ElectronicOne = _el23Q2, PeriodichOne = _per23Q2, NotesOne = "" });
                 DataList.Add(new Results() { FundMomentOne = title23Q2, TotalCountOne = totCount23Q2, TotalCostOne = cost23Q2, NaturalSocialOne = nat23Q2, SocialOne = soc23Q2, HumanitarianOne = hum23Q2, MetodicalOne = met23Q2, ReferenceOne = refs23Q2, ArtOne = art23Q2, PrentedOne = prt23Q2, ElectronicOne = el23Q2, PeriodichOne = per23Q2, NotesOne = "" });
@@ -1434,38 +1414,7 @@ namespace KSU
                 DataList.Add(new Results() { FundMomentOne = _title23Q3, TotalCountOne = _count23Q3, TotalCostOne = _cost23Q3, NaturalSocialOne = _natural23Q3, SocialOne = _social23Q3, HumanitarianOne = _human23Q3, MetodicalOne = _metodical23Q3, ReferenceOne = _reference23Q3, ArtOne = _art23Q3, PrentedOne = _print23Q3, ElectronicOne = _electr23Q3, PeriodichOne = _period23Q3, NotesOne = "" });
                 DataList.Add(new Results() { FundMomentOne = _titl23Q3, TotalCountOne = _totCount23Q3, TotalCostOne = _totCost23Q3, NaturalSocialOne = _nat23Q3, SocialOne = _soc23Q3, HumanitarianOne = _hum23Q3, MetodicalOne = _met23Q3, ReferenceOne = _ref23Q3, ArtOne = _arts23Q3, PrentedOne = _prt23Q3, ElectronicOne = _el23Q3, PeriodichOne = _per23Q3, NotesOne = "" });
                 DataList.Add(new Results() { FundMomentOne = title23Q3, TotalCountOne = totCount23Q3, TotalCostOne = cost23Q3, NaturalSocialOne = nat23Q3, SocialOne = soc23Q3, HumanitarianOne = hum23Q3, MetodicalOne = met23Q3, ReferenceOne = refs23Q3, ArtOne = art23Q3, PrentedOne = prt23Q3, ElectronicOne = el23Q3, PeriodichOne = per23Q3, NotesOne = "" });
-                //4 кв.
-                DataList.Add(new Results() { FundMomentOne = _title23Q4, TotalCountOne = _count23Q4, TotalCostOne = _cost23Q4, NaturalSocialOne = _natural23Q4, SocialOne = _social23Q4, HumanitarianOne = _human23Q4, MetodicalOne = _metodical23Q4, ReferenceOne = _reference23Q4, ArtOne = _art23Q4, PrentedOne = _print23Q4, ElectronicOne = _electr23Q4, PeriodichOne = _period23Q4, NotesOne = "" });
-                DataList.Add(new Results() { FundMomentOne = _titl23Q4, TotalCountOne = _totCount23Q4, TotalCostOne = _totCost23Q4, NaturalSocialOne = _nat23Q4, SocialOne = _soc23Q4, HumanitarianOne = _hum23Q4, MetodicalOne = _met23Q4, ReferenceOne = _ref23Q4, ArtOne = _arts23Q4, PrentedOne = _prt23Q4, ElectronicOne = _el23Q4, PeriodichOne = _per23Q4, NotesOne = "" });
-                DataList.Add(new Results() { FundMomentOne = title23Q4, TotalCountOne = totCount23Q4, TotalCostOne = cost23Q4, NaturalSocialOne = nat23Q4, SocialOne = soc23Q4, HumanitarianOne = hum23Q4, MetodicalOne = met23Q4, ReferenceOne = refs23Q4, ArtOne = art23Q4, PrentedOne = prt23Q4, ElectronicOne = el23Q4, PeriodichOne = per23Q4, NotesOne = "" });
-                //Итоги
-                DataList.Add(new Results() { FundMomentOne = title2023, TotalCountOne = _totalCount2023, TotalCostOne = _totalCost2023, NaturalSocialOne = _natural2023, SocialOne = _social2023, HumanitarianOne = _human2023, MetodicalOne = _metodical2023, ReferenceOne = _reference2023, ArtOne = _art2023, PrentedOne = _print2023, ElectronicOne = _electr2023, PeriodichOne = _period2023, NotesOne = "" });
-                DataList.Add(new Results() { FundMomentOne = titleDis2023, TotalCountOne = totCount2023, TotalCostOne = cost2023, NaturalSocialOne = nat2023, SocialOne = soc2023, HumanitarianOne = hum2023, MetodicalOne = met2023, ReferenceOne = refs2023, ArtOne = art2023, PrentedOne = prt2023, ElectronicOne = el2023, PeriodichOne = per2023, NotesOne = "" });
-                //2024
-                //DataList.Add(new Results() { FundMomentOne = _title24, TotalCountOne = _count24, TotalCostOne = _cost24, NaturalSocialOne = _natural24, SocialOne = _social24, HumanitarianOne = _human24, MetodicalOne = _metodical24, ReferenceOne = _reference24, ArtOne = _art24, PrentedOne = _print24, ElectronicOne = _electr24, PeriodichOne = _period24, NotesOne = "" });
-                ////1 кв.
-                //DataList.Add(new Results() { FundMomentOne = _titl24, TotalCountOne = _totCount24, TotalCostOne = _totCost24, NaturalSocialOne = _nat24, SocialOne = _soc24, HumanitarianOne = _hum24, MetodicalOne = _met24, ReferenceOne = _ref24, ArtOne = _art24, PrentedOne = _prt24, ElectronicOne = _el24, PeriodichOne = _per24, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = title24, TotalCountOne = totCount24, TotalCostOne = cost24, NaturalSocialOne = nat24, SocialOne = soc24, HumanitarianOne = hum24, MetodicalOne = met24, ReferenceOne = refs24, ArtOne = art24, PrentedOne = prt24, ElectronicOne = el24, PeriodichOne = per24, NotesOne = "" });
-                ////2 кв.
-                //DataList.Add(new Results() { FundMomentOne = _title24Q2, TotalCountOne = _count24Q2, TotalCostOne = _cost24Q2, NaturalSocialOne = _natural24Q2, SocialOne = _social24Q2, HumanitarianOne = _human24Q2, MetodicalOne = _metodical24Q2, ReferenceOne = _reference24Q2, ArtOne = _art24Q2, PrentedOne = _print24Q2, ElectronicOne = _electr24Q2, PeriodichOne = _period24Q2, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = _titl24Q2, TotalCountOne = _totCount24Q2, TotalCostOne = _totCost24Q2, NaturalSocialOne = _nat24Q2, SocialOne = _soc24Q2, HumanitarianOne = _hum24Q2, MetodicalOne = _met24Q2, ReferenceOne = _ref24Q2, ArtOne = _arts24Q2, PrentedOne = _prt24Q2, ElectronicOne = _el24Q2, PeriodichOne = _per24Q2, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = title24Q2, TotalCountOne = totCount24Q2, TotalCostOne = cost24Q2, NaturalSocialOne = nat24Q2, SocialOne = soc24Q2, HumanitarianOne = hum24Q2, MetodicalOne = met24Q2, ReferenceOne = refs24Q2, ArtOne = art24Q2, PrentedOne = prt24Q2, ElectronicOne = el24Q2, PeriodichOne = per24Q2, NotesOne = "" });
-                ////3 кв.
-                //DataList.Add(new Results() { FundMomentOne = _title24Q3, TotalCountOne = _count24Q3, TotalCostOne = _cost24Q3, NaturalSocialOne = _natural24Q3, SocialOne = _social24Q3, HumanitarianOne = _human24Q3, MetodicalOne = _metodical24Q3, ReferenceOne = _reference24Q3, ArtOne = _art24Q3, PrentedOne = _print24Q3, ElectronicOne = _electr24Q3, PeriodichOne = _period24Q3, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = _titl24Q3, TotalCountOne = _totCount24Q3, TotalCostOne = _totCost24Q3, NaturalSocialOne = _nat24Q3, SocialOne = _soc24Q3, HumanitarianOne = _hum24Q3, MetodicalOne = _met24Q3, ReferenceOne = _ref24Q3, ArtOne = _arts24Q3, PrentedOne = _prt24Q3, ElectronicOne = _el24Q3, PeriodichOne = _per24Q3, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = title24Q3, TotalCountOne = totCount24Q3, TotalCostOne = cost24Q3, NaturalSocialOne = nat24Q3, SocialOne = soc24Q3, HumanitarianOne = hum24Q3, MetodicalOne = met24Q3, ReferenceOne = refs24Q3, ArtOne = art24Q3, PrentedOne = prt24Q3, ElectronicOne = el24Q3, PeriodichOne = per24Q3, NotesOne = "" });
-                ////4 кв.
-                //DataList.Add(new Results() { FundMomentOne = _title24Q4, TotalCountOne = _count24Q4, TotalCostOne = _cost24Q4, NaturalSocialOne = _natural24Q4, SocialOne = _social24Q4, HumanitarianOne = _human24Q4, MetodicalOne = _metodical24Q4, ReferenceOne = _reference24Q4, ArtOne = _art24Q4, PrentedOne = _print24Q4, ElectronicOne = _electr24Q4, PeriodichOne = _period24Q4, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = _titl24Q4, TotalCountOne = _totCount24Q4, TotalCostOne = _totCost24Q4, NaturalSocialOne = _nat24Q4, SocialOne = _soc24Q4, HumanitarianOne = _hum24Q4, MetodicalOne = _met24Q4, ReferenceOne = _ref24Q4, ArtOne = _arts24Q4, PrentedOne = _prt24Q4, ElectronicOne = _el24Q4, PeriodichOne = _per24Q4, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = title24Q4, TotalCountOne = totCount24Q4, TotalCostOne = cost24Q4, NaturalSocialOne = nat24Q4, SocialOne = soc24Q4, HumanitarianOne = hum24Q4, MetodicalOne = met24Q4, ReferenceOne = refs24Q4, ArtOne = art24Q4, PrentedOne = prt24Q4, ElectronicOne = el24Q4, PeriodichOne = per24Q4, NotesOne = "" });
-                ////Итоги
-                //DataList.Add(new Results() { FundMomentOne = title2024, TotalCountOne = _totalCount2024, TotalCostOne = _totalCost2024, NaturalSocialOne = _natural2024, SocialOne = _social2024, HumanitarianOne = _human2024, MetodicalOne = _metodical2024, ReferenceOne = _reference2024, ArtOne = _art2024, PrentedOne = _print2024, ElectronicOne = _electr2024, PeriodichOne = _period2024, NotesOne = "" });
-                //DataList.Add(new Results() { FundMomentOne = titleDis2024, TotalCountOne = totCount2024, TotalCostOne = cost2024, NaturalSocialOne = nat2024, SocialOne = soc2024, HumanitarianOne = hum2024, MetodicalOne = met2024, ReferenceOne = refs2024, ArtOne = art2024, PrentedOne = prt2024, ElectronicOne = el2024, PeriodichOne = per2024, NotesOne = "" });
-                ////2025
-                //DataList.Add(new Results() { FundMomentOne = _title25, TotalCountOne = _count25, TotalCostOne = _cost25, NaturalSocialOne = _natural25, SocialOne = _social25, HumanitarianOne = _human25, MetodicalOne = _metodical25, ReferenceOne = _reference25, ArtOne = _art25, PrentedOne = _print25, ElectronicOne = _electr25, PeriodichOne = _period25, NotesOne = "" });
-                //1 кв.
-            }
-
+               
         }
     }
 

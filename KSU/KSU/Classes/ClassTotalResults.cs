@@ -342,14 +342,14 @@ namespace KSU
             int _count21Q2 = _count21 - totCount21, _natural21Q2 = _natural21 - nat21, _social21Q2 = _social21 - soc21, _human21Q2 = _human21 - hum21, _metodical21Q2 = _metodical21 - met21, _reference21Q2 = _reference21 - refs21, _art21Q2 = _art21 - art21, _print21Q2 = _print21 - prt21, _electr21Q2 = _electr21 - el21, _period21Q2 = _period21 - per21;
             double _cost21Q2 = 0;
             //Поступление 2021 2 кв.
-            var _item21 = DataBase.Base.Receipts.Where(x =>x.Date >= April && x.Date <= June);
+            var _item21 = DataBase.Base.Receipts.Where(x => x.Date >= April && x.Date <= June);
             int _totCount21 = 0, _nat21 = 0, _soc21 = 0, _hum21 = 0, _met21 = 0, _ref21 = 0, _arts21 = 0, _prt21 = 0, _el21 = 0, _per21 = 0;
             double _totCost21 = 0;
             foreach (var item in _item21)
             {
                 _totCount21 += item.TotalInstances;
                 _totCost21 += item.Cost;
-                
+
                 var contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => x.IdReceipts == item.Id);
                 foreach (var itemContent in contentsReceipts)
                 {
@@ -455,7 +455,7 @@ namespace KSU
             DateTime startDate2021 = new DateTime(_year21, 1, 1);
             DateTime endDate2021 = new DateTime(_year21, 12, 31);
             string title2021 = "Итого поступило за " + _year21 + " г.";
-            var Items2021 = DataBase.Base.Receipts.Where(x =>x.Date >= startDate2021 && x.Date <= endDate2021);
+            var Items2021 = DataBase.Base.Receipts.Where(x => x.Date >= startDate2021 && x.Date <= endDate2021);
             int _totalCount2021 = 0, _natural2021 = 0, _social2021 = 0, _human2021 = 0, _metodical2021 = 0, _reference2021 = 0, _art2021 = 0, _print2021 = 0, _electr2021 = 0, _period2021 = 0;
             double _totalCost2021 = 0;
             foreach (var item in Items2021)
@@ -986,7 +986,7 @@ namespace KSU
             }
             string titleDis2023 = "Выбыло за " + _year23 + " г.";
             int totCount2023 = 0, nat2023 = 0, soc2023 = 0, hum2023 = 0, met2023 = 0, refs2023 = 0, art2023 = 0, prt2023 = 0, el2023 = 0, per2023 = 0;
-            double cost2023 = 0;            
+            double cost2023 = 0;
             var _it2023 = DataBase.Base.Disposals.Where(x => x.Date >= startDate2023 && x.Date <= endDate2023);
             foreach (var item in _it2023)
             {
@@ -1365,7 +1365,7 @@ namespace KSU
             DateTime Oct25 = new DateTime(_year24, 10, 1);
             DateTime Dec52 = new DateTime(_year24, 12, 31);
             string _title25 = "Состоит на 01.01." + _year25 + " г.";
-            int _count25 = _count24Q4 + _totCount24Q4 - totCount24Q4, _natural25 = _natural24Q4 + _nat24Q4 - nat24Q4, _social25 = _social24Q4 + _soc24Q4 - soc24Q4, _human25 = _human24Q4 + _hum24Q4 - hum24Q4, _metodical25 = _metodical24Q4 + _met24Q4 - met24Q4, _reference25 = _reference24Q4 + _ref24Q4 - refs24Q4, _art25 = _art24Q4 + _arts24Q4 - art24Q4, _print25= _print24Q4 + _prt24Q4 - prt24Q4, _electr25 = _electr24Q4 + _el24Q4 - el24Q4, _period25 = _period24Q4 + _per24Q4 - per24Q4;
+            int _count25 = _count24Q4 + _totCount24Q4 - totCount24Q4, _natural25 = _natural24Q4 + _nat24Q4 - nat24Q4, _social25 = _social24Q4 + _soc24Q4 - soc24Q4, _human25 = _human24Q4 + _hum24Q4 - hum24Q4, _metodical25 = _metodical24Q4 + _met24Q4 - met24Q4, _reference25 = _reference24Q4 + _ref24Q4 - refs24Q4, _art25 = _art24Q4 + _arts24Q4 - art24Q4, _print25 = _print24Q4 + _prt24Q4 - prt24Q4, _electr25 = _electr24Q4 + _el24Q4 - el24Q4, _period25 = _period24Q4 + _per24Q4 - per24Q4;
             double _cost25 = 0;
 
 
@@ -1411,80 +1411,13 @@ namespace KSU
             DataList.Add(new TotalResults() { FundMomentTotal = _titl23, TotalCount = _totCount23, TotalCost = _totCost23, NaturalSocialTotal = _nat23, SocialTotal = _soc23, HumanitarianTotal = _hum23, MetodicalTotal = _met23, ReferenceTotal = _ref23, ArtTotal = _arts23, PrentedTotal = _prt23, ElectronicTotal = _el23, PeriodichTotal = _per23, NotesTotal = "" });
             DataList.Add(new TotalResults() { FundMomentTotal = _title23Q2, TotalCount = _count23Q2, TotalCost = _cost23Q2, NaturalSocialTotal = _natural23Q2, SocialTotal = _social23Q2, HumanitarianTotal = _human23Q2, MetodicalTotal = _metodical23Q2, ReferenceTotal = _reference23Q2, ArtTotal = _art23Q2, PrentedTotal = _print23Q2, ElectronicTotal = _electr23Q2, PeriodichTotal = _period23Q2, NotesTotal = "" });
 
-            // Отображаем DataGrid только если убедились, что есть данные в других таблицах
-            if (AreOtherTablesPopulated())
-            {
-                //2 кв.
-                DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q2, TotalCount = _totCount23Q2, TotalCost = _totCost23Q2, NaturalSocialTotal = _nat23Q2, SocialTotal = _soc23Q2, HumanitarianTotal = _hum23Q2, MetodicalTotal = _met23Q2, ReferenceTotal = _ref23Q2, ArtTotal = _arts23Q2, PrentedTotal = _prt23Q2, ElectronicTotal = _el23Q2, PeriodichTotal = _per23Q2, NotesTotal = "" });
-                DataList.Add(new TotalResults() { FundMomentTotal = title23Q2, TotalCount = totCount23Q2, TotalCost = cost23Q2, NaturalSocialTotal = nat23Q2, SocialTotal = soc23Q2, HumanitarianTotal = hum23Q2, MetodicalTotal = met23Q2, ReferenceTotal = refs23Q2, ArtTotal = art23Q2, PrentedTotal = prt23Q2, ElectronicTotal = el23Q2, PeriodichTotal = per23Q2, NotesTotal = "" });
-                //3 кв.
-                DataList.Add(new TotalResults() { FundMomentTotal = _title23Q3, TotalCount = _count23Q3, TotalCost = _cost23Q3, NaturalSocialTotal = _natural23Q3, SocialTotal = _social23Q3, HumanitarianTotal = _human23Q3, MetodicalTotal = _metodical23Q3, ReferenceTotal = _reference23Q3, ArtTotal = _art23Q3, PrentedTotal = _print23Q3, ElectronicTotal = _electr23Q3, PeriodichTotal = _period23Q3, NotesTotal = "" });
-                DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q3, TotalCount = _totCount23Q3, TotalCost = _totCost23Q3, NaturalSocialTotal = _nat23Q3, SocialTotal = _soc23Q3, HumanitarianTotal = _hum23Q3, MetodicalTotal = _met23Q3, ReferenceTotal = _ref23Q3, ArtTotal = _arts23Q3, PrentedTotal = _prt23Q3, ElectronicTotal = _el23Q3, PeriodichTotal = _per23Q3, NotesTotal = "" });
-                DataList.Add(new TotalResults() { FundMomentTotal = title23Q3, TotalCount = totCount23Q3, TotalCost = cost23Q3, NaturalSocialTotal = nat23Q3, SocialTotal = soc23Q3, HumanitarianTotal = hum23Q3, MetodicalTotal = met23Q3, ReferenceTotal = refs23Q3, ArtTotal = art23Q3, PrentedTotal = prt23Q3, ElectronicTotal = el23Q3, PeriodichTotal = per23Q3, NotesTotal = "" });
-                //4 кв.
-                DataList.Add(new TotalResults() { FundMomentTotal = _title23Q4, TotalCount = _count23Q4, TotalCost = _cost23Q4, NaturalSocialTotal = _natural23Q4, SocialTotal = _social23Q4, HumanitarianTotal = _human23Q4, MetodicalTotal = _metodical23Q4, ReferenceTotal = _reference23Q4, ArtTotal = _art23Q4, PrentedTotal = _print23Q4, ElectronicTotal = _electr23Q4, PeriodichTotal = _period23Q4, NotesTotal = "" });
-                DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q4, TotalCount = _totCount23Q4, TotalCost = _totCost23Q4, NaturalSocialTotal = _nat23Q4, SocialTotal = _soc23Q4, HumanitarianTotal = _hum23Q4, MetodicalTotal = _met23Q4, ReferenceTotal = _ref23Q4, ArtTotal = _arts23Q4, PrentedTotal = _prt23Q4, ElectronicTotal = _el23Q4, PeriodichTotal = _per23Q4, NotesTotal = "" });
-                DataList.Add(new TotalResults() { FundMomentTotal = title23Q4, TotalCount = totCount23Q4, TotalCost = cost23Q4, NaturalSocialTotal = nat23Q4, SocialTotal = soc23Q4, HumanitarianTotal = hum23Q4, MetodicalTotal = met23Q4, ReferenceTotal = refs23Q4, ArtTotal = art23Q4, PrentedTotal = prt23Q4, ElectronicTotal = el23Q4, PeriodichTotal = per23Q4, NotesTotal = "" });
-                //Итоги
-                DataList.Add(new TotalResults() { FundMomentTotal = title2023, TotalCount = _totalCount2023, TotalCost = _totalCost2023, NaturalSocialTotal = _natural2023, SocialTotal = _social2023, HumanitarianTotal = _human2023, MetodicalTotal = _metodical2023, ReferenceTotal = _reference2023, ArtTotal = _art2023, PrentedTotal = _print2023, ElectronicTotal = _electr2023, PeriodichTotal = _period2023, NotesTotal = "" });
-                DataList.Add(new TotalResults() { FundMomentTotal = titleDis2023, TotalCount = totCount2023, TotalCost = cost2023, NaturalSocialTotal = nat2023, SocialTotal = soc2023, HumanitarianTotal = hum2023, MetodicalTotal = met2023, ReferenceTotal = refs2023, ArtTotal = art2023, PrentedTotal = prt2023, ElectronicTotal = el2023, PeriodichTotal = per2023, NotesTotal = "" });
-                //2024
-                //DataList.Add(new TotalResults() { FundMomentTotal = _title24, TotalCount = _count24, TotalCost = _cost24, NaturalSocialTotal = _natural24, SocialTotal = _social24, HumanitarianTotal = _human24, MetodicalTotal = _metodical24, ReferenceTotal = _reference24, ArtTotal = _art24, PrentedTotal = _print24, ElectronicTotal = _electr24, PeriodichTotal = _period24, NotesTotal = "" });
-                ////1 кв.
-                //DataList.Add(new TotalResults() { FundMomentTotal = _titl24, TotalCount = _totCount24, TotalCost = _totCost24, NaturalSocialTotal = _nat24, SocialTotal = _soc24, HumanitarianTotal = _hum24, MetodicalTotal = _met24, ReferenceTotal = _ref24, ArtTotal = _art24, PrentedTotal = _prt24, ElectronicTotal = _el24, PeriodichTotal = _per24, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = title24, TotalCount = totCount24, TotalCost = cost24, NaturalSocialTotal = nat24, SocialTotal = soc24, HumanitarianTotal = hum24, MetodicalTotal = met24, ReferenceTotal = refs24, ArtTotal = art24, PrentedTotal = prt24, ElectronicTotal = el24, PeriodichTotal = per24, NotesTotal = "" });
-                ////2 кв.
-                //DataList.Add(new TotalResults() { FundMomentTotal = _title24Q2, TotalCount = _count24Q2, TotalCost = _cost24Q2, NaturalSocialTotal = _natural24Q2, SocialTotal = _social24Q2, HumanitarianTotal = _human24Q2, MetodicalTotal = _metodical24Q2, ReferenceTotal = _reference24Q2, ArtTotal = _art24Q2, PrentedTotal = _print24Q2, ElectronicTotal = _electr24Q2, PeriodichTotal = _period24Q2, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = _titl24Q2, TotalCount = _totCount24Q2, TotalCost = _totCost24Q2, NaturalSocialTotal = _nat24Q2, SocialTotal = _soc24Q2, HumanitarianTotal = _hum24Q2, MetodicalTotal = _met24Q2, ReferenceTotal = _ref24Q2, ArtTotal = _arts24Q2, PrentedTotal = _prt24Q2, ElectronicTotal = _el24Q2, PeriodichTotal = _per24Q2, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = title24Q2, TotalCount = totCount24Q2, TotalCost = cost24Q2, NaturalSocialTotal = nat24Q2, SocialTotal = soc24Q2, HumanitarianTotal = hum24Q2, MetodicalTotal = met24Q2, ReferenceTotal = refs24Q2, ArtTotal = art24Q2, PrentedTotal = prt24Q2, ElectronicTotal = el24Q2, PeriodichTotal = per24Q2, NotesTotal = "" });
-                ////3 кв.
-                //DataList.Add(new TotalResults() { FundMomentTotal = _title24Q3, TotalCount = _count24Q3, TotalCost = _cost24Q3, NaturalSocialTotal = _natural24Q3, SocialTotal = _social24Q3, HumanitarianTotal = _human24Q3, MetodicalTotal = _metodical24Q3, ReferenceTotal = _reference24Q3, ArtTotal = _art24Q3, PrentedTotal = _print24Q3, ElectronicTotal = _electr24Q3, PeriodichTotal = _period24Q3, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = _titl24Q3, TotalCount = _totCount24Q3, TotalCost = _totCost24Q3, NaturalSocialTotal = _nat24Q3, SocialTotal = _soc24Q3, HumanitarianTotal = _hum24Q3, MetodicalTotal = _met24Q3, ReferenceTotal = _ref24Q3, ArtTotal = _arts24Q3, PrentedTotal = _prt24Q3, ElectronicTotal = _el24Q3, PeriodichTotal = _per24Q3, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = title24Q3, TotalCount = totCount24Q3, TotalCost = cost24Q3, NaturalSocialTotal = nat24Q3, SocialTotal = soc24Q3, HumanitarianTotal = hum24Q3, MetodicalTotal = met24Q3, ReferenceTotal = refs24Q3, ArtTotal = art24Q3, PrentedTotal = prt24Q3, ElectronicTotal = el24Q3, PeriodichTotal = per24Q3, NotesTotal = "" });
-                ////4 кв.
-                //DataList.Add(new TotalResults() { FundMomentTotal = _title24Q4, TotalCount = _count24Q4, TotalCost = _cost24Q4, NaturalSocialTotal = _natural24Q4, SocialTotal = _social24Q4, HumanitarianTotal = _human24Q4, MetodicalTotal = _metodical24Q4, ReferenceTotal = _reference24Q4, ArtTotal = _art24Q4, PrentedTotal = _print24Q4, ElectronicTotal = _electr24Q4, PeriodichTotal = _period24Q4, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = _titl24Q4, TotalCount = _totCount24Q4, TotalCost = _totCost24Q4, NaturalSocialTotal = _nat24Q4, SocialTotal = _soc24Q4, HumanitarianTotal = _hum24Q4, MetodicalTotal = _met24Q4, ReferenceTotal = _ref24Q4, ArtTotal = _arts24Q4, PrentedTotal = _prt24Q4, ElectronicTotal = _el24Q4, PeriodichTotal = _per24Q4, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = title24Q4, TotalCount = totCount24Q4, TotalCost = cost24Q4, NaturalSocialTotal = nat24Q4, SocialTotal = soc24Q4, HumanitarianTotal = hum24Q4, MetodicalTotal = met24Q4, ReferenceTotal = refs24Q4, ArtTotal = art24Q4, PrentedTotal = prt24Q4, ElectronicTotal = el24Q4, PeriodichTotal = per24Q4, NotesTotal = "" });
-                ////Итоги
-                //DataList.Add(new TotalResults() { FundMomentTotal = title2024, TotalCount = _totalCount2024, TotalCost = _totalCost2024, NaturalSocialTotal = _natural2024, SocialTotal = _social2024, HumanitarianTotal = _human2024, MetodicalTotal = _metodical2024, ReferenceTotal = _reference2024, ArtTotal = _art2024, PrentedTotal = _print2024, ElectronicTotal = _electr2024, PeriodichTotal = _period2024, NotesTotal = "" });
-                //DataList.Add(new TotalResults() { FundMomentTotal = titleDis2024, TotalCount = totCount2024, TotalCost = cost2024, NaturalSocialTotal = nat2024, SocialTotal = soc2024, HumanitarianTotal = hum2024, MetodicalTotal = met2024, ReferenceTotal = refs2024, ArtTotal = art2024, PrentedTotal = prt2024, ElectronicTotal = el2024, PeriodichTotal = per2024, NotesTotal = "" });
-                ////2025
-                //DataList.Add(new TotalResults() { FundMomentTotal = _title25, TotalCount = _count25, TotalCost = _cost25, NaturalSocialTotal = _natural25, SocialTotal = _social25, HumanitarianTotal = _human25, MetodicalTotal = _metodical25, ReferenceTotal = _reference25, ArtTotal = _art25, PrentedTotal = _print25, ElectronicTotal = _electr25, PeriodichTotal = _period25, NotesTotal = "" });
-                //1 кв.
-
-                //2 кв.
-
-                //3 кв.
-
-                //4 кв.
-
-                //Итоги
-
-                //2026
-                //DataList.Add(new TotalResults() { FundMomentTotal = _title26, TotalCount = _count26, TotalCost = _cost26, NaturalSocialTotal = _natural26, SocialTotal = _social26, HumanitarianTotal = _human26, MetodicalTotal = _metodical26, ReferenceTotal = _reference26, ArtTotal = _art26, PrentedTotal = _print26, ElectronicTotal = _electr26, PeriodichTotal = _period26, NotesTotal = "" });
-
-            }
-        }
-        /// <summary>
-        /// Проверяем наличие данных в других таблицах
-        /// </summary>
-        /// <returns></returns>
-        private bool AreOtherTablesPopulated()
-        {
-            ClassTotalResultDisposals resultDisposals = new ClassTotalResultDisposals();
-            ObservableCollection<TotalResultDisposals> disposals = new ObservableCollection<TotalResultDisposals>(resultDisposals.DataList);
-
-            //ClassTotalResultReceipts resultReceipts = new ClassTotalResultReceipts();
-            //ObservableCollection<TotalResultReceipts> receipts = new ObservableCollection<TotalResultReceipts>(resultReceipts.DataList);
-
-            List<Receipts> receiptsList =  DataBase.Base.Receipts.ToList();
-            ObservableCollection<Receipts> receipts = new ObservableCollection<Receipts>(receiptsList);
-
-            if (disposals.Count > 0 && receipts.Count > 0)
-            {
-                return true;
-            }
-            return false;
-        }
+            //2 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q2, TotalCount = _totCount23Q2, TotalCost = _totCost23Q2, NaturalSocialTotal = _nat23Q2, SocialTotal = _soc23Q2, HumanitarianTotal = _hum23Q2, MetodicalTotal = _met23Q2, ReferenceTotal = _ref23Q2, ArtTotal = _arts23Q2, PrentedTotal = _prt23Q2, ElectronicTotal = _el23Q2, PeriodichTotal = _per23Q2, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title23Q2, TotalCount = totCount23Q2, TotalCost = cost23Q2, NaturalSocialTotal = nat23Q2, SocialTotal = soc23Q2, HumanitarianTotal = hum23Q2, MetodicalTotal = met23Q2, ReferenceTotal = refs23Q2, ArtTotal = art23Q2, PrentedTotal = prt23Q2, ElectronicTotal = el23Q2, PeriodichTotal = per23Q2, NotesTotal = "" });
+            //3 кв.
+            DataList.Add(new TotalResults() { FundMomentTotal = _title23Q3, TotalCount = _count23Q3, TotalCost = _cost23Q3, NaturalSocialTotal = _natural23Q3, SocialTotal = _social23Q3, HumanitarianTotal = _human23Q3, MetodicalTotal = _metodical23Q3, ReferenceTotal = _reference23Q3, ArtTotal = _art23Q3, PrentedTotal = _print23Q3, ElectronicTotal = _electr23Q3, PeriodichTotal = _period23Q3, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = _titl23Q3, TotalCount = _totCount23Q3, TotalCost = _totCost23Q3, NaturalSocialTotal = _nat23Q3, SocialTotal = _soc23Q3, HumanitarianTotal = _hum23Q3, MetodicalTotal = _met23Q3, ReferenceTotal = _ref23Q3, ArtTotal = _arts23Q3, PrentedTotal = _prt23Q3, ElectronicTotal = _el23Q3, PeriodichTotal = _per23Q3, NotesTotal = "" });
+            DataList.Add(new TotalResults() { FundMomentTotal = title23Q3, TotalCount = totCount23Q3, TotalCost = cost23Q3, NaturalSocialTotal = nat23Q3, SocialTotal = soc23Q3, HumanitarianTotal = hum23Q3, MetodicalTotal = met23Q3, ReferenceTotal = refs23Q3, ArtTotal = art23Q3, PrentedTotal = prt23Q3, ElectronicTotal = el23Q3, PeriodichTotal = per23Q3, NotesTotal = "" });
+        }  
     }
 }

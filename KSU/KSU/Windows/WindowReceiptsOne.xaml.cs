@@ -231,7 +231,7 @@ namespace KSU
                         {
                             DataBase.Base.Receipts.Add(receipts);
                         }
-                        // находим список с кормами для кота
+                        // находим список 
                         List<ContentsReceipts> contentsReceipts = DataBase.Base.ContentsReceipts.Where(x => receipts.Id == x.IdReceipts).ToList();
 
                         // если список не пустой, удаляем из него все содержания
@@ -260,7 +260,7 @@ namespace KSU
 
                         List<ViewsReceipts> viewsReceipts = DataBase.Base.ViewsReceipts.Where(x => receipts.Id == x.IdReceipts).ToList();
 
-                        // если список не пустой, удаляем из него все корма для  этого кота
+                        // если список не пустой, удаляем из него все 
                         if (viewsReceipts.Count > 0)
                         {
                             foreach (ViewsReceipts t in viewsReceipts)
@@ -269,12 +269,12 @@ namespace KSU
                             }
                         }
 
-                        // перезаписываем корма для кота (или добавляем корма для нового кота)
+                        // перезаписываем (или добавляем)
                         foreach (Views v in lbViews.Items)
                         {
                             if (v.QM > 0)
                             {
-                                ViewsReceipts FCT = new ViewsReceipts()  // объект для записи в таблицу FeedCatTable
+                                ViewsReceipts FCT = new ViewsReceipts()  // объект для записи в таблицу
                                 {
                                     IdReceipts = receipts.Id,
                                     IdViews = v.Id,
