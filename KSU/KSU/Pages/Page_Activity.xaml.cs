@@ -925,6 +925,7 @@ namespace KSU
                     // Удаляем элемент из источника данных
                     DataBase.Base.Disposals.Remove(selectedItem);
                     DataBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное удаление!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Обновляем содержимое DataGrid
                     dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
@@ -945,6 +946,7 @@ namespace KSU
                     // Удаляем элемент из источника данных
                     DataBase.Base.Receipts.Remove(selectedItem);
                     DataBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное удаление!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Обновляем содержимое DataGrid
                     dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
@@ -986,6 +988,7 @@ namespace KSU
                     // Удаляем элемент из источника данных
                     DataBase.Base.Receipts.Remove(selectedItem);
                     DataBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное удаление!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Обновляем содержимое DataGrid
                     dgReceiptThree.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 3).ToList();
@@ -1006,6 +1009,7 @@ namespace KSU
                     // Удаляем элемент из источника данных
                     DataBase.Base.Disposals.Remove(selectedItem);
                     DataBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное удаление!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Обновляем содержимое DataGrid
                     dgDisposalsTwo.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 2).ToList();
@@ -1026,6 +1030,7 @@ namespace KSU
                     // Удаляем элемент из источника данных
                     DataBase.Base.Disposals.Remove(selectedItem);
                     DataBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное удаление!", "Удаление", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     // Обновляем содержимое DataGrid
                     dgDisposalsThree.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 3).ToList();
