@@ -368,8 +368,6 @@ namespace KSU
             ObservableCollection<Results> dataItems = new ObservableCollection<Results>(data.DataList);
             // Устанавливаем источник данных для DataGrid
             dgResults.ItemsSource = dataItems;
-
-           
         }
 
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус

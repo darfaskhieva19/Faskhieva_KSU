@@ -17,8 +17,10 @@ namespace KSU
 {
     public class ClassResultsOne
     {
-
         public List<Results> DataList { get; }
+
+        int contentId = 1, contentIdTwo = 2, contentIdThree = 3, contentIdFour = 4, contentIdFive = 5, contentIdSix = 6;
+        int viewId = 1, viewIdTwo = 2, viewIdThree = 3;
 
         /// <summary>
         /// Для подсчетов итогов по 1 корпусу
@@ -26,11 +28,6 @@ namespace KSU
         public ClassResultsOne()
         {
             int _countBegining = 42655, _cost = 0, _natural = 6281, _social = 3304, _human = 26145, _metodical = 21, _reference = 218, _art = 6686, _print = 42655, _electr = 0, _period = 0;
-            // идентификатор книг по содержанию, количество которой нужно подсчитать
-            int contentId = 1, contentIdTwo = 2, contentIdThree = 3, contentIdFour = 4, contentIdFive = 5, contentIdSix = 6;
-            // идентификатор книг по виду, количество которой нужно подсчитать 
-            int viewId = 1, viewIdTwo = 2, viewIdThree = 3;
-
             // 2018 год
             int year = 2018;  // указываем год, за который хотим посчитать
             DateTime startDate = new DateTime(year, 1, 1);
@@ -1460,7 +1457,7 @@ namespace KSU
         public int PrentedOne { get; set; }
         public int ElectronicOne { get; set; }
         public int PeriodichOne { get; set; }
-        public string NotesOne { get; set; }
+        public string NotesOne { get; set; }       
     }
 }
 

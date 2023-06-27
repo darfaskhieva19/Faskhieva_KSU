@@ -34,7 +34,6 @@ namespace KSU
             public int PeriodichThree { get; set; }
             public string NotesThree { get; set; }
 
-            public bool IsVisible { get; set; } = true;
         }
 
         public List<ResultsThree> DataList { get; }
