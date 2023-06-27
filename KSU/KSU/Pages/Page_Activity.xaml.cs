@@ -31,6 +31,7 @@ namespace KSU
         public Page_Activity()
         {
             InitializeComponent();
+
             // 1 Корпус
             dgReceipt.ItemsSource = DataBase.Base.Receipts.Where(z => z.IdEnclosures == 1).ToList();
             dgDisposals.ItemsSource = DataBase.Base.Disposals.Where(z => z.IdEnclosures == 1).ToList();
@@ -367,6 +368,8 @@ namespace KSU
             ObservableCollection<Results> dataItems = new ObservableCollection<Results>(data.DataList);
             // Устанавливаем источник данных для DataGrid
             dgResults.ItemsSource = dataItems;
+
+           
         }
 
         private void btnResultTwo_Click(object sender, RoutedEventArgs e) // Формирование итогов 2 корпус

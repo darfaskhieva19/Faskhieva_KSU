@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows;
 using static KSU.ClassResultTwo;
 using static KSU.ClassTotalResultDisposals;
 using static KSU.ClassTotalResults;
@@ -31,6 +33,8 @@ namespace KSU
             public int ElectronicThree { get; set; }
             public int PeriodichThree { get; set; }
             public string NotesThree { get; set; }
+
+            public bool IsVisible { get; set; } = true;
         }
 
         public List<ResultsThree> DataList { get; }
@@ -40,6 +44,7 @@ namespace KSU
         /// </summary>
         public ClassResultThree()
         {
+
             int _twocount = 42730, _twonatural = 3132, _twosocial = 1525, _twohuman = 29791, _twometodical = 0, _tworeference = 307, _twoart = 7975, _twoprint = 42730, _twoelectr = 0, _twoperiod = 0;
             double _twocost = 0;
             // идентификатор книг по содержанию, количество которой нужно подсчитать
@@ -1031,10 +1036,10 @@ namespace KSU
                     { per24 += (int)itemView.Counts; }
                 }
             }
-            string _title24Q2 = "Состоит на 2 кв. 01.01." + _year24 + " г.";
+            string _title24Q2 = "Состоит на 2 кв. " + _year24 + " г.";
             int _count24Q2 = _count24 + _totCount24 - totCount24, _natural24Q2 = _natl24 + _nat24 - nat24, _social24Q2 = _socl24 + _soc24 - soc24, _human24Q2 = _humn24 + _hum24 - hum24, _metodic24Q2 = _metodic24 + _met24 - met24, _reference24Q2 = _referen24 + _ref24 - refs24, _art24Q2 = _art24 + _ars24 - art24, _print24Q2 = _prnt24 + _prt24 - prt24, _elctr24Q2 = _elctr24 + _el24 - el24, _period24Q2 = _perd24 + _per24 - per24;
             double _cost24Q2 = 0;
-            string _titl24Q2 = "Поступило за 2 кв. " + _year23 + " г.";
+            string _titl24Q2 = "Поступило за 2 кв. " + _year24 + " г.";
             var _item24Q2 = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 3 && x.Date >= Apr && x.Date <= Jn);
             int _totCount24Q2 = 0, _nat24Q2 = 0, _soc24Q2 = 0, _hum24Q2 = 0, _met24Q2 = 0, _ref24Q2 = 0, _arts24Q2 = 0, _prt24Q2 = 0, _el24Q2 = 0, _per24Q2 = 0;
             double _totCost24Q2 = 0;
@@ -1105,7 +1110,7 @@ namespace KSU
                     { per24Q2 += (int)itemView.Counts; }
                 }
             }
-            string _title24Q3 = "Состоит на 3 кв. 01.01." + _year24 + " г.";
+            string _title24Q3 = "Состоит на 3 кв. " + _year24 + " г.";
             int _count24Q3 = _count24Q2 + _totCount24Q2 - totCount24Q2, _natural24Q3 = _natural24Q2 + _nat24Q2 - nat24Q2, _social24Q3 = _social24Q2 + _soc23Q2 - soc23Q2, _human24Q3 = _human24Q2 + _hum24Q2 - hum24Q2, _metodical24Q3 = _metodic24Q2 + _met24Q2 - met24Q2, _reference24Q3 = _reference24Q2 + _ref24Q2 - refs24Q2, _art24Q3 = _art24Q2 + _arts24Q2 - art24Q2, _print24Q3 = _print24Q2 + _prt24Q2 - prt24Q2, _electr24Q3 = _elctr24Q2 + _el24Q2 - el24Q2, _period24Q3 = _period24Q2 + _per24Q2 - per24Q2;
             double _cost24Q3 = 0;
             string _titl24Q3 = "Поступило за 3 кв. " + _year24 + " г.";
@@ -1179,11 +1184,11 @@ namespace KSU
                     { per24Q3 += (int)itemView.Counts; }
                 }
             }
-            string _title24Q4 = "Состоит на 4 кв. 01.01." + _year24 + " г.";
+            string _title24Q4 = "Состоит на 4 кв." + _year24 + " г.";
             int _count24Q4 = _count24Q3 + _totCount24Q3 - totCount24Q3, _natural24Q4 = _natural24Q3 + _nat24Q3 - nat24Q3, _social24Q4 = _social24Q3 + _soc24Q3 - soc24Q3, _human24Q4 = _human24Q3 + _hum24Q3 - hum24Q3, _metodical24Q4 = _metodical24Q3 + _met24Q3 - met24Q3, _reference24Q4 = _reference24Q3 + _ref24Q3 - refs24Q3, _art24Q4 = _art24Q3 + _arts24Q3 - art24Q3, _print24Q4 = _print24Q3 + _prt24Q3 - prt24Q3, _electr24Q4 = _electr24Q3 + _el24Q3 - el24Q3, _period24Q4 = _period24Q3 + _per24Q3 - per24Q3;
             double _cost24Q4 = 0;
             string _titl24Q4 = "Поступило за 4 кв. " + _year23 + " г.";
-            var _item24Q4 = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 3 && x.Date >= Oct && x.Date <= Dec);
+            var _item24Q4 = DataBase.Base.Receipts.Where(x => x.IdEnclosures == 3 && x.Date >= Oct24 && x.Date <= Dec24);
             int _totCount24Q4 = 0, _nat24Q4 = 0, _soc24Q4 = 0, _hum24Q4 = 0, _met24Q4 = 0, _ref24Q4 = 0, _arts24Q4 = 0, _prt24Q4 = 0, _el24Q4 = 0, _per24Q4 = 0;
             double _totCost24Q4 = 0;
             foreach (var item in _item24Q4)
@@ -1339,13 +1344,45 @@ namespace KSU
             DataList.Add(new ResultsThree() { FundMomentThree = _titl23, TotalCountThree = _totCount23, TotalCostThree = _totCost23, NaturalSocialThree = _nat23, SocialThree = _soc23, HumanitarianThree = _hum23, MetodicalThree = _met23, ReferenceThree = _ref23, ArtThree = _arts23, PrentedThree = _prt23, ElectronicThree = _el23, PeriodichThree = _per23, NotesThree = "" });
             DataList.Add(new ResultsThree() { FundMomentThree = _title23Q2, TotalCountThree = _count23Q2, TotalCostThree = _cost23Q2, NaturalSocialThree = _natural23Q2, SocialThree = _social23Q2, HumanitarianThree = _human23Q2, MetodicalThree = _metodical23Q2, ReferenceThree = _reference23Q2, ArtThree = _art23Q2, PrentedThree = _print23Q2, ElectronicThree = _electr23Q2, PeriodichThree = _period23Q2, NotesThree = "" });
 
-                //2 кв.
-                DataList.Add(new ResultsThree() { FundMomentThree = _titl23Q2, TotalCountThree = _totCount23Q2, TotalCostThree = _totCost23Q2, NaturalSocialThree = _nat23Q2, SocialThree = _soc23Q2, HumanitarianThree = _hum23Q2, MetodicalThree = _met23Q2, ReferenceThree = _ref23Q2, ArtThree = _arts23Q2, PrentedThree = _prt23Q2, ElectronicThree = _el23Q2, PeriodichThree = _per23Q2, NotesThree = "" });
-                DataList.Add(new ResultsThree() { FundMomentThree = title23Q2, TotalCountThree = totCount23Q2, TotalCostThree = cost23Q2, NaturalSocialThree = nat23Q2, SocialThree = soc23Q2, HumanitarianThree = hum23Q2, MetodicalThree = met23Q2, ReferenceThree = refs23Q2, ArtThree = art23Q2, PrentedThree = prt23Q2, ElectronicThree = el23Q2, PeriodichThree = per23Q2, NotesThree = "" });
-                //3 кв.
-                DataList.Add(new ResultsThree() { FundMomentThree = _title23Q3, TotalCountThree = _count23Q3, TotalCostThree = _cost23Q3, NaturalSocialThree = _natural23Q3, SocialThree = _social23Q3, HumanitarianThree = _human23Q3, MetodicalThree = _metodical23Q3, ReferenceThree = _reference23Q3, ArtThree = _art23Q3, PrentedThree = _print23Q3, ElectronicThree = _electr23Q3, PeriodichThree = _period23Q3, NotesThree = "" });
-                DataList.Add(new ResultsThree() { FundMomentThree = _titl23Q3, TotalCountThree = _totCount23Q3, TotalCostThree = _totCost23Q3, NaturalSocialThree = _nat23Q3, SocialThree = _soc23Q3, HumanitarianThree = _hum23Q3, MetodicalThree = _met23Q3, ReferenceThree = _ref23Q3, ArtThree = _arts23Q3, PrentedThree = _prt23Q3, ElectronicThree = _el23Q3, PeriodichThree = _per23Q3, NotesThree = "" });
-                DataList.Add(new ResultsThree() { FundMomentThree = title23Q3, TotalCountThree = totCount23Q3, TotalCostThree = cost23Q3, NaturalSocialThree = nat23Q3, SocialThree = soc23Q3, HumanitarianThree = hum23Q3, MetodicalThree = met23Q3, ReferenceThree = refs23Q3, ArtThree = art23Q3, PrentedThree = prt23Q3, ElectronicThree = el23Q3, PeriodichThree = per23Q3, NotesThree = "" });
+            //2 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl23Q2, TotalCountThree = _totCount23Q2, TotalCostThree = _totCost23Q2, NaturalSocialThree = _nat23Q2, SocialThree = _soc23Q2, HumanitarianThree = _hum23Q2, MetodicalThree = _met23Q2, ReferenceThree = _ref23Q2, ArtThree = _arts23Q2, PrentedThree = _prt23Q2, ElectronicThree = _el23Q2, PeriodichThree = _per23Q2, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title23Q2, TotalCountThree = totCount23Q2, TotalCostThree = cost23Q2, NaturalSocialThree = nat23Q2, SocialThree = soc23Q2, HumanitarianThree = hum23Q2, MetodicalThree = met23Q2, ReferenceThree = refs23Q2, ArtThree = art23Q2, PrentedThree = prt23Q2, ElectronicThree = el23Q2, PeriodichThree = per23Q2, NotesThree = "" });
+            //3 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _title23Q3, TotalCountThree = _count23Q3, TotalCostThree = _cost23Q3, NaturalSocialThree = _natural23Q3, SocialThree = _social23Q3, HumanitarianThree = _human23Q3, MetodicalThree = _metodical23Q3, ReferenceThree = _reference23Q3, ArtThree = _art23Q3, PrentedThree = _print23Q3, ElectronicThree = _electr23Q3, PeriodichThree = _period23Q3, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl23Q3, TotalCountThree = _totCount23Q3, TotalCostThree = _totCost23Q3, NaturalSocialThree = _nat23Q3, SocialThree = _soc23Q3, HumanitarianThree = _hum23Q3, MetodicalThree = _met23Q3, ReferenceThree = _ref23Q3, ArtThree = _arts23Q3, PrentedThree = _prt23Q3, ElectronicThree = _el23Q3, PeriodichThree = _per23Q3, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title23Q3, TotalCountThree = totCount23Q3, TotalCostThree = cost23Q3, NaturalSocialThree = nat23Q3, SocialThree = soc23Q3, HumanitarianThree = hum23Q3, MetodicalThree = met23Q3, ReferenceThree = refs23Q3, ArtThree = art23Q3, PrentedThree = prt23Q3, ElectronicThree = el23Q3, PeriodichThree = per23Q3, NotesThree = "" });
+
+
+
+            //4 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _title23Q4, TotalCountThree = _count23Q4, TotalCostThree = _cost23Q4, NaturalSocialThree = _natural23Q4, SocialThree = _social23Q4, HumanitarianThree = _human23Q4, MetodicalThree = _metodical23Q4, ReferenceThree = _reference23Q4, ArtThree = _art23Q4, PrentedThree = _print23Q4, ElectronicThree = _electr23Q4, PeriodichThree = _period23Q4, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl23Q4, TotalCountThree = _totCount23Q4, TotalCostThree = _totCost23Q4, NaturalSocialThree = _nat23Q4, SocialThree = _soc23Q4, HumanitarianThree = _hum23Q4, MetodicalThree = _met23Q4, ReferenceThree = _ref23Q4, ArtThree = _arts23Q4, PrentedThree = _prt23Q4, ElectronicThree = _el23Q4, PeriodichThree = _per23Q4, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title23Q4, TotalCountThree = totCount23Q4, TotalCostThree = cost23Q4, NaturalSocialThree = nat23Q4, SocialThree = soc23Q4, HumanitarianThree = hum23Q4, MetodicalThree = met23Q4, ReferenceThree = refs23Q4, ArtThree = art23Q4, PrentedThree = prt23Q4, ElectronicThree = el23Q4, PeriodichThree = per23Q4, NotesThree = "" });
+            //Итоги
+            DataList.Add(new ResultsThree() { FundMomentThree = title2023, TotalCountThree = _totalCount2023, TotalCostThree = _totalCost2023, NaturalSocialThree = _natural2023, SocialThree = _social2023, HumanitarianThree = _human2023, MetodicalThree = _metodical2023, ReferenceThree = _reference2023, ArtThree = _art2023, PrentedThree = _print2023, ElectronicThree = _electr2023, PeriodichThree = _period2023, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = titleDis2023, TotalCountThree = totCount2023, TotalCostThree = cost2023, NaturalSocialThree = nat2023, SocialThree = soc2023, HumanitarianThree = hum2023, MetodicalThree = met2023, ReferenceThree = refs2023, ArtThree = art2023, PrentedThree = prt2023, ElectronicThree = el2023, PeriodichThree = per2023, NotesThree = "" });
+            //2024
+            DataList.Add(new ResultsThree() { FundMomentThree = _title24, TotalCountThree = _count24, TotalCostThree = _cost24, NaturalSocialThree = _natural24, SocialThree = _social24, HumanitarianThree = _human24, MetodicalThree = _metodical24, ReferenceThree = _reference24, ArtThree = _art24, PrentedThree = _print24, ElectronicThree = _electr24, PeriodichThree = _period24, NotesThree = "" });
+            //1 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl24, TotalCountThree = _totCount24, TotalCostThree = _totCost24, NaturalSocialThree = _nat24, SocialThree = _soc24, HumanitarianThree = _hum24, MetodicalThree = _met24, ReferenceThree = _ref24, ArtThree = _art24, PrentedThree = _prt24, ElectronicThree = _el24, PeriodichThree = _per24, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title24, TotalCountThree = totCount24, TotalCostThree = cost24, NaturalSocialThree = nat24, SocialThree = soc24, HumanitarianThree = hum24, MetodicalThree = met24, ReferenceThree = refs24, ArtThree = art24, PrentedThree = prt24, ElectronicThree = el24, PeriodichThree = per24, NotesThree = "" });
+            //2 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _title24Q2, TotalCountThree = _count24Q2, TotalCostThree = _cost24Q2, NaturalSocialThree = _natural24Q2, SocialThree = _social24Q2, HumanitarianThree = _human24Q2, MetodicalThree = _metodic24Q2, ReferenceThree = _reference24Q2, ArtThree = _art24Q2, PrentedThree = _print24Q2, ElectronicThree = _elctr24Q2, PeriodichThree = _period24Q2, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl24Q2, TotalCountThree = _totCount24Q2, TotalCostThree = _totCost24Q2, NaturalSocialThree = _nat24Q2, SocialThree = _soc24Q2, HumanitarianThree = _hum24Q2, MetodicalThree = _met24Q2, ReferenceThree = _ref24Q2, ArtThree = _arts24Q2, PrentedThree = _prt24Q2, ElectronicThree = _el24Q2, PeriodichThree = _per24Q2, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title24Q2, TotalCountThree = totCount24Q2, TotalCostThree = cost24Q2, NaturalSocialThree = nat24Q2, SocialThree = soc24Q2, HumanitarianThree = hum24Q2, MetodicalThree = met24Q2, ReferenceThree = refs24Q2, ArtThree = art24Q2, PrentedThree = prt24Q2, ElectronicThree = el24Q2, PeriodichThree = per24Q2, NotesThree = "" });
+            //3 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _title24Q3, TotalCountThree = _count24Q3, TotalCostThree = _cost24Q3, NaturalSocialThree = _natural24Q3, SocialThree = _social24Q3, HumanitarianThree = _human24Q3, MetodicalThree = _metodical24Q3, ReferenceThree = _reference24Q3, ArtThree = _art24Q3, PrentedThree = _print24Q3, ElectronicThree = _electr24Q3, PeriodichThree = _period24Q3, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl24Q3, TotalCountThree = _totCount24Q3, TotalCostThree = _totCost24Q3, NaturalSocialThree = _nat24Q3, SocialThree = _soc24Q3, HumanitarianThree = _hum24Q3, MetodicalThree = _met24Q3, ReferenceThree = _ref24Q3, ArtThree = _arts24Q3, PrentedThree = _prt24Q3, ElectronicThree = _el24Q3, PeriodichThree = _per24Q3, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title24Q3, TotalCountThree = totCount24Q3, TotalCostThree = cost24Q3, NaturalSocialThree = nat24Q3, SocialThree = soc24Q3, HumanitarianThree = hum24Q3, MetodicalThree = met24Q3, ReferenceThree = refs24Q3, ArtThree = art24Q3, PrentedThree = prt24Q3, ElectronicThree = el24Q3, PeriodichThree = per24Q3, NotesThree = "" });
+            //4 кв.
+            DataList.Add(new ResultsThree() { FundMomentThree = _title24Q4, TotalCountThree = _count24Q4, TotalCostThree = _cost24Q4, NaturalSocialThree = _natural24Q4, SocialThree = _social24Q4, HumanitarianThree = _human24Q4, MetodicalThree = _metodical24Q4, ReferenceThree = _reference24Q4, ArtThree = _art24Q4, PrentedThree = _print24Q4, ElectronicThree = _electr24Q4, PeriodichThree = _period24Q4, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = _titl24Q4, TotalCountThree = _totCount24Q4, TotalCostThree = _totCost24Q4, NaturalSocialThree = _nat24Q4, SocialThree = _soc24Q4, HumanitarianThree = _hum24Q4, MetodicalThree = _met24Q4, ReferenceThree = _ref24Q4, ArtThree = _arts24Q4, PrentedThree = _prt24Q4, ElectronicThree = _el24Q4, PeriodichThree = _per24Q4, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = title24Q4, TotalCountThree = totCount24Q4, TotalCostThree = cost24Q4, NaturalSocialThree = nat24Q4, SocialThree = soc24Q4, HumanitarianThree = hum24Q4, MetodicalThree = met24Q4, ReferenceThree = refs24Q4, ArtThree = art24Q4, PrentedThree = prt24Q4, ElectronicThree = el24Q4, PeriodichThree = per24Q4, NotesThree = "" });
+            //Итоги
+            DataList.Add(new ResultsThree() { FundMomentThree = title2024, TotalCountThree = _totalCount2024, TotalCostThree = _totalCost2024, NaturalSocialThree = _natural2024, SocialThree = _social2024, HumanitarianThree = _human2024, MetodicalThree = _metodical2024, ReferenceThree = _reference2024, ArtThree = _art2024, PrentedThree = _print2024, ElectronicThree = _electr2024, PeriodichThree = _period2024, NotesThree = "" });
+            DataList.Add(new ResultsThree() { FundMomentThree = titleDis2024, TotalCountThree = totCount2024, TotalCostThree = cost2024, NaturalSocialThree = nat2024, SocialThree = soc2024, HumanitarianThree = hum2024, MetodicalThree = met2024, ReferenceThree = refs2024, ArtThree = art2024, PrentedThree = prt2024, ElectronicThree = el2024, PeriodichThree = per2024, NotesThree = "" });
+            //2025
+            DataList.Add(new ResultsThree() { FundMomentThree = _title25, TotalCountThree = _count25, TotalCostThree = _cost25, NaturalSocialThree = _natural25, SocialThree = _social25, HumanitarianThree = _human25, MetodicalThree = _metodical25, ReferenceThree = _reference25, ArtThree = _art25, PrentedThree = _print25, ElectronicThree = _electr25, PeriodichThree = _period25, NotesThree = "" });
 
         }
        
